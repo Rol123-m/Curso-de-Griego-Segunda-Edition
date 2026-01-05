@@ -1,0 +1,631 @@
+// semana.js - Actualizado con todo el contenido de las semanas
+
+class SemanaManager {
+    constructor() {
+        this.semanaActual = this.obtenerNumeroSemana();
+        this.usuario = JSON.parse(localStorage.getItem('usuarioActual') || '{}');
+        this.contenidoSemanas = this.obtenerContenidoSemanas();
+        this.inicializar();
+    }
+
+    obtenerNumeroSemana() {
+        const params = new URLSearchParams(window.location.search);
+        return parseInt(params.get('semana')) || 1;
+    }
+
+    obtenerContenidoSemanas() {
+        return {
+            // SEMANA 1 - Alfabeto Griego
+            1: {
+                titulo: "Alfabeto Griego",
+                tema: "Introducción al alfabeto, pronunciación y escritura",
+                recursos: [
+                    { tipo: 'video', titulo: 'Canción del alfabeto (Video)', url: 'contenido_privado.html', icono: '▶️' },
+                     { tipo: 'pdf', titulo: 'PDF Contenido de la semana 2', url: 'https://drive.google.com/file/d/1Ty84WkqECgJ8emq8LVGZE5y2pXCL5E6-/view?usp=sharing', icono: '📄' },
+                    { tipo: 'html', titulo: 'Alfabeto griego completo', url: 'semana1/HTML/alfabeto.html', icono: '🔤' },
+                    { tipo: 'html', titulo: 'Guía de acentos griegos', url: 'semana1/HTML/acentos.html', icono: '´' },
+                    { tipo: 'html', titulo: 'División de sílabas', url: 'semana1/HTML/silabas.html', icono: '✂️' },
+                    { tipo: 'html', titulo: 'Vocabulario básico', url: 'semana1/HTML/vocabulario1.html', icono: '📖' },
+                    { tipo: 'examen', titulo: 'Examen de la semana 1', url: 'https://docs.google.com/forms/d/e/1FAIpQLSdp4FVcShz_KqxaaoE3GzJEQNLl8c29SXWxEow5wXR5q3B8yQ/viewform?usp=sharing', icono: '📝' }
+                ],
+                juegos: [
+                    { titulo: 'Juego de cartas del vocabulario1', url: 'semana1/Juegos/cartas solo en la computadora.html', icono: '🃏', nota: 'Disponible solo en computadora' },
+                    { titulo: 'Juego de palabras griegas', url: 'semana1/Juegos/juego de palabras, solo en la computadora.html', icono: '🔠', nota: 'Disponible solo en computadora' },
+                    { titulo: 'Simulador de escritura 2.0', url: 'semana1/Juegos/simulator2.0 solo en la computadora.html', icono: '🎲', nota: 'Disponible solo en computadora' }
+                ]
+            },
+            
+            // SEMANA 2 - Sustantivos y Casos Gramaticales
+            2: {
+                titulo: "Sustantivos y Casos Gramaticales",
+                tema: "Primera y segunda declinación",
+                recursos: [
+                    { tipo: 'pdf', titulo: 'PDF Contenido de la semana 2', url: 'contenido_privado.html', icono: '📄' },
+                    { tipo: 'html', titulo: 'Introducción a los sustantivos', url: 'semana2/HTML/1. Introducción a sustantivos.html', icono: '📖' },
+                    { tipo: 'html', titulo: 'Casos gramaticales', url: 'semana2/HTML/3. casos gramaticales.html', icono: '🔠' },
+                    { tipo: 'html', titulo: 'Introducción a las declinaciones', url: 'semana2/HTML/4. Introducción a las declinaciones.html', icono: '🔄' },
+                    { tipo: 'html', titulo: 'Repaso de Nominativo y Acusativo', url: 'semana2/HTML/5. Repaso de Nominativo y acusativo.html', icono: '📝' },
+                    { tipo: 'html', titulo: 'Resumen de la semana 2', url: 'semana2/HTML/6. Resumen de la semana 2.html', icono: '📑' },
+                    { tipo: 'html', titulo: 'Vocabulario semana 2', url: 'semana2/HTML/7. Vocabulario semana 2.html', icono: '📖' },
+                    { tipo: 'examen', titulo: 'Examen semana 2', url: 'semana2/HTML/8. Examen semana2.html', icono: '✏️' }
+                ],
+                juegos: [
+                    { titulo: 'Empareja las palabras', url: 'semana2/Juegos/Empareja las palabras.html', icono: '🔄', nota: 'Arrastra la palabra griega hasta su traducción' },
+                    { titulo: 'Juego de palabras', url: 'semana2/Juegos/Juego de palabras.html', icono: '❓', nota: 'Selecciona la respuesta correcta' },
+                    { titulo: 'Contra reloj (recomendado)', url: 'semana2/Juegos/contrareloj.html', icono: '⏱️', nota: 'Responde correctamente antes de que se acabe el tiempo' },
+                    { titulo: 'Rompecabezas de terminaciones', url: 'semana2/Juegos/rompecabezas 2.0.html', icono: '🧩', nota: 'Combina las terminaciones con los casos correctos' }
+                ]
+            },
+            
+            // SEMANA 3 - Artículo Definido y Traducción
+            3: {
+                titulo: "Artículo Definido y Traducción",
+                tema: "Uso del artículo y primeras traducciones",
+                recursos: [
+                    { tipo: 'pdf', titulo: 'PDF Contenido de la semana 3', url: 'contenido_privado.html', icono: '📄' },
+                    { tipo: 'html', titulo: 'Artículo Definido', url: 'semana3/HTML/1. Artículo Definido.html', icono: '🔤' },
+                    { tipo: 'html', titulo: 'Artículo Definido, continuación', url: 'semana3/HTML/2. Aticulo Definido, continuación.html', icono: '📖' },
+                    { tipo: 'html', titulo: 'Más sobre sustantivos', url: 'semana3/HTML/3. Mas sobre sustantivos.html', icono: '✏️' },
+                    { tipo: 'html', titulo: 'Práctica de Traducción', url: 'semana3/HTML/4. Traducción.html', icono: '🌍' },
+                    { tipo: 'html', titulo: 'Vocabulario semana 3', url: 'semana3/HTML/6. vocabulario3.html', icono: '📖' },
+                    { tipo: 'examen', titulo: 'Examen semana 3', url: 'semana3/HTML/7. examen semana 3.html', icono: '✏️' }
+                ],
+                juegos: [
+                    { titulo: 'Empareja las palabras', url: 'semana3/Juegos/3. Empareja las palabras.html', icono: '🔄', nota: 'Arrastra la palabra griega hasta su traducción' },
+                    { titulo: 'Juego de palabras', url: 'semana3/Juegos/4.juego de palabras, solo en la computadora.html', icono: '❓', nota: 'Selecciona la respuesta correcta' },
+                    { titulo: 'Completa el artículo (recomendado)', url: 'semana3/Juegos/1. Completa el articulo.html', icono: '🖊️', nota: 'Selecciona entre las opciones para llenar los espacios' },
+                    { titulo: 'Ejercicio de traducción', url: 'semana3/Juegos/traducción.html', icono: '🌍', nota: 'Practica traduciendo frases simples' },
+                    { titulo: 'Contrarreloj', url: 'semana3/Juegos/contrareloj.html', icono: '⏱️', nota: 'Responde antes de que se acabe el tiempo' }
+                ]
+            },
+            
+            // SEMANA 4 - Preposiciones y Verbo Eimi
+            4: {
+                titulo: "Preposiciones y Eimi",
+                tema: "Preposiciones básicas y el verbo 'ser'",
+                recursos: [
+                    { tipo: 'pdf', titulo: 'PDF Contenido de la semana 4', url: 'contenido_privado.html', icono: '📄' },
+                    { tipo: 'html', titulo: 'Introducción a preposiciones', url: 'semana4/HTML/1. Introducción a Preposiciones .html', icono: '1️⃣' },
+                    { tipo: 'html', titulo: 'Más sobre preposiciones', url: 'semana4/HTML/2. Más sobre preposiciones .html', icono: '2️⃣' },
+                    { tipo: 'html', titulo: 'Frase preposicional', url: 'semana4/HTML/3. Frase preposicional.html', icono: '3️⃣' },
+                    { tipo: 'html', titulo: 'Ejemplos y cláusulas', url: 'semana4/HTML/4. Ejemplos y cláusulas .html', icono: '4️⃣' },
+                    { tipo: 'html', titulo: 'Verbo εἶμι', url: 'semana4/HTML/5. verbo eimi.html', icono: '5️⃣' },
+                    { tipo: 'html', titulo: 'Nominativo Predicativo', url: 'semana4/HTML/6. Nominativo Predicativo .html', icono: '6️⃣' },
+                    { tipo: 'html', titulo: 'Resumen final', url: 'semana4/HTML/7. resumen final.html', icono: '7️⃣' },
+                    { tipo: 'html', titulo: 'Tabla de preposiciones completas', url: 'semana4/HTML/tabla de preposiciones.html', icono: '8️⃣' },
+                    { tipo: 'html', titulo: 'Vocabulario solo de preposiciones', url: 'semana4/HTML/preposiciones completas.html', icono: '9️⃣' },
+                    { tipo: 'html', titulo: 'Vocabulario semana 4', url: 'semana4/HTML/9. Vocabulario semana 4.html', icono: '📖' },
+                    { tipo: 'examen', titulo: 'Examen Semana 4', url: 'https://docs.google.com/forms/d/e/1FAIpQLSeS4A6utJyRemrNGkagZ9-uRpBqGyMIwKVByWcf5ehHFFR1yg/viewform?usp=sharing', icono: '📝' }
+                ],
+                juegos: [
+                    { titulo: 'Empareja las palabras', url: 'semana4/Juegos/3. Empareja las palabras.html', icono: '🔄', nota: 'Disponible solo en computadora - Arrastra la palabra griega a su traducción' },
+                    { titulo: 'Juego de palabras', url: 'semana4/Juegos/4.juego de palabras, solo en la computadora.html', icono: '🔠', nota: 'Disponible solo en computadora - Selecciona la respuesta correcta' },
+                    { titulo: 'Practica las preposiciones', url: 'semana4/Juegos/juego.html', icono: '⭐', nota: 'Recomendado - Llena los espacios en blanco' },
+                    { titulo: 'Otros ejercicios de preposiciones', url: 'semana4/Juegos/identificalo.html', icono: '📝', nota: 'Disponible solo en computadora' },
+                    { titulo: 'Verbo εἶμι', url: 'semana4/Juegos/eimi.html', icono: '5️⃣', nota: 'Disponible solo en computadora' },
+                    { titulo: 'Ejercicio de traducción', url: 'semana4/Juegos/traducción .html', icono: '✍️', nota: 'Traduce el prólogo de Juan' },
+                    { titulo: 'Lectura de Juan', url: 'semana4/Juegos/lectura de juan.html', icono: '✍️', nota: 'Lee el NT Griego' }
+                ]
+            },
+            
+            // SEMANA 5 - Adjetivos
+            5: {
+                titulo: "Adjetivos",
+                tema: "Concordancia y grados del adjetivo",
+                recursos: [
+                    { tipo: 'pdf', titulo: 'PDF Contenido de la semana 4', url: 'contenido_privado.html', icono: '📄' },
+                    { tipo: 'html', titulo: 'Introducción a Adjetivos', url: 'semana 5/HTML/1. Introducción a adjetivos.html', icono: '1️⃣' },
+                    { tipo: 'html', titulo: 'Forma de los adjetivos', url: 'semana 5/HTML/2. Ajetivos 2.html', icono: '2️⃣' },
+                    { tipo: 'html', titulo: 'Funciones de los adjetivos', url: 'semana 5/HTML/3. Funciones de los adjetivos .html', icono: '3️⃣' },
+                    { tipo: 'html', titulo: 'Frases preposicionales', url: 'semana 5/HTML/4. otros detalles adj.html', icono: '4️⃣' },
+                    { tipo: 'html', titulo: 'Otros asuntos', url: 'semana 5/HTML/5. Otras ideas.html', icono: '5️⃣' },
+                    { tipo: 'html', titulo: 'Vocabulario semana 5', url: 'semana 5/HTML/6. vocabulario5.html', icono: '📖' },
+                    { tipo: 'examen', titulo: 'Examen Semana 5', url: 'https://docs.google.com/forms/d/e/1FAIpQLSehnAfgP15WFNgTHHtY35VBCXIVwWFtzhRrNojlUE-uILRaUg/viewform?usp=sharing', icono: '📝' }
+                ],
+                juegos: [
+                    { titulo: 'Empareja las palabras', url: 'semana 5/Juegos/3. Empareja las palabras.html', icono: '🔄', nota: 'Disponible solo en computadora - Arrastra la palabra griega a su traducción' },
+                    { titulo: 'Juego de palabras', url: 'semana 5/Juegos/4.juego de palabras, solo en la computadora.html', icono: '🔠', nota: 'Disponible solo en computadora - Selecciona la respuesta correcta' },
+                    { titulo: 'Tablero', url: 'semana 5/Juegos/tablero.html', icono: '⭐', nota: 'Disponible solo en computadora - Practica el conocimiento' },
+                    { titulo: 'Ejercicio de traducción', url: 'semana 5/Juegos/traducción .html', icono: '✍️', nota: 'Traduce el prólogo de Juan' },
+                    { titulo: 'Lectura de Juan', url: 'semana 5/Juegos/lectura de juan.html', icono: '✍️', nota: 'Lee el NT Griego' }
+                ]
+            },
+            
+            // SEMANA 6 - Tercera Declinación
+            6: {
+                titulo: "Tercera Declinación",
+                tema: "Sustantivos de la tercera declinación",
+                recursos: [
+                    { tipo: 'pdf', titulo: 'PDF Contenido de la semana 6', url: 'contenido_privado.html', icono: '📄' },
+                    { tipo: 'html', titulo: 'Introducción a la tercera declinación', url: 'semana 6/HTML/1. Introducción a la tercera declinación.html', icono: '1️⃣' },
+                    { tipo: 'html', titulo: 'Paradigma de la tercera declinación', url: 'semana 6/HTML/2. paradigma de la tercera declinación.html', icono: '2️⃣' },
+                    { tipo: 'html', titulo: 'Clasificaciones de los sustantivos de tercera declinación', url: 'semana 6/HTML/3. Clasificaciones en la tercera declinación.html', icono: '3️⃣' },
+                    { tipo: 'html', titulo: 'Paradigma, Muy importante', url: 'semana 6/HTML/4. tabla maestra de la tercera declinación.html', icono: '4️⃣' },
+                    { tipo: 'html', titulo: 'Otros asuntos', url: 'semana 6/HTML/5. otos temas.html', icono: '5️⃣' },
+                    { tipo: 'html', titulo: 'Resumen de la semana 6', url: 'semana 6/HTML/6.resumen.html', icono: '📖' },
+                    { tipo: 'html', titulo: 'Vocabulario semana 6', url: 'semana 6/HTML/7. vocabulario6.html', icono: '📖' },
+                    { tipo: 'examen', titulo: 'Examen Semana 6', url: 'https://docs.google.com/forms/d/e/1FAIpQLSceeGgNjpdOpgnbwDJvQHvOuiq_bgEWh7YJ2L6ywuPStVC_9g/viewform?usp=sharing', icono: '📝' }
+                ],
+                juegos: [
+                    { titulo: 'Empareja las palabras', url: 'semana 6/Juegos/3. Empareja las palabras.html', icono: '🔄', nota: 'Disponible solo en computadora - Arrastra la palabra griega a su traducción' },
+                    { titulo: 'Juego de palabras', url: 'semana 6/Juegos/4.juego de palabras, solo en la computadora.html', icono: '🔠', nota: 'Disponible solo en computadora - Selecciona la respuesta correcta' },
+                    { titulo: 'LLuvia de terminaciones', url: 'semana 6/Juegos/lluvia de terminaciones.html', icono: '⭐', nota: 'Disponible solo en computadora - Practica el conocimiento' },
+                    { titulo: 'Ejercicio de traducción', url: 'semana 6/Juegos/traducción .html', icono: '✍️', nota: 'Traduce el prólogo de Juan' },
+                    { titulo: 'Lectura de Juan', url: 'semana 6/Juegos/lectura de juan.html', icono: '✍️', nota: 'Lee el NT Griego' }
+                ]
+            },
+            
+            // SEMANA 7 - Pronombres Personales
+            7: {
+                titulo: "Pronombres Personales",
+                tema: "Pronombres de primera y segunda persona",
+                recursos: [
+                    { tipo: 'html', titulo: 'Contenido semana 7', url: 'recursos-semana7.html', icono: '📚' }
+                ]
+            },
+            
+            // SEMANA 8 - Pronombres Personales de Tercera
+            8: {
+                titulo: "Pronombres personales de tercera",
+                tema: "Pronombres demostrativos y relativos",
+                recursos: [
+                    { tipo: 'pdf', titulo: 'PDF Contenido de la semana 8', url: 'contenido_privado.html', icono: '📄' },
+                    { tipo: 'html', titulo: 'Introducción a los pronombres personales de tercera persona', url: 'Semana 8/HTML/1. Introducción al pronombre de tercera persona.html', icono: '1️⃣' },
+                    { tipo: 'html', titulo: 'Forma de los pronombres', url: 'Semana 8/HTML/2.Forma del pronombre de tercera persona.html', icono: '2️⃣' },
+                    { tipo: 'html', titulo: 'Funciones de los pronombres', url: 'Semana 8/HTML/3. Funciones del pronombre.html', icono: '3️⃣' },
+                    { tipo: 'html', titulo: 'Vocabulario semana 8', url: 'Semana 8/HTML/4. vocabulario8.html', icono: '📖' },
+                    { tipo: 'examen', titulo: 'Examen Semana 8', url: 'https://forms.gle/4Uywaf7uMXN81dfA8', icono: '📝' }
+                ],
+                juegos: [
+                    { titulo: 'Empareja las palabras', url: 'Semana 8/Juegos/3. Empareja las palabras.html', icono: '🔄', nota: 'Disponible solo en computadora - Arrastra la palabra griega a su traducción' },
+                    { titulo: 'Juego de palabras', url: 'Semana 8/Juegos/4.juego de palabras, solo en la computadora.html', icono: '🔠', nota: 'Disponible solo en computadora - Selecciona la respuesta correcta' },
+                    { titulo: 'Aprende los pronombres', url: 'Semana 8/Juegos/Pronombres.html', icono: '⭐', nota: 'Disponible solo en computadora - Practica el conocimiento' },
+                    { titulo: 'Ejercicio de traducción', url: 'Semana 8/Juegos/traducción .html', icono: '✍️', nota: 'Traduce el prólogo de Juan' },
+                    { titulo: 'Lectura de Juan', url: 'Semana 8/Juegos/lectura de juan.html', icono: '✍️', nota: 'Lee el NT Griego' }
+                ]
+            },
+            
+            // SEMANA 9 - Pronombres Demostrativos
+            9: {
+                titulo: "Pronombres Demostrativos",
+                tema: "οὗτος, ἐκεῖνος, αὐτός",
+                recursos: [
+                    { tipo: 'pdf', titulo: 'PDF Contenido de la semana 9', url: 'contenido_privado.html', icono: '📄' },
+                    { tipo: 'html', titulo: 'Introducción a los pronombres demostrativos', url: 'semana 9/HTML/1. Pronombres demostrativos en español.html', icono: '1️⃣' },
+                    { tipo: 'html', titulo: 'Pronombres demostrativos en griego Koiné', url: 'semana 9/HTML/2. Pronombres demostrativos griegos.html', icono: '2️⃣' },
+                    { tipo: 'html', titulo: 'Más sobre los pronombre demostrativos', url: 'semana 9/HTML/3. Más sobre pronombres demostrativos.html', icono: '3️⃣' },
+                    { tipo: 'html', titulo: 'El caso Vocativo', url: 'semana 9/HTML/4. Vocativo.html', icono: '4️⃣' },
+                    { tipo: 'html', titulo: 'Resumen', url: 'semana 9/HTML/5. Grados del adjetivo y resumen.html', icono: '5️⃣' },
+                    { tipo: 'html', titulo: 'Pronombres relativos en español', url: 'semana 9/HTML/6. Pronombres relativos en español.html', icono: '5️⃣' },
+                    { tipo: 'html', titulo: 'Pronombres relativos en griego', url: 'semana 9/HTML/7. pronombres relativos en griego.html', icono: '5️⃣' },
+                    { tipo: 'html', titulo: 'Resumen de pronombres relativos', url: 'semana 9/HTML/8. final sobre pronombres relativos.html', icono: '5️⃣' },
+                    { tipo: 'html', titulo: 'Vocabulario semana 9', url: 'semana 9/HTML/9. Vocabulario9.html', icono: '📖' },
+                    { tipo: 'examen', titulo: 'Examen Semana 9', url: 'https://forms.gle/rX84HANaX2EeDGmD6', icono: '📝' }
+                ],
+                juegos: [
+                    { titulo: 'Empareja las palabras', url: 'semana 9/Juegos/3. Empareja las palabras.html', icono: '🔄', nota: 'Disponible solo en computadora - Arrastra la palabra griega a su traducción' },
+                    { titulo: 'Juego de palabras', url: 'semana 9/Juegos/4.juego de palabras, solo en la computadora.html', icono: '🔠', nota: 'Disponible solo en computadora - Selecciona la respuesta correcta' },
+                    { titulo: 'Aprende los pronombres', url: 'semana 9/Juegos/Pronombres.html', icono: '⭐', nota: 'Disponible solo en computadora - Practica el conocimiento' },
+                    { titulo: 'Ejercicio de traducción', url: 'semana 9/Juegos/traducción .html', icono: '✍️', nota: 'Traduce el prólogo de Juan' },
+                    { titulo: 'Lectura de 1Juan 1.1-9', url: 'semana 9/Juegos/lectura de juan.html', icono: '✍️', nota: 'Lee el NT Griego' }
+                ]
+            },
+            
+            // SEMANA 10 - Introducción al Verbo
+            10: {
+                titulo: "Introducción a los verbos, Presente Activo Indicativo",
+                tema: "Presente Activo Indicativo",
+                recursos: [
+                    { tipo: 'pdf', titulo: 'PDF Contenido de la semana 9', url: 'contenido_privado.html', icono: '📄' },
+                    { tipo: 'html', titulo: 'Introducción al verbo español', url: 'semana 10/HTML/1. Introducción al verbo desde el español.html', icono: '1️⃣' },
+                    { tipo: 'html', titulo: 'Introducción a los verbos griegos', url: 'semana 10/HTML/2. Verbos en griego,breve resumen.html', icono: '2️⃣' },
+                    { tipo: 'html', titulo: 'Componentes básicos del verbo griego', url: 'semana 10/HTML/3. Componentes básicos del verbo griego.html', icono: '3️⃣' },
+                    { tipo: 'html', titulo: 'Presente Activo Indicativo', url: 'semana 10/HTML/4. Presente Activo Indicativo.html', icono: '4️⃣' },
+                    { tipo: 'html', titulo: 'Más sobre los verbos', url: 'semana 10/HTML/5.Más sobre verbos.html', icono: '5️⃣' },
+                    { tipo: 'html', titulo: 'Verbos y pronombres personales. Tabla maestra', url: 'semana 10/HTML/6. verbos y pronombres personales.html', icono: '5️⃣' },
+                    { tipo: 'html', titulo: 'Vocabulario semana 10', url: 'semana 10/HTML/7. Vocabulario10.html', icono: '📖' },
+                    { tipo: 'examen', titulo: 'Examen Semana 10', url: 'https://forms.gle/JKVt5TVLBSaBncdf9', icono: '📝' }
+                ],
+                juegos: [
+                    { titulo: 'Empareja las palabras', url: 'semana 10/Juegos/3. Empareja las palabras.html', icono: '🔄', nota: 'Arrastra la palabra griega a su traducción' },
+                    { titulo: 'Juego de palabras', url: 'semana 10/Juegos/4.juego de palabras, solo en la computadora.html', icono: '🔠', nota: 'Selecciona la respuesta correcta' },
+                    { titulo: 'Aprende el paradigma del verbo griego', url: 'semana 10/Juegos/Presente Activo Indicativo.html', icono: '⭐', nota: 'Practica el conocimiento' }
+                ]
+            },
+            
+            // Resto de semanas (11-30) con contenido básico
+            11: { titulo: "Verbos Contractos y Voz Pasiva", tema: "Contracción vocálica y pasiva básica", recursos: [{ tipo: 'html', titulo: 'Contenido semana 11', url: 'recursos_semana11.html', icono: '📚' }] },
+            12: { titulo: "Futuro Activo y Medio Pasivo", tema: "Formación del futuro", recursos: [{ tipo: 'html', titulo: 'Contenido semana 12', url: 'recursos_semana12.html', icono: '📚' }] },
+            13: { titulo: "Imperfecto Indicativo", tema: "Tiempo pasado continuo", recursos: [{ tipo: 'html', titulo: 'Contenido semana 13', url: 'recursos_semana13.html', icono: '📚' }] },
+            14: { titulo: "Segundo Aoristo", tema: "Aoristo con aumento", recursos: [{ tipo: 'html', titulo: 'Contenido semana 14', url: 'recursos_semana14.html', icono: '📚' }] },
+            15: { titulo: "Consolidación I", tema: "Repaso general", recursos: [{ tipo: 'html', titulo: 'Contenido semana 15', url: 'recursos_semana_consolidación.html', icono: '📚' }] },
+            16: { titulo: "Primer Aoristo", tema: "Aoristo sigma", recursos: [{ tipo: 'html', titulo: 'Contenido semana 16', url: 'recursos_semana17.html', icono: '📚' }] },
+            17: { titulo: "Aoristo/Futuro Pasivo", tema: "Formas pasivas de aoristo y futuro", recursos: [{ tipo: 'html', titulo: 'Contenido semana 17', url: 'recursos_semana18.html', icono: '📚' }] },
+            18: { titulo: "Perfecto", tema: "Tiempo perfecto activo", recursos: [{ tipo: 'html', titulo: 'Contenido semana 18', url: 'recursos_semana19.html', icono: '📚' }] },
+            19: { titulo: "Introducción a Participios", tema: "Participios presentes", recursos: [{ tipo: 'html', titulo: 'Contenido semana 19', url: 'recursos_semana20.html', icono: '📚' }] },
+            20: { titulo: "Participios Adverbiales I", tema: "Participios circunstanciales", recursos: [{ tipo: 'html', titulo: 'Contenido semana 20', url: 'recursos-semana21.html', icono: '📚' }] },
+            21: { titulo: "Participios Adverbiales II", tema: "Participios causales y concesivos", recursos: [{ tipo: 'html', titulo: 'Contenido semana 21', url: 'recursos-semana22.html', icono: '📚' }] },
+            22: { titulo: "Participios Adjetivales", tema: "Participios atributivos", recursos: [{ tipo: 'html', titulo: 'Contenido semana 22', url: 'recursos-semana23.html', icono: '📚' }] },
+            23: { titulo: "Participios Combinativos", tema: "Participios con artículo", recursos: [{ tipo: 'html', titulo: 'Contenido semana 23', url: 'recursos-semana24.html', icono: '📚' }] },
+            24: { titulo: "Subjuntivo", tema: "Modo subjuntivo presente", recursos: [{ tipo: 'html', titulo: 'Contenido semana 24', url: 'recursos-semana25.html', icono: '📚' }] },
+            25: { titulo: "Infinitivo", tema: "Infinitivos y oraciones infinitivas", recursos: [{ tipo: 'html', titulo: 'Contenido semana 25', url: 'recursos-semana26.html', icono: '📚' }] },
+            26: { titulo: "Imperativo", tema: "Modo imperativo", recursos: [{ tipo: 'html', titulo: 'Contenido semana 26', url: 'recursos-semana27.html', icono: '📚' }] },
+            27: { titulo: "Conjugaciones Atemáticas", tema: "Verbos atemáticos e irregulares", recursos: [{ tipo: 'html', titulo: 'Contenido semana 27', url: 'recursos-semana28.html', icono: '📚' }] },
+            28: { titulo: "Consolidación Final", tema: "Repaso completo de gramática", recursos: [{ tipo: 'html', titulo: 'Contenido semana 28', url: 'recursos-semana28.html', icono: '📚' }] },
+            29: { titulo: "Lectura Guiada I", tema: "Juan 1:1-18", recursos: [{ tipo: 'html', titulo: 'Contenido lectura I', url: '#', icono: '📖' }] },
+            30: { titulo: "Lectura Guiada II", tema: "1 Juan 1:1-10 y examen final", recursos: [{ tipo: 'html', titulo: 'Contenido lectura II', url: '#', icono: '📖' }] }
+        };
+    }
+
+    inicializar() {
+        // Verificar autenticación
+        if (!localStorage.getItem('autenticado')) {
+            window.location.href = 'index.html';
+            return;
+        }
+
+        // Verificar si la semana está desbloqueada
+        if (!this.verificarSemanaDesbloqueada()) {
+            this.mostrarContenidoBloqueado();
+            return;
+        }
+
+        // Cargar contenido
+        this.cargarContenido();
+        this.inicializarEventos();
+    }
+
+    verificarSemanaDesbloqueada() {
+        if (this.semanaActual === 1) return true;
+        
+        const semanasDesbloqueadas = JSON.parse(
+            localStorage.getItem(`semanasDesbloqueadas_${this.usuario.id}`) || '[]'
+        );
+        
+        return semanasDesbloqueadas.includes(this.semanaActual);
+    }
+
+    mostrarContenidoBloqueado() {
+        const container = document.getElementById('weekContent');
+        container.innerHTML = `
+            <div class="text-center" style="padding: 60px 20px;">
+                <i class="fas fa-lock fa-4x text-muted mb-20"></i>
+                <h2>Contenido Bloqueado</h2>
+                <p class="text-muted mb-20">
+                    Esta semana aún no está disponible. 
+                    ${this.semanaActual > 1 ? 'Completa las semanas anteriores.' : ''}
+                </p>
+                <a href="index.html" class="btn btn-primary">
+                    <i class="fas fa-arrow-left"></i> Volver al Dashboard
+                </a>
+            </div>
+        `;
+        
+        document.getElementById('markComplete').style.display = 'none';
+    }
+
+    cargarContenido() {
+        const contenido = this.contenidoSemanas[this.semanaActual] || this.contenidoPorDefecto();
+        this.mostrarContenido(contenido);
+        this.actualizarProgresoBarra();
+    }
+
+    contenidoPorDefecto() {
+        return {
+            titulo: `Semana ${this.semanaActual}`,
+            tema: "Contenido del curso",
+            recursos: [
+                { tipo: 'html', titulo: `Contenido semana ${this.semanaActual}`, url: `#`, icono: '📚' }
+            ]
+        };
+    }
+
+    mostrarContenido(contenido) {
+        const progreso = this.calcularProgreso();
+        
+        const container = document.getElementById('weekContent');
+        container.innerHTML = `
+            <div class="week-header">
+                <div class="d-flex justify-between align-center">
+                    <div>
+                        <h1><i class="fas fa-book-open"></i> Semana ${this.semanaActual}</h1>
+                        <h2>${contenido.titulo}</h2>
+                        <p class="text-muted">${contenido.tema}</p>
+                    </div>
+                    <div class="d-flex flex-column align-center">
+                        <div class="completion-badge">
+                            <i class="fas fa-check"></i>
+                            <span>${progreso.completados}/${progreso.total} completados</span>
+                        </div>
+                        <small class="text-muted">Progreso de la semana</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill" id="progressBar"></div>
+            </div>
+
+            <div class="mb-20">
+                <h3><i class="fas fa-graduation-cap"></i> Objetivos de Aprendizaje</h3>
+                <p>Completar todos los recursos y el examen de esta semana.</p>
+            </div>
+
+            <!-- Materiales de Estudio -->
+            ${contenido.recursos && contenido.recursos.length > 0 ? `
+                <div class="resource-section">
+                    <h2><i class="fas fa-book"></i> Materiales de Estudio</h2>
+                    <ul class="resource-list">
+                        ${contenido.recursos.map((recurso, index) => `
+                            <li class="resource-item">
+                                <span class="resource-icon">${recurso.icono || '📄'}</span>
+                                ${recurso.tipo === 'examen' ? 
+                                    `<a href="${recurso.url}" target="_blank">${recurso.titulo}</a>` :
+                                    `<a href="#" onclick="semanaManager.abrirRecurso(${index}, '${recurso.tipo}')">${recurso.titulo}</a>`
+                                }
+                                ${this.generarBadgeCompletado(index)}
+                            </li>
+                        `).join('')}
+                    </ul>
+                </div>
+            ` : ''}
+
+            <!-- Juegos Interactivos -->
+            ${contenido.juegos && contenido.juegos.length > 0 ? `
+                <div class="resource-section">
+                    <h2><i class="fas fa-gamepad"></i> Juegos Interactivos</h2>
+                    ${contenido.juegos[0].nota ? `<p class="note">${contenido.juegos[0].nota}</p>` : ''}
+                    <ul class="resource-list">
+                        ${contenido.juegos.map((juego, index) => `
+                            <li class="resource-item game-item">
+                                <span class="resource-icon">${juego.icono || '🎮'}</span>
+                                <a href="#" onclick="semanaManager.abrirJuego(${index})">${juego.titulo}</a>
+                                ${juego.nota && juego.nota.includes('recomendado') ? `<span class="recommended-badge">Recomendado</span>` : ''}
+                                ${this.generarBadgeCompletado(index + 100)}
+                            </li>
+                            ${juego.nota && !juego.nota.includes('Disponible') ? `<div class="game-description">${juego.nota}</div>` : ''}
+                        `).join('')}
+                    </ul>
+                </div>
+            ` : ''}
+
+            <!-- Examen -->
+            <div class="resource-section">
+                <h2><i class="fas fa-clipboard-check"></i> Examen Semanal</h2>
+                <p>Completa el examen para validar tus conocimientos:</p>
+                ${this.generarBotonExamen()}
+            </div>
+        `;
+    }
+
+    generarBadgeCompletado(indice) {
+        const recursosCompletados = JSON.parse(
+            localStorage.getItem(`recursosCompletados_${this.usuario.id}_${this.semanaActual}`) || '[]'
+        );
+        
+        if (recursosCompletados.includes(indice)) {
+            return `<span class="completion-badge" style="margin-left: auto;">
+                <i class="fas fa-check-circle"></i> Completado
+            </span>`;
+        }
+        return '';
+    }
+
+    generarBotonExamen() {
+        // Usar el enlace de examen de la semana si está definido
+        const contenido = this.contenidoSemanas[this.semanaActual];
+        if (contenido && contenido.recursos) {
+            const examen = contenido.recursos.find(r => r.tipo === 'examen');
+            if (examen) {
+                return `
+                    <a href="${examen.url}" target="_blank" class="btn btn-warning">
+                        <i class="fas fa-external-link-alt"></i> Ir al Examen
+                    </a>
+                    <button onclick="semanaManager.marcarExamenCompletado()" class="btn btn-success mt-10">
+                        <i class="fas fa-check"></i> Marcar Examen como Completado
+                    </button>
+                `;
+            }
+        }
+        
+        // Exámenes por defecto para las semanas 1-10
+        const examenes = {
+            1: "https://docs.google.com/forms/d/e/1FAIpQLSdp4FVcShz_KqxaaoE3GzJEQNLl8c29SXWxEow5wXR5q3B8yQ/viewform",
+            4: "https://docs.google.com/forms/d/e/1FAIpQLSeS4A6utJyRemrNGkagZ9-uRpBqGyMIwKVByWcf5ehHFFR1yg/viewform",
+            5: "https://docs.google.com/forms/d/e/1FAIpQLSehnAfgP15WFNgTHHtY35VBCXIVwWFtzhRrNojlUE-uILRaUg/viewform",
+            6: "https://docs.google.com/forms/d/e/1FAIpQLSceeGgNjpdOpgnbwDJvQHvOuiq_bgEWh7YJ2L6ywuPStVC_9g/viewform",
+            8: "https://forms.gle/4Uywaf7uMXN81dfA8",
+            9: "https://forms.gle/rX84HANaX2EeDGmD6",
+            10: "https://forms.gle/JKVt5TVLBSaBncdf9"
+        };
+        
+        const urlExamen = examenes[this.semanaActual] || "https://docs.google.com/forms";
+        
+        return `
+            <a href="${urlExamen}" target="_blank" class="btn btn-warning">
+                <i class="fas fa-external-link-alt"></i> Ir al Examen (Google Forms)
+            </a>
+            <button onclick="semanaManager.marcarExamenCompletado()" class="btn btn-success mt-10">
+                <i class="fas fa-check"></i> Marcar Examen como Completado
+            </button>
+        `;
+    }
+
+    abrirRecurso(indice, tipo) {
+        const contenido = this.contenidoSemanas[this.semanaActual];
+        if (!contenido || !contenido.recursos[indice]) return;
+        
+        const recurso = contenido.recursos[indice];
+        
+        // Marcar como completado
+        this.marcarRecursoCompletado(indice);
+        
+        // Abrir según el tipo
+        if (tipo === 'video' || tipo === 'pdf') {
+            this.abrirModal(recurso.titulo, recurso.url);
+        } else {
+            window.open(recurso.url, '_blank');
+        }
+    }
+
+    abrirJuego(indice) {
+        const contenido = this.contenidoSemanas[this.semanaActual];
+        if (!contenido || !contenido.juegos[indice]) return;
+        
+        const juego = contenido.juegos[indice];
+        
+        // Marcar como completado
+        this.marcarRecursoCompletado(indice + 100);
+        
+        // Abrir juego en nueva pestaña
+        window.open(juego.url, '_blank');
+    }
+
+    abrirModal(titulo, url) {
+        const modal = document.createElement('div');
+        modal.className = 'modal active';
+        modal.innerHTML = `
+            <div class="modal-content" style="max-width: 800px;">
+                <span class="close-modal" onclick="this.parentElement.parentElement.remove()">&times;</span>
+                <h3>${titulo}</h3>
+                <div class="iframe-container">
+                    <iframe src="${url}" allowfullscreen></iframe>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+    }
+
+    calcularProgreso() {
+        const recursosCompletados = JSON.parse(
+            localStorage.getItem(`recursosCompletados_${this.usuario.id}_${this.semanaActual}`) || '[]'
+        );
+        
+        const contenido = this.contenidoSemanas[this.semanaActual];
+        const totalRecursos = (contenido.recursos ? contenido.recursos.length : 0) + 
+                             (contenido.juegos ? contenido.juegos.length : 0) + 1; // +1 por el examen
+        
+        return {
+            completados: recursosCompletados.length,
+            total: totalRecursos
+        };
+    }
+
+    actualizarProgresoBarra() {
+        const progreso = this.calcularProgreso();
+        const porcentaje = (progreso.completados / progreso.total) * 100;
+        const barra = document.getElementById('progressBar');
+        if (barra) {
+            barra.style.width = `${porcentaje}%`;
+        }
+    }
+
+    marcarRecursoCompletado(indice) {
+        const recursosCompletados = JSON.parse(
+            localStorage.getItem(`recursosCompletados_${this.usuario.id}_${this.semanaActual}`) || '[]'
+        );
+        
+        if (!recursosCompletados.includes(indice)) {
+            recursosCompletados.push(indice);
+            localStorage.setItem(
+                `recursosCompletados_${this.usuario.id}_${this.semanaActual}`,
+                JSON.stringify(recursosCompletados)
+            );
+            
+            // Actualizar progreso general del usuario
+            this.actualizarProgresoUsuario('leccion');
+            this.actualizarProgresoBarra();
+            
+            // Actualizar la UI
+            this.cargarContenido();
+        }
+    }
+
+    marcarExamenCompletado() {
+        // Marcar examen como completado (índice 999 para exámenes)
+        this.marcarRecursoCompletado(999);
+        
+        // Actualizar estadísticas
+        const progreso = this.usuario.progreso || {};
+        progreso.examenesCompletados = (progreso.examenesCompletados || 0) + 1;
+        this.usuario.progreso = progreso;
+        localStorage.setItem('usuarioActual', JSON.stringify(this.usuario));
+        localStorage.setItem(`progreso_${this.usuario.id}`, JSON.stringify(progreso));
+        
+        alert('¡Examen marcado como completado!');
+        this.cargarContenido();
+    }
+
+    actualizarProgresoUsuario(tipo) {
+        const progreso = this.usuario.progreso || {};
+        
+        switch(tipo) {
+            case 'leccion':
+                progreso.leccionesCompletadas = (progreso.leccionesCompletadas || 0) + 1;
+                break;
+            case 'juego':
+                progreso.juegosCompletados = (progreso.juegosCompletados || 0) + 1;
+                break;
+        }
+        
+        progreso.ultimaActividad = new Date().toISOString();
+        
+        this.usuario.progreso = progreso;
+        localStorage.setItem('usuarioActual', JSON.stringify(this.usuario));
+        localStorage.setItem(`progreso_${this.usuario.id}`, JSON.stringify(progreso));
+    }
+
+    marcarSemanaCompletada() {
+        const semanasCompletadas = JSON.parse(
+            localStorage.getItem(`semanasCompletadas_${this.usuario.id}`) || '[]'
+        );
+        
+        if (!semanasCompletadas.includes(this.semanaActual)) {
+            semanasCompletadas.push(this.semanaActual);
+            localStorage.setItem(
+                `semanasCompletadas_${this.usuario.id}`,
+                JSON.stringify(semanasCompletadas)
+            );
+            
+            // Desbloquear siguiente semana
+            const siguienteSemana = this.semanaActual + 1;
+            const semanasDesbloqueadas = JSON.parse(
+                localStorage.getItem(`semanasDesbloqueadas_${this.usuario.id}`) || '[]'
+            );
+            
+            if (!semanasDesbloqueadas.includes(siguienteSemana)) {
+                semanasDesbloqueadas.push(siguienteSemana);
+                localStorage.setItem(
+                    `semanasDesbloqueadas_${this.usuario.id}`,
+                    JSON.stringify(semanasDesbloqueadas)
+                );
+            }
+            
+            // Actualizar progreso
+            const progreso = this.usuario.progreso || {};
+            progreso.semanasCompletadas = semanasCompletadas.length;
+            this.usuario.progreso = progreso;
+            localStorage.setItem('usuarioActual', JSON.stringify(this.usuario));
+            localStorage.setItem(`progreso_${this.usuario.id}`, JSON.stringify(progreso));
+            
+            alert(`¡Felicidades! Has completado la semana ${this.semanaActual}`);
+            window.location.href = 'index.html';
+        } else {
+            alert('Esta semana ya estaba marcada como completada');
+        }
+    }
+
+    inicializarEventos() {
+        const btnCompletar = document.getElementById('markComplete');
+        if (btnCompletar) {
+            btnCompletar.addEventListener('click', () => {
+                this.marcarSemanaCompletada();
+            });
+        }
+    }
+}
+
+// Inicializar
+document.addEventListener('DOMContentLoaded', () => {
+    window.semanaManager = new SemanaManager();
+});
