@@ -23,6 +23,7 @@ class SemanaManager {
                     { tipo: 'video', titulo: 'Canción del alfabeto (Video)', url: 'https://drive.google.com/file/d/1lR8TBKFytimWZ4bl5PdICqnfIHYGX6qt/view?usp=sharing', icono: '▶️' },
                      { tipo: 'pdf', titulo: 'PDF Contenido de la semana 1', url: 'https://drive.google.com/file/d/1Ty84WkqECgJ8emq8LVGZE5y2pXCL5E6-/view?usp=sharing', icono: '📄' },
                     { tipo: 'html', titulo: 'Alfabeto griego completo', url: 'semanas/semana1/alfabeto.html', icono: '🔤' },
+                     { tipo: 'html', titulo: 'Otras reglas de pronunciación', url: 'semanas/semana1/diptongos.html', icono: '🔤' },
                     { tipo: 'html', titulo: 'Guía de acentos griegos', url: 'semanas/semana1/acentos.html', icono: '´' },
                     { tipo: 'html', titulo: 'División de sílabas', url: 'semanas/semana1/silabas.html', icono: '✂️' },
                     { tipo: 'html', titulo: 'Vocabulario básico', url: 'semanas/semana1/vocabulario1.html', icono: '📖' },
