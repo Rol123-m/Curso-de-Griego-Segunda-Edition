@@ -20,18 +20,18 @@ class SemanaManager {
                 titulo: "Alfabeto Griego",
                 tema: "Introducción al alfabeto, pronunciación y escritura",
                 recursos: [
-                    { tipo: 'video', titulo: 'Canción del alfabeto (Video)', url: 'contenido_privado.html', icono: '▶️' },
-                     { tipo: 'pdf', titulo: 'PDF Contenido de la semana 2', url: 'https://drive.google.com/file/d/1Ty84WkqECgJ8emq8LVGZE5y2pXCL5E6-/view?usp=sharing', icono: '📄' },
-                    { tipo: 'html', titulo: 'Alfabeto griego completo', url: 'semana1/HTML/alfabeto.html', icono: '🔤' },
-                    { tipo: 'html', titulo: 'Guía de acentos griegos', url: 'semana1/HTML/acentos.html', icono: '´' },
-                    { tipo: 'html', titulo: 'División de sílabas', url: 'semana1/HTML/silabas.html', icono: '✂️' },
-                    { tipo: 'html', titulo: 'Vocabulario básico', url: 'semana1/HTML/vocabulario1.html', icono: '📖' },
+                    { tipo: 'video', titulo: 'Canción del alfabeto (Video)', url: 'https://drive.google.com/file/d/1lR8TBKFytimWZ4bl5PdICqnfIHYGX6qt/view?usp=sharing', icono: '▶️' },
+                     { tipo: 'pdf', titulo: 'PDF Contenido de la semana 1', url: 'https://drive.google.com/file/d/1Ty84WkqECgJ8emq8LVGZE5y2pXCL5E6-/view?usp=sharing', icono: '📄' },
+                    { tipo: 'html', titulo: 'Alfabeto griego completo', url: 'semanas/semana1/HTML/alfabeto.html', icono: '🔤' },
+                    { tipo: 'html', titulo: 'Guía de acentos griegos', url: 'semanas/semana1/HTML/acentos.html', icono: '´' },
+                    { tipo: 'html', titulo: 'División de sílabas', url: 'semanas/semana1/HTML/silabas.html', icono: '✂️' },
+                    { tipo: 'html', titulo: 'Vocabulario básico', url: 'semanas/semana1/HTML/vocabulario1.html', icono: '📖' },
                     { tipo: 'examen', titulo: 'Examen de la semana 1', url: 'https://docs.google.com/forms/d/e/1FAIpQLSdp4FVcShz_KqxaaoE3GzJEQNLl8c29SXWxEow5wXR5q3B8yQ/viewform?usp=sharing', icono: '📝' }
                 ],
                 juegos: [
-                    { titulo: 'Juego de cartas del vocabulario1', url: 'semana1/Juegos/cartas solo en la computadora.html', icono: '🃏', nota: 'Disponible solo en computadora' },
-                    { titulo: 'Juego de palabras griegas', url: 'semana1/Juegos/juego de palabras, solo en la computadora.html', icono: '🔠', nota: 'Disponible solo en computadora' },
-                    { titulo: 'Simulador de escritura 2.0', url: 'semana1/Juegos/simulator2.0 solo en la computadora.html', icono: '🎲', nota: 'Disponible solo en computadora' }
+                    { titulo: 'Juego de cartas del vocabulario1', url: 'semanas/semana1/Juegos/cartas solo en la computadora.html', icono: '🃏', nota: 'Disponible solo en computadora' },
+                    { titulo: 'Juego de palabras griegas', url: 'semanas/semana1/Juegos/juego de palabras, solo en la computadora.html', icono: '🔠', nota: 'Disponible solo en computadora' },
+                    { titulo: 'Simulador de escritura 2.0', url: 'semanas/semana1/Juegos/simulador.html', icono: '🎲', nota: 'Disponible solo en computadora' }
                 ]
             },
             
@@ -41,19 +41,19 @@ class SemanaManager {
                 tema: "Primera y segunda declinación",
                 recursos: [
                     { tipo: 'pdf', titulo: 'PDF Contenido de la semana 2', url: 'contenido_privado.html', icono: '📄' },
-                    { tipo: 'html', titulo: 'Introducción a los sustantivos', url: 'semana2/HTML/1. Introducción a sustantivos.html', icono: '📖' },
-                    { tipo: 'html', titulo: 'Casos gramaticales', url: 'semana2/HTML/3. casos gramaticales.html', icono: '🔠' },
-                    { tipo: 'html', titulo: 'Introducción a las declinaciones', url: 'semana2/HTML/4. Introducción a las declinaciones.html', icono: '🔄' },
-                    { tipo: 'html', titulo: 'Repaso de Nominativo y Acusativo', url: 'semana2/HTML/5. Repaso de Nominativo y acusativo.html', icono: '📝' },
-                    { tipo: 'html', titulo: 'Resumen de la semana 2', url: 'semana2/HTML/6. Resumen de la semana 2.html', icono: '📑' },
-                    { tipo: 'html', titulo: 'Vocabulario semana 2', url: 'semana2/HTML/7. Vocabulario semana 2.html', icono: '📖' },
-                    { tipo: 'examen', titulo: 'Examen semana 2', url: 'semana2/HTML/8. Examen semana2.html', icono: '✏️' }
+                    { tipo: 'html', titulo: 'Introducción a los sustantivos', url: 'semanas/semana2/HTML/1. Introducción a  sustantivos.html', icono: '📖' },
+                    { tipo: 'html', titulo: 'Casos gramaticales', url: 'semanas/semana2/HTML/3. casos gramaticales.html', icono: '🔠' },
+                    { tipo: 'html', titulo: 'Introducción a las declinaciones', url: 'semanas/semana2/HTML/4. Introducción a las declinaciones.html', icono: '🔄' },
+                    { tipo: 'html', titulo: 'Repaso de Nominativo y Acusativo', url: 'semanas/semana2/HTML/5. Repaso de Nominativo y acusativo.html', icono: '📝' },
+                    { tipo: 'html', titulo: 'Resumen de la semana 2', url: 'semanas/semana2/HTML/6. Resumen de la semana 2.html', icono: '📑' },
+                    { tipo: 'html', titulo: 'Vocabulario semana 2', url: 'semanas/semana2/HTML/7. Vocabulario semana 2.html', icono: '📖' },
+                    { tipo: 'examen', titulo: 'Examen semana 2', url: 'semanas/semana2/HTML/8. Examen semana2.html', icono: '✏️' }
                 ],
                 juegos: [
-                    { titulo: 'Empareja las palabras', url: 'semana2/Juegos/Empareja las palabras.html', icono: '🔄', nota: 'Arrastra la palabra griega hasta su traducción' },
-                    { titulo: 'Juego de palabras', url: 'semana2/Juegos/Juego de palabras.html', icono: '❓', nota: 'Selecciona la respuesta correcta' },
-                    { titulo: 'Contra reloj (recomendado)', url: 'semana2/Juegos/contrareloj.html', icono: '⏱️', nota: 'Responde correctamente antes de que se acabe el tiempo' },
-                    { titulo: 'Rompecabezas de terminaciones', url: 'semana2/Juegos/rompecabezas 2.0.html', icono: '🧩', nota: 'Combina las terminaciones con los casos correctos' }
+                    { titulo: 'Empareja las palabras', url: 'semanas/semana2/Juegos/Empareja las palabras.html', icono: '🔄', nota: 'Arrastra la palabra griega hasta su traducción' },
+                    { titulo: 'Juego de palabras', url: 'semanas/semana2/Juegos/Juego de palabras.html', icono: '❓', nota: 'Selecciona la respuesta correcta' },
+                    { titulo: 'Contra reloj (recomendado)', url: 'semanas/semana2/Juegos/contrareloj.html', icono: '⏱️', nota: 'Responde correctamente antes de que se acabe el tiempo' },
+                    { titulo: 'Rompecabezas de terminaciones', url: 'semanas/semana2/Juegos/rompecabezas 2.0.html', icono: '🧩', nota: 'Combina las terminaciones con los casos correctos' }
                 ]
             },
             
@@ -63,19 +63,19 @@ class SemanaManager {
                 tema: "Uso del artículo y primeras traducciones",
                 recursos: [
                     { tipo: 'pdf', titulo: 'PDF Contenido de la semana 3', url: 'contenido_privado.html', icono: '📄' },
-                    { tipo: 'html', titulo: 'Artículo Definido', url: 'semana3/HTML/1. Artículo Definido.html', icono: '🔤' },
-                    { tipo: 'html', titulo: 'Artículo Definido, continuación', url: 'semana3/HTML/2. Aticulo Definido, continuación.html', icono: '📖' },
-                    { tipo: 'html', titulo: 'Más sobre sustantivos', url: 'semana3/HTML/3. Mas sobre sustantivos.html', icono: '✏️' },
-                    { tipo: 'html', titulo: 'Práctica de Traducción', url: 'semana3/HTML/4. Traducción.html', icono: '🌍' },
-                    { tipo: 'html', titulo: 'Vocabulario semana 3', url: 'semana3/HTML/6. vocabulario3.html', icono: '📖' },
-                    { tipo: 'examen', titulo: 'Examen semana 3', url: 'semana3/HTML/7. examen semana 3.html', icono: '✏️' }
+                    { tipo: 'html', titulo: 'Artículo Definido', url: 'semanas/semana3/HTML/1. Artículo Definido.html', icono: '🔤' },
+                    { tipo: 'html', titulo: 'Artículo Definido, continuación', url: 'semanas/semana3/HTML/2. Aticulo Definido, continuación.html', icono: '📖' },
+                    { tipo: 'html', titulo: 'Más sobre sustantivos', url: 'semanas/semana3/HTML/3. Mas sobre sustantivos.html', icono: '✏️' },
+                    { tipo: 'html', titulo: 'Práctica de Traducción', url: 'semanas/semana3/HTML/4. Traducción.html', icono: '🌍' },
+                    { tipo: 'html', titulo: 'Vocabulario semana 3', url: 'semanas/semana3/HTML/6. vocabulario3.html', icono: '📖' },
+                    { tipo: 'examen', titulo: 'Examen semana 3', url: 'semanas/semana3/HTML/7. examen semana 3.html', icono: '✏️' }
                 ],
                 juegos: [
-                    { titulo: 'Empareja las palabras', url: 'semana3/Juegos/3. Empareja las palabras.html', icono: '🔄', nota: 'Arrastra la palabra griega hasta su traducción' },
-                    { titulo: 'Juego de palabras', url: 'semana3/Juegos/4.juego de palabras, solo en la computadora.html', icono: '❓', nota: 'Selecciona la respuesta correcta' },
-                    { titulo: 'Completa el artículo (recomendado)', url: 'semana3/Juegos/1. Completa el articulo.html', icono: '🖊️', nota: 'Selecciona entre las opciones para llenar los espacios' },
-                    { titulo: 'Ejercicio de traducción', url: 'semana3/Juegos/traducción.html', icono: '🌍', nota: 'Practica traduciendo frases simples' },
-                    { titulo: 'Contrarreloj', url: 'semana3/Juegos/contrareloj.html', icono: '⏱️', nota: 'Responde antes de que se acabe el tiempo' }
+                    { titulo: 'Empareja las palabras', url: 'semanas/semana3/Juegos/3. Empareja las palabras.html', icono: '🔄', nota: 'Arrastra la palabra griega hasta su traducción' },
+                    { titulo: 'Juego de palabras', url: 'semanas/semana3/Juegos/4.juego de palabras, solo en la computadora.html', icono: '❓', nota: 'Selecciona la respuesta correcta' },
+                    { titulo: 'Completa el artículo (recomendado)', url: 'semanas/semana3/Juegos/1. Completa el articulo.html', icono: '🖊️', nota: 'Selecciona entre las opciones para llenar los espacios' },
+                    { titulo: 'Ejercicio de traducción', url: 'semanas/semana3/Juegos/traducción.html', icono: '🌍', nota: 'Practica traduciendo frases simples' },
+                    { titulo: 'Contrarreloj', url: 'semanas/semana3/Juegos/contrareloj.html', icono: '⏱️', nota: 'Responde antes de que se acabe el tiempo' }
                 ]
             },
             
@@ -85,26 +85,26 @@ class SemanaManager {
                 tema: "Preposiciones básicas y el verbo 'ser'",
                 recursos: [
                     { tipo: 'pdf', titulo: 'PDF Contenido de la semana 4', url: 'contenido_privado.html', icono: '📄' },
-                    { tipo: 'html', titulo: 'Introducción a preposiciones', url: 'semana4/HTML/1. Introducción a Preposiciones .html', icono: '1️⃣' },
-                    { tipo: 'html', titulo: 'Más sobre preposiciones', url: 'semana4/HTML/2. Más sobre preposiciones .html', icono: '2️⃣' },
-                    { tipo: 'html', titulo: 'Frase preposicional', url: 'semana4/HTML/3. Frase preposicional.html', icono: '3️⃣' },
-                    { tipo: 'html', titulo: 'Ejemplos y cláusulas', url: 'semana4/HTML/4. Ejemplos y cláusulas .html', icono: '4️⃣' },
-                    { tipo: 'html', titulo: 'Verbo εἶμι', url: 'semana4/HTML/5. verbo eimi.html', icono: '5️⃣' },
-                    { tipo: 'html', titulo: 'Nominativo Predicativo', url: 'semana4/HTML/6. Nominativo Predicativo .html', icono: '6️⃣' },
-                    { tipo: 'html', titulo: 'Resumen final', url: 'semana4/HTML/7. resumen final.html', icono: '7️⃣' },
-                    { tipo: 'html', titulo: 'Tabla de preposiciones completas', url: 'semana4/HTML/tabla de preposiciones.html', icono: '8️⃣' },
-                    { tipo: 'html', titulo: 'Vocabulario solo de preposiciones', url: 'semana4/HTML/preposiciones completas.html', icono: '9️⃣' },
-                    { tipo: 'html', titulo: 'Vocabulario semana 4', url: 'semana4/HTML/9. Vocabulario semana 4.html', icono: '📖' },
+                    { tipo: 'html', titulo: 'Introducción a preposiciones', url: 'semanas/semana4/HTML/1. Introducción a Preposiciones .html', icono: '1️⃣' },
+                    { tipo: 'html', titulo: 'Más sobre preposiciones', url: 'semanas/semana4/HTML/2. Más sobre preposiciones .html', icono: '2️⃣' },
+                    { tipo: 'html', titulo: 'Frase preposicional', url: 'semanas/semana4/HTML/3. Frase preposicional.html', icono: '3️⃣' },
+                    { tipo: 'html', titulo: 'Ejemplos y cláusulas', url: 'semanas/semana4/HTML/4. Ejemplos y cláusulas .html', icono: '4️⃣' },
+                    { tipo: 'html', titulo: 'Verbo εἶμι', url: 'semanas/semana4/HTML/5. verbo eimi.html', icono: '5️⃣' },
+                    { tipo: 'html', titulo: 'Nominativo Predicativo', url: 'semanas/semana4/HTML/6. Nominativo Predicativo .html', icono: '6️⃣' },
+                    { tipo: 'html', titulo: 'Resumen final', url: 'semanas/semana4/HTML/7. resumen final.html', icono: '7️⃣' },
+                    { tipo: 'html', titulo: 'Tabla de preposiciones completas', url: 'semanas/semana4/HTML/tabla de preposiciones.html', icono: '8️⃣' },
+                    { tipo: 'html', titulo: 'Vocabulario solo de preposiciones', url: 'semanas/semana4/HTML/preposiciones completas.html', icono: '9️⃣' },
+                    { tipo: 'html', titulo: 'Vocabulario semana 4', url: 'semanas/semana4/HTML/9. Vocabulario semana 4.html', icono: '📖' },
                     { tipo: 'examen', titulo: 'Examen Semana 4', url: 'https://docs.google.com/forms/d/e/1FAIpQLSeS4A6utJyRemrNGkagZ9-uRpBqGyMIwKVByWcf5ehHFFR1yg/viewform?usp=sharing', icono: '📝' }
                 ],
                 juegos: [
-                    { titulo: 'Empareja las palabras', url: 'semana4/Juegos/3. Empareja las palabras.html', icono: '🔄', nota: 'Disponible solo en computadora - Arrastra la palabra griega a su traducción' },
-                    { titulo: 'Juego de palabras', url: 'semana4/Juegos/4.juego de palabras, solo en la computadora.html', icono: '🔠', nota: 'Disponible solo en computadora - Selecciona la respuesta correcta' },
-                    { titulo: 'Practica las preposiciones', url: 'semana4/Juegos/juego.html', icono: '⭐', nota: 'Recomendado - Llena los espacios en blanco' },
-                    { titulo: 'Otros ejercicios de preposiciones', url: 'semana4/Juegos/identificalo.html', icono: '📝', nota: 'Disponible solo en computadora' },
-                    { titulo: 'Verbo εἶμι', url: 'semana4/Juegos/eimi.html', icono: '5️⃣', nota: 'Disponible solo en computadora' },
-                    { titulo: 'Ejercicio de traducción', url: 'semana4/Juegos/traducción .html', icono: '✍️', nota: 'Traduce el prólogo de Juan' },
-                    { titulo: 'Lectura de Juan', url: 'semana4/Juegos/lectura de juan.html', icono: '✍️', nota: 'Lee el NT Griego' }
+                    { titulo: 'Empareja las palabras', url: 'semanas/semana4/Juegos/3. Empareja las palabras.html', icono: '🔄', nota: 'Disponible solo en computadora - Arrastra la palabra griega a su traducción' },
+                    { titulo: 'Juego de palabras', url: 'semanas/semana4/Juegos/4.juego de palabras, solo en la computadora.html', icono: '🔠', nota: 'Disponible solo en computadora - Selecciona la respuesta correcta' },
+                    { titulo: 'Practica las preposiciones', url: 'semanas/semana4/Juegos/juego.html', icono: '⭐', nota: 'Recomendado - Llena los espacios en blanco' },
+                    { titulo: 'Otros ejercicios de preposiciones', url: 'semanas/semana4/Juegos/identificalo.html', icono: '📝', nota: 'Disponible solo en computadora' },
+                    { titulo: 'Verbo εἶμι', url: 'semanas/semana4/Juegos/eimi.html', icono: '5️⃣', nota: 'Disponible solo en computadora' },
+                    { titulo: 'Ejercicio de traducción', url: 'semanas/semana4/Juegos/traducción .html', icono: '✍️', nota: 'Traduce el prólogo de Juan' },
+                    { titulo: 'Lectura de Juan', url: 'semanas/semana4/Juegos/lectura de juan.html', icono: '✍️', nota: 'Lee el NT Griego' }
                 ]
             },
             
@@ -113,21 +113,21 @@ class SemanaManager {
                 titulo: "Adjetivos",
                 tema: "Concordancia y grados del adjetivo",
                 recursos: [
-                    { tipo: 'pdf', titulo: 'PDF Contenido de la semana 4', url: 'contenido_privado.html', icono: '📄' },
-                    { tipo: 'html', titulo: 'Introducción a Adjetivos', url: 'semana 5/HTML/1. Introducción a adjetivos.html', icono: '1️⃣' },
-                    { tipo: 'html', titulo: 'Forma de los adjetivos', url: 'semana 5/HTML/2. Ajetivos 2.html', icono: '2️⃣' },
-                    { tipo: 'html', titulo: 'Funciones de los adjetivos', url: 'semana 5/HTML/3. Funciones de los adjetivos .html', icono: '3️⃣' },
-                    { tipo: 'html', titulo: 'Frases preposicionales', url: 'semana 5/HTML/4. otros detalles adj.html', icono: '4️⃣' },
-                    { tipo: 'html', titulo: 'Otros asuntos', url: 'semana 5/HTML/5. Otras ideas.html', icono: '5️⃣' },
-                    { tipo: 'html', titulo: 'Vocabulario semana 5', url: 'semana 5/HTML/6. vocabulario5.html', icono: '📖' },
+                    { tipo: 'pdf', titulo: 'PDF Contenido de la semana 5', url: 'contenido_privado.html', icono: '📄' },
+                    { tipo: 'html', titulo: 'Introducción a Adjetivos', url: 'semanas/semana 5/HTML/1. Introducción a adjetivos.html', icono: '1️⃣' },
+                    { tipo: 'html', titulo: 'Forma de los adjetivos', url: 'semanas/semana 5/HTML/2. Ajetivos 2.html', icono: '2️⃣' },
+                    { tipo: 'html', titulo: 'Funciones de los adjetivos', url: 'semanas/semana 5/HTML/3. Funciones de los adjetivos .html', icono: '3️⃣' },
+                    { tipo: 'html', titulo: 'Frases preposicionales', url: 'semanas/semana 5/HTML/4. otros detalles adj.html', icono: '4️⃣' },
+                    { tipo: 'html', titulo: 'Otros asuntos', url: 'semanas/semana 5/HTML/5. Otras ideas.html', icono: '5️⃣' },
+                    { tipo: 'html', titulo: 'Vocabulario semana 5', url: 'semanas/semana 5/HTML/6. vocabulario5.html', icono: '📖' },
                     { tipo: 'examen', titulo: 'Examen Semana 5', url: 'https://docs.google.com/forms/d/e/1FAIpQLSehnAfgP15WFNgTHHtY35VBCXIVwWFtzhRrNojlUE-uILRaUg/viewform?usp=sharing', icono: '📝' }
                 ],
                 juegos: [
-                    { titulo: 'Empareja las palabras', url: 'semana 5/Juegos/3. Empareja las palabras.html', icono: '🔄', nota: 'Disponible solo en computadora - Arrastra la palabra griega a su traducción' },
-                    { titulo: 'Juego de palabras', url: 'semana 5/Juegos/4.juego de palabras, solo en la computadora.html', icono: '🔠', nota: 'Disponible solo en computadora - Selecciona la respuesta correcta' },
-                    { titulo: 'Tablero', url: 'semana 5/Juegos/tablero.html', icono: '⭐', nota: 'Disponible solo en computadora - Practica el conocimiento' },
-                    { titulo: 'Ejercicio de traducción', url: 'semana 5/Juegos/traducción .html', icono: '✍️', nota: 'Traduce el prólogo de Juan' },
-                    { titulo: 'Lectura de Juan', url: 'semana 5/Juegos/lectura de juan.html', icono: '✍️', nota: 'Lee el NT Griego' }
+                    { titulo: 'Empareja las palabras', url: 'semanas/semana 5/Juegos/3. Empareja las palabras.html', icono: '🔄', nota: 'Disponible solo en computadora - Arrastra la palabra griega a su traducción' },
+                    { titulo: 'Juego de palabras', url: 'semanas/semana 5/Juegos/4.juego de palabras, solo en la computadora.html', icono: '🔠', nota: 'Disponible solo en computadora - Selecciona la respuesta correcta' },
+                    { titulo: 'Tablero', url: 'semanas/semana 5/Juegos/tablero.html', icono: '⭐', nota: 'Disponible solo en computadora - Practica el conocimiento' },
+                    { titulo: 'Ejercicio de traducción', url: 'semanas/semana 5/Juegos/traducción .html', icono: '✍️', nota: 'Traduce el prólogo de Juan' },
+                    { titulo: 'Lectura de Juan', url: 'semanas/semana 5/Juegos/lectura de juan.html', icono: '✍️', nota: 'Lee el NT Griego' }
                 ]
             },
             
@@ -137,21 +137,21 @@ class SemanaManager {
                 tema: "Sustantivos de la tercera declinación",
                 recursos: [
                     { tipo: 'pdf', titulo: 'PDF Contenido de la semana 6', url: 'contenido_privado.html', icono: '📄' },
-                    { tipo: 'html', titulo: 'Introducción a la tercera declinación', url: 'semana 6/HTML/1. Introducción a la tercera declinación.html', icono: '1️⃣' },
-                    { tipo: 'html', titulo: 'Paradigma de la tercera declinación', url: 'semana 6/HTML/2. paradigma de la tercera declinación.html', icono: '2️⃣' },
-                    { tipo: 'html', titulo: 'Clasificaciones de los sustantivos de tercera declinación', url: 'semana 6/HTML/3. Clasificaciones en la tercera declinación.html', icono: '3️⃣' },
-                    { tipo: 'html', titulo: 'Paradigma, Muy importante', url: 'semana 6/HTML/4. tabla maestra de la tercera declinación.html', icono: '4️⃣' },
-                    { tipo: 'html', titulo: 'Otros asuntos', url: 'semana 6/HTML/5. otos temas.html', icono: '5️⃣' },
-                    { tipo: 'html', titulo: 'Resumen de la semana 6', url: 'semana 6/HTML/6.resumen.html', icono: '📖' },
-                    { tipo: 'html', titulo: 'Vocabulario semana 6', url: 'semana 6/HTML/7. vocabulario6.html', icono: '📖' },
+                    { tipo: 'html', titulo: 'Introducción a la tercera declinación', url: 'semanas/semana 6/HTML/1. Introducción a la tercera declinación.html', icono: '1️⃣' },
+                    { tipo: 'html', titulo: 'Paradigma de la tercera declinación', url: 'semanas/semana 6/HTML/2. paradigma de la tercera declinación.html', icono: '2️⃣' },
+                    { tipo: 'html', titulo: 'Clasificaciones de los sustantivos de tercera declinación', url: 'semanas/semana 6/HTML/3. Clasificaciones en la tercera declinación.html', icono: '3️⃣' },
+                    { tipo: 'html', titulo: 'Paradigma, Muy importante', url: 'semanas/semana 6/HTML/4. tabla maestra de la tercera declinación.html', icono: '4️⃣' },
+                    { tipo: 'html', titulo: 'Otros asuntos', url: 'semanas/semana 6/HTML/5. otos temas.html', icono: '5️⃣' },
+                    { tipo: 'html', titulo: 'Resumen de la semana 6', url: 'semanas/semana 6/HTML/6.resumen.html', icono: '📖' },
+                    { tipo: 'html', titulo: 'Vocabulario semana 6', url: 'semanas/semana 6/HTML/7. vocabulario6.html', icono: '📖' },
                     { tipo: 'examen', titulo: 'Examen Semana 6', url: 'https://docs.google.com/forms/d/e/1FAIpQLSceeGgNjpdOpgnbwDJvQHvOuiq_bgEWh7YJ2L6ywuPStVC_9g/viewform?usp=sharing', icono: '📝' }
                 ],
                 juegos: [
-                    { titulo: 'Empareja las palabras', url: 'semana 6/Juegos/3. Empareja las palabras.html', icono: '🔄', nota: 'Disponible solo en computadora - Arrastra la palabra griega a su traducción' },
-                    { titulo: 'Juego de palabras', url: 'semana 6/Juegos/4.juego de palabras, solo en la computadora.html', icono: '🔠', nota: 'Disponible solo en computadora - Selecciona la respuesta correcta' },
-                    { titulo: 'LLuvia de terminaciones', url: 'semana 6/Juegos/lluvia de terminaciones.html', icono: '⭐', nota: 'Disponible solo en computadora - Practica el conocimiento' },
-                    { titulo: 'Ejercicio de traducción', url: 'semana 6/Juegos/traducción .html', icono: '✍️', nota: 'Traduce el prólogo de Juan' },
-                    { titulo: 'Lectura de Juan', url: 'semana 6/Juegos/lectura de juan.html', icono: '✍️', nota: 'Lee el NT Griego' }
+                    { titulo: 'Empareja las palabras', url: 'semanas/semana 6/Juegos/3. Empareja las palabras.html', icono: '🔄', nota: 'Disponible solo en computadora - Arrastra la palabra griega a su traducción' },
+                    { titulo: 'Juego de palabras', url: 'semanas/semana 6/Juegos/4.juego de palabras, solo en la computadora.html', icono: '🔠', nota: 'Disponible solo en computadora - Selecciona la respuesta correcta' },
+                    { titulo: 'LLuvia de terminaciones', url: 'semanas/semana 6/Juegos/lluvia de terminaciones.html', icono: '⭐', nota: 'Disponible solo en computadora - Practica el conocimiento' },
+                    { titulo: 'Ejercicio de traducción', url: 'semanas/semana 6/Juegos/traducción .html', icono: '✍️', nota: 'Traduce el prólogo de Juan' },
+                    { titulo: 'Lectura de Juan', url: 'semanas/semana 6/Juegos/lectura de juan.html', icono: '✍️', nota: 'Lee el NT Griego' }
                 ]
             },
             
