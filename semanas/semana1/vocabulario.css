@@ -1,0 +1,901 @@
+/* vocabulario.css - Plantilla moderna para flashcards de vocabulario */
+/* Variables CSS con énfasis en azul */
+:root {
+    --primary: #4A6FA5;           /* Azul principal */
+    --primary-dark: #2A4A7A;      /* Azul oscuro */
+    --primary-light: #6B8CBC;     /* Azul claro */
+    --primary-soft: #E8EFF7;      /* Azul muy suave */
+    --secondary: #3498DB;         /* Azul cielo - reemplaza el malva */
+    --secondary-dark: #2980B9;    /* Azul cielo oscuro */
+    --accent: #FFB74D;            /* Naranja para acentos */
+    --accent-dark: #F57C00;       /* Naranja oscuro */
+    --success: #27AE60;           /* Verde éxito */
+    --success-light: rgba(39, 174, 96, 0.1);
+    --success-dark: #219653;      /* Verde éxito oscuro */
+    --danger: #E74C3C;            /* Rojo para errores */
+    --danger-light: rgba(231, 76, 60, 0.1);
+    --warning: #F1C40F;           /* Amarillo advertencia */
+    --info: #3498DB;              /* Azul información */
+    --light: #F8F9FA;             /* Fondo claro */
+    --dark: #2C3E50;              /* Texto oscuro */
+    --darker: #1a252f;            /* Texto más oscuro */
+    --gray: #7F8C8D;              /* Gris neutro */
+    --gray-light: #ECF0F1;        /* Gris claro */
+    --white: #FFFFFF;             /* Blanco puro */
+    
+    /* Gradientes con énfasis en azul */
+    --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    --gradient-primary-dark: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
+    --gradient-blue: linear-gradient(135deg, #4A6FA5 0%, #3498DB 100%);
+    --gradient-blue-light: linear-gradient(135deg, #6B8CBC 0%, #5DADE2 100%);
+    --gradient-success: linear-gradient(135deg, var(--success) 0%, var(--success-dark) 100%);
+    --gradient-accent: linear-gradient(135deg, var(--accent) 0%, #FFA726 100%);
+    
+    /* Sombras */
+    --shadow-sm: 0 2px 8px rgba(74, 111, 165, 0.1);
+    --shadow-md: 0 4px 16px rgba(74, 111, 165, 0.15);
+    --shadow-lg: 0 8px 30px rgba(74, 111, 165, 0.2);
+    --shadow-xl: 0 12px 40px rgba(74, 111, 165, 0.25);
+    --shadow-card: 0 6px 20px rgba(74, 111, 165, 0.15);
+    --shadow-card-hover: 0 10px 30px rgba(74, 111, 165, 0.25);
+    
+    /* Bordes redondeados */
+    --radius: 12px;
+    --radius-lg: 20px;
+    --radius-sm: 8px;
+    --radius-xl: 30px;
+    
+    /* Transiciones */
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --transition-fast: all 0.15s ease;
+    --transition-slow: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Reset y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, #f5f9ff 0%, #e6f0ff 100%);
+    color: var(--dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* Header principal */
+h1 {
+    color: var(--primary-dark);
+    font-family: 'Roboto Slab', 'Georgia', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin: 50px 0 40px;
+    text-align: center;
+    position: relative;
+    padding-bottom: 20px;
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.5px;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 5px;
+    background: var(--gradient-primary);
+    border-radius: 3px;
+    box-shadow: 0 2px 8px rgba(74, 111, 165, 0.3);
+}
+
+/* Contenedor principal de flashcards */
+.flashcard-container {
+    perspective: 1500px;
+    width: 90%;
+    max-width: 500px;
+    height: 350px;
+    margin: 30px auto 50px;
+    position: relative;
+}
+
+.flashcard {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+}
+
+.flashcard.flipped {
+    transform: rotateY(180deg);
+}
+
+.flashcard-front, .flashcard-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Frente de la flashcard (Griego) */
+.flashcard-front {
+    background: linear-gradient(145deg, #ffffff 0%, var(--primary-soft) 100%);
+    border: 3px solid rgba(74, 111, 165, 0.15);
+    color: var(--primary-dark);
+    box-shadow: 
+        inset 0 0 30px rgba(74, 111, 165, 0.05),
+        var(--shadow-sm);
+}
+
+.flashcard-front::before {
+    content: 'GRIEGO';
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    background: var(--gradient-blue);
+    color: white;
+    padding: 8px 18px;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 12px rgba(74, 111, 165, 0.3);
+    z-index: 2;
+}
+
+.flashcard-front::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+/* Reverso de la flashcard (Español) */
+.flashcard-back {
+    background: var(--gradient-blue);
+    color: white;
+    transform: rotateY(180deg);
+    box-shadow: 
+        inset 0 0 40px rgba(255, 255, 255, 0.1),
+        var(--shadow-md);
+}
+
+.flashcard-back::before {
+    content: 'ESPAÑOL';
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: white;
+    padding: 8px 18px;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    z-index: 2;
+}
+
+.flashcard-back::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.3), rgba(255,255,255,0.1));
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}
+
+/* Texto dentro de las flashcards */
+.flashcard-front p, .flashcard-back p {
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.3;
+    max-width: 100%;
+    word-wrap: break-word;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.flashcard-front p {
+    font-family: 'Times New Roman', 'Georgia', serif;
+    color: var(--primary-dark);
+}
+
+.flashcard-back p {
+    font-family: 'Poppins', sans-serif;
+    color: white;
+}
+
+/* Indicador de voltear */
+.flip-indicator {
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+    color: var(--primary);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.8;
+    transition: var(--transition);
+    background: rgba(255, 255, 255, 0.9);
+    padding: 6px 12px;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(74, 111, 165, 0.1);
+}
+
+.flashcard-back .flip-indicator {
+    color: white;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+}
+
+.flashcard:hover .flip-indicator {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+/* Navegación entre flashcards */
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 500px;
+    margin: 0 auto 50px;
+    gap: 20px;
+}
+
+.navigation button {
+    flex: 1;
+    background: var(--gradient-blue);
+    color: white;
+    padding: 18px 24px;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.5px;
+}
+
+.navigation button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.3), 
+        transparent);
+    transition: left 0.7s ease;
+}
+
+.navigation button:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.navigation button:hover::before {
+    left: 100%;
+}
+
+.navigation button:active {
+    transform: translateY(-1px);
+}
+
+.navigation button:disabled {
+    background: linear-gradient(135deg, #BDC3C7 0%, #95A5A6 100%);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: var(--shadow-sm);
+    opacity: 0.7;
+}
+
+.navigation button:disabled:hover::before {
+    left: -100%;
+}
+
+.navigation button i {
+    font-size: 1.3rem;
+}
+
+/* Contador de progreso */
+.progress-counter {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--primary-dark);
+    padding: 8px 16px;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(74, 111, 165, 0.15);
+    border: 2px solid rgba(74, 111, 165, 0.1);
+    z-index: 3;
+}
+
+/* Sección del examen - MEJORADA */
+.quiz {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 50px 40px;
+    box-shadow: var(--shadow-lg);
+    width: 90%;
+    max-width: 600px;
+    margin: 30px auto 60px;
+    border: 2px solid rgba(74, 111, 165, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.quiz::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: var(--gradient-blue);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+/* Encabezado del examen */
+.quiz-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.quiz-header p {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--primary-dark);
+    margin-bottom: 25px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 15px;
+}
+
+.quiz-header p::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+}
+
+/* Pregunta del examen */
+#quiz-question {
+    font-family: 'Times New Roman', 'Georgia', serif;
+    font-size: 2.2rem;
+    color: var(--primary-dark);
+    font-weight: 700;
+    margin: 30px 0;
+    padding: 30px;
+    background: linear-gradient(135deg, rgba(74, 111, 165, 0.08) 0%, rgba(52, 152, 219, 0.08) 100%);
+    border-radius: var(--radius);
+    border-left: 6px solid var(--primary);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+    line-height: 1.4;
+}
+
+/* Input de respuesta */
+#quiz-answer {
+    width: 100%;
+    padding: 20px 25px;
+    margin: 30px 0;
+    border-radius: var(--radius);
+    border: 3px solid var(--gray-light);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    background: white;
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.05);
+    color: var(--dark);
+}
+
+#quiz-answer:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 
+        0 0 0 4px rgba(74, 111, 165, 0.15),
+        inset 0 2px 6px rgba(0, 0, 0, 0.05);
+    transform: translateY(-2px);
+}
+
+#quiz-answer::placeholder {
+    color: var(--gray);
+    opacity: 0.7;
+    font-weight: 400;
+}
+
+/* Contenedor de botones del examen */
+.quiz-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+/* Botones del examen - VISIBLES Y BONITOS */
+.quiz-buttons button {
+    min-width: 220px;
+    padding: 18px 30px;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.5px;
+}
+
+/* Botón "Comprobar" */
+.quiz-buttons button[onclick="checkQuizAnswer()"] {
+    background: var(--gradient-blue);
+    color: white;
+}
+
+/* Botón "Siguiente Pregunta" */
+#next-quiz-btn {
+    background: var(--gradient-success);
+    color: white;
+}
+
+/* Efecto hover para ambos botones */
+.quiz-buttons button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.4), 
+        transparent);
+    transition: left 0.7s ease;
+}
+
+.quiz-buttons button:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.quiz-buttons button:hover::before {
+    left: 100%;
+}
+
+.quiz-buttons button:active {
+    transform: translateY(-1px);
+}
+
+.quiz-buttons button:disabled {
+    background: linear-gradient(135deg, #BDC3C7 0%, #95A5A6 100%);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: var(--shadow-sm);
+    opacity: 0.7;
+}
+
+/* Resultado del examen */
+#quiz-result {
+    margin: 30px 0 20px;
+    padding: 25px;
+    border-radius: var(--radius);
+    font-size: 1.3rem;
+    font-weight: 700;
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    animation: slideInUp 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: 2px solid transparent;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#quiz-result.correct {
+    background: linear-gradient(135deg, rgba(39, 174, 96, 0.1) 0%, rgba(33, 150, 83, 0.1) 100%);
+    color: var(--success-dark);
+    border-color: rgba(39, 174, 96, 0.3);
+}
+
+#quiz-result.incorrect {
+    background: linear-gradient(135deg, rgba(231, 76, 60, 0.1) 0%, rgba(192, 57, 43, 0.1) 100%);
+    color: #C0392B;
+    border-color: rgba(231, 76, 60, 0.3);
+}
+
+/* Botón para comenzar examen */
+#start-quiz-btn {
+    background: var(--gradient-accent);
+    color: var(--dark);
+    padding: 20px 40px;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 1.3rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+    margin: 40px auto;
+    width: 90%;
+    max-width: 350px;
+    letter-spacing: 0.5px;
+}
+
+#start-quiz-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.4), 
+        transparent);
+    transition: left 0.7s ease;
+}
+
+#start-quiz-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(255, 183, 77, 0.4);
+}
+
+#start-quiz-btn:hover::before {
+    left: 100%;
+}
+
+#start-quiz-btn:active {
+    transform: translateY(-1px);
+}
+
+/* Footer mejorado */
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: linear-gradient(135deg, var(--primary-dark) 0%, #2C3E50 100%);
+    padding: 50px 60px;
+    margin-top: auto;
+    position: relative;
+    overflow: hidden;
+    min-height: 180px;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: var(--gradient-blue);
+}
+
+footer img {
+    width: 160px;
+    height: auto;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    border: 3px solid rgba(255, 255, 255, 0.15);
+    transition: var(--transition);
+}
+
+footer img:hover {
+    transform: rotate(-2deg) scale(1.05);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+#foot {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.2rem;
+    flex: 1;
+    font-weight: 400;
+    line-height: 1.6;
+    padding: 0 40px;
+}
+
+#foot strong {
+    color: white;
+    font-weight: 600;
+}
+
+/* Clases utilitarias */
+.hidden {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.flashcard-container, .quiz, .navigation, #start-quiz-btn {
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: linear-gradient(180deg, #e6f0ff 0%, #d4e4ff 100%);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gradient-blue);
+    border-radius: 10px;
+    border: 3px solid #e6f0ff;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--gradient-primary-dark);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    h1 {
+        font-size: 2.4rem;
+        margin: 40px 0 30px;
+    }
+    
+    .flashcard-container {
+        height: 320px;
+        max-width: 450px;
+    }
+    
+    .flashcard-front p, .flashcard-back p {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+        margin: 30px 20px 25px;
+        padding-bottom: 15px;
+    }
+    
+    .flashcard-container {
+        height: 280px;
+        max-width: 400px;
+    }
+    
+    .flashcard-front, .flashcard-back {
+        padding: 30px;
+    }
+    
+    .flashcard-front p, .flashcard-back p {
+        font-size: 1.9rem;
+    }
+    
+    .flashcard-front::before,
+    .flashcard-back::before {
+        top: 20px;
+        left: 20px;
+        padding: 6px 15px;
+        font-size: 0.85rem;
+    }
+    
+    .quiz {
+        padding: 40px 30px;
+    }
+    
+    #quiz-question {
+        font-size: 1.9rem;
+        padding: 25px;
+    }
+    
+    .quiz-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .quiz-buttons button {
+        width: 100%;
+        min-width: auto;
+    }
+    
+    footer {
+        flex-direction: column;
+        gap: 35px;
+        text-align: center;
+        padding: 40px 30px;
+    }
+    
+    footer img {
+        width: 140px;
+    }
+    
+    #foot {
+        padding: 0;
+        margin-left: 0;
+    }
+    
+    .navigation {
+        max-width: 400px;
+    }
+    
+    .navigation button {
+        padding: 16px 20px;
+        font-size: 1.1rem;
+    }
+    
+    #start-quiz-btn {
+        padding: 18px 30px;
+        font-size: 1.2rem;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.7rem;
+        margin: 25px 15px 20px;
+    }
+    
+    .flashcard-container {
+        height: 250px;
+        max-width: 350px;
+    }
+    
+    .flashcard-front, .flashcard-back {
+        padding: 25px 20px;
+    }
+    
+    .flashcard-front p, .flashcard-back p {
+        font-size: 1.7rem;
+    }
+    
+    .quiz {
+        padding: 30px 25px;
+    }
+    
+    #quiz-question {
+        font-size: 1.6rem;
+        padding: 20px;
+        margin: 20px 0;
+    }
+    
+    #quiz-answer {
+        padding: 16px 20px;
+        font-size: 1.1rem;
+        margin: 25px 0;
+    }
+    
+    .quiz-buttons button {
+        padding: 16px 20px;
+        font-size: 1.1rem;
+    }
+    
+    .navigation button {
+        padding: 14px 16px;
+        font-size: 1rem;
+    }
+    
+    #quiz-result {
+        padding: 20px;
+        font-size: 1.1rem;
+        min-height: 60px;
+    }
+    
+    footer {
+        padding: 35px 25px;
+    }
+    
+    footer img {
+        width: 120px;
+    }
+    
+    #foot {
+        font-size: 1rem;
+    }
+}
+
+/* Mejoras para pantallas muy pequeñas */
+@media (max-width: 360px) {
+    .flashcard-container {
+        height: 230px;
+        max-width: 320px;
+    }
+    
+    .flashcard-front p, .flashcard-back p {
+        font-size: 1.5rem;
+    }
+    
+    .quiz {
+        padding: 25px 20px;
+    }
+    
+    #quiz-question {
+        font-size: 1.4rem;
+    }
+}
