@@ -26,8 +26,7 @@ class SemanaManager {
                      { tipo: 'html', titulo: 'Otras reglas de pronunciación', url: 'semanas/semana1/diptongos.html', icono: '🔤' },
                     { tipo: 'html', titulo: 'Guía de acentos griegos', url: 'semanas/semana1/acentos.html', icono: '´' },
                     { tipo: 'html', titulo: 'División de sílabas', url: 'semanas/semana1/silabas.html', icono: '✂️' },
-                    { tipo: 'html', titulo: 'Vocabulario básico', url: 'semanas/semana1/vocabulario1.html', icono: '📖' },
-                    { tipo: 'examen', titulo: 'Examen de la semana 1', url: 'https://docs.google.com/forms/d/e/1FAIpQLSdp4FVcShz_KqxaaoE3GzJEQNLl8c29SXWxEow5wXR5q3B8yQ/viewform?usp=sharing', icono: '📝' }
+                    { tipo: 'html', titulo: 'Vocabulario básico', url: 'semanas/semana1/vocabulario1.html', icono: '📖' }
                 ],
                 juegos: [
                     { titulo: 'Juego de cartas del vocabulario1', url: 'semanas/semana1/Juegos/cartas solo en la computadora.html', icono: '🃏', nota: 'Disponible solo en computadora' },
@@ -41,14 +40,14 @@ class SemanaManager {
                 titulo: "Sustantivos y Casos Gramaticales",
                 tema: "Primera y segunda declinación",
                 recursos: [
-                    { tipo: 'pdf', titulo: 'PDF Contenido de la semana 2', url: 'contenido_privado.html', icono: '📄' },
+                    { tipo: 'pdf', titulo: 'PDF Contenido de la semana 2', url: 'https://drive.google.com/file/d/1G7s2yZnMTxURIBQxhRD-bvdHxDdSUz_H/view?usp=sharing', icono: '📄' },
                     { tipo: 'html', titulo: 'Introducción a los sustantivos', url: 'semanas/semana2/HTML/1. Introducción a  sustantivos.html', icono: '📖' },
                     { tipo: 'html', titulo: 'Casos gramaticales', url: 'semanas/semana2/HTML/3. casos gramaticales.html', icono: '🔠' },
                     { tipo: 'html', titulo: 'Introducción a las declinaciones', url: 'semanas/semana2/HTML/4. Introducción a las declinaciones.html', icono: '🔄' },
                     { tipo: 'html', titulo: 'Repaso de Nominativo y Acusativo', url: 'semanas/semana2/HTML/5. Repaso de Nominativo y acusativo.html', icono: '📝' },
                     { tipo: 'html', titulo: 'Resumen de la semana 2', url: 'semanas/semana2/HTML/6. Resumen de la semana 2.html', icono: '📑' },
-                    { tipo: 'html', titulo: 'Vocabulario semana 2', url: 'semanas/semana2/HTML/7. Vocabulario semana 2.html', icono: '📖' },
-                    { tipo: 'examen', titulo: 'Examen semana 2', url: 'semanas/semana2/HTML/8. Examen semana2.html', icono: '✏️' }
+                    { tipo: 'html', titulo: 'Vocabulario semana 2', url: 'semanas/semana2/HTML/7. Vocabulario semana 2.html', icono: '📖' }
+                    
                 ],
                 juegos: [
                     { titulo: 'Empareja las palabras', url: 'semanas/semana2/Juegos/Empareja las palabras.html', icono: '🔄', nota: 'Arrastra la palabra griega hasta su traducción' },
@@ -432,6 +431,7 @@ class SemanaManager {
         // Exámenes por defecto para las semanas 1-10
         const examenes = {
             1: "https://docs.google.com/forms/d/e/1FAIpQLSdp4FVcShz_KqxaaoE3GzJEQNLl8c29SXWxEow5wXR5q3B8yQ/viewform",
+            2: "https://forms.gle/yRPxnbKytVoJbKen6",
             4: "https://docs.google.com/forms/d/e/1FAIpQLSeS4A6utJyRemrNGkagZ9-uRpBqGyMIwKVByWcf5ehHFFR1yg/viewform",
             5: "https://docs.google.com/forms/d/e/1FAIpQLSehnAfgP15WFNgTHHtY35VBCXIVwWFtzhRrNojlUE-uILRaUg/viewform",
             6: "https://docs.google.com/forms/d/e/1FAIpQLSceeGgNjpdOpgnbwDJvQHvOuiq_bgEWh7YJ2L6ywuPStVC_9g/viewform",
