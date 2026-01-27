@@ -44,6 +44,8 @@ class SemanaManager {
                     { tipo: 'html', titulo: 'Introducción a los sustantivos', url: 'semanas/semana2/HTML/1. Introducción a  sustantivos.html', icono: '📖' },
                     { tipo: 'html', titulo: 'Casos gramaticales', url: 'semanas/semana2/HTML/3. casos gramaticales.html', icono: '🔠' },
                     { tipo: 'html', titulo: 'Introducción a las declinaciones', url: 'semanas/semana2/HTML/4. Introducción a las declinaciones.html', icono: '🔄' },
+                    { tipo: 'html', titulo: 'Curiosidad Exegética', url: 'semanas/semana2/HTML/2. curiosidad exegética.html', icono: '🔄' },
+                    { tipo: 'html', titulo: 'Introducción a las declinaciones', url: 'semanas/semana2/HTML/4. Introducción a las declinaciones.html', icono: '🔄' },
                     { tipo: 'html', titulo: 'Repaso de Nominativo y Acusativo', url: 'semanas/semana2/HTML/5. Repaso de Nominativo y acusativo.html', icono: '📝' },
                     { tipo: 'html', titulo: 'Resumen de la semana 2', url: 'semanas/semana2/HTML/6. Resumen de la semana 2.html', icono: '📑' },
                     { tipo: 'html', titulo: 'Vocabulario semana 2', url: 'semanas/semana2/HTML/7. Vocabulario semana 2.html', icono: '📖' }
@@ -62,13 +64,12 @@ class SemanaManager {
                 titulo: "Artículo Definido y Traducción",
                 tema: "Uso del artículo y primeras traducciones",
                 recursos: [
-                    { tipo: 'pdf', titulo: 'PDF Contenido de la semana 3', url: 'contenido_privado.html', icono: '📄' },
+                    { tipo: 'pdf', titulo: 'PDF Contenido de la semana 3', url: 'https://drive.google.com/file/d/1ITz2D3-wgePstGiEiDz12ZF_adq_vZOl/view?usp=sharing', icono: '📄' },
                     { tipo: 'html', titulo: 'Artículo Definido', url: 'semanas/semana3/HTML/1. Artículo Definido.html', icono: '🔤' },
                     { tipo: 'html', titulo: 'Artículo Definido, continuación', url: 'semanas/semana3/HTML/2. Aticulo Definido, continuación.html', icono: '📖' },
                     { tipo: 'html', titulo: 'Más sobre sustantivos', url: 'semanas/semana3/HTML/3. Mas sobre sustantivos.html', icono: '✏️' },
                     { tipo: 'html', titulo: 'Práctica de Traducción', url: 'semanas/semana3/HTML/4. Traducción.html', icono: '🌍' },
                     { tipo: 'html', titulo: 'Vocabulario semana 3', url: 'semanas/semana3/HTML/6. vocabulario3.html', icono: '📖' },
-                    { tipo: 'examen', titulo: 'Examen semana 3', url: 'semanas/semana3/HTML/7. examen semana 3.html', icono: '✏️' }
                 ],
                 juegos: [
                     { titulo: 'Empareja las palabras', url: 'semanas/semana3/Juegos/3. Empareja las palabras.html', icono: '🔄', nota: 'Arrastra la palabra griega hasta su traducción' },
@@ -432,6 +433,7 @@ class SemanaManager {
         const examenes = {
             1: "https://docs.google.com/forms/d/e/1FAIpQLSdp4FVcShz_KqxaaoE3GzJEQNLl8c29SXWxEow5wXR5q3B8yQ/viewform",
             2: "https://forms.gle/yRPxnbKytVoJbKen6",
+            3: "https://forms.gle/64t4V38nu2grxZaS9",
             4: "https://docs.google.com/forms/d/e/1FAIpQLSeS4A6utJyRemrNGkagZ9-uRpBqGyMIwKVByWcf5ehHFFR1yg/viewform",
             5: "https://docs.google.com/forms/d/e/1FAIpQLSehnAfgP15WFNgTHHtY35VBCXIVwWFtzhRrNojlUE-uILRaUg/viewform",
             6: "https://docs.google.com/forms/d/e/1FAIpQLSceeGgNjpdOpgnbwDJvQHvOuiq_bgEWh7YJ2L6ywuPStVC_9g/viewform",
