@@ -76,7 +76,7 @@ class SemanaManager {
                     { titulo: 'Empareja las palabras', url: 'semanas/semana3/Juegos/3. Empareja las palabras.html', icono: '🔄', nota: 'Arrastra la palabra griega hasta su traducción' },
                     { titulo: 'Juego de palabras', url: 'semanas/semana3/Juegos/4.juego de palabras, solo en la computadora.html', icono: '❓', nota: 'Selecciona la respuesta correcta' },
                     { titulo: 'Completa el artículo (recomendado)', url: 'semanas/semana3/Juegos/1. Completa el articulo.html', icono: '🖊️', nota: 'Selecciona entre las opciones para llenar los espacios' },
-                    { titulo: 'Ejercicio de traducción', url: 'semanas/semana3/Juegos/traducción.html', icono: '🌍', nota: 'Practica traduciendo frases simples' },
+                    { titulo: 'Lectura de Juan 1', url: 'semanas/semana3/juan 1/JN1.html', icono: '🌍', nota: 'Practica traduciendo frases simples' },
                     { titulo: 'Contrarreloj', url: 'semanas/semana3/Juegos/contrareloj.html', icono: '⏱️', nota: 'Responde antes de que se acabe el tiempo' }
                 ]
             },
