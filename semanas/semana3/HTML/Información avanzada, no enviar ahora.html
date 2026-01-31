@@ -3,251 +3,214 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aprendiendo Griego Koiné: Exégesis y Uso de los Casos</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f9;
-      color: #333;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-    }
-    header {
-      background-color: #4CAF50;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-    h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-    .container {
-      max-width: 800px;
-      margin: 20px auto;
-      padding: 20px;
-      background: white;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    h2 {
-      color: #4CAF50;
-      margin-top: 0;
-    }
-    .pronunciation {
-      background-color: #e8f5e9;
-      padding: 15px;
-      border-left: 5px solid #4CAF50;
-      margin: 20px 0;
-    }
-    .rules {
-      background-color: #fff3e0;
-      padding: 15px;
-      border-left: 5px solid #ff9800;
-      margin: 20px 0;
-    }
-    .rules ul {
-      list-style-type: decimal;
-      padding-left: 20px;
-    }
-    .rules li {
-      margin-bottom: 10px;
-    }
-    .quiz {
-      background-color: #fff3e0;
-      padding: 15px;
-      border-left: 5px solid #ff9800;
-      margin: 20px 0;
-    }
-    .quiz-question {
-      margin-bottom: 15px;
-    }
-    .quiz-options {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .quiz-options label {
-      display: block;
-      padding: 10px;
-      background-color: #f9f9f9;
-      border: 1px solid #ddd;
-      cursor: pointer;
-    }
-    .quiz-options label:hover {
-      background-color: #f1f1f1;
-    }
-    .quiz-options input[type="radio"] {
-      margin-right: 10px;
-    }
-    .result {
-      margin-top: 10px;
-      font-weight: bold;
-    }
-    .correct {
-      color: green;
-    }
-    .incorrect {
-      color: red;
-    }
-    button {
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
-      font-size: 1rem;
-    }
-    button:hover {
-      background-color: #45a049;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Aprendiendo Griego Koiné: Exégesis y Uso de los Casos</h1>
-  </header>
-  <div class="container">
-    <section>
-      <h2>Introducción a la Exégesis</h2>
-      <div class="pronunciation">
-        <p>Es útil para los estudiantes ver cómo la gramática que acaban de aprender se aplica en la exégesis bíblica. Esta sección está diseñada para eso. Si estás luchando como estudiante, esta información puede ser abrumadora, pero estará aquí cuando estés listo. Si estás en una clase, tu profesor te indicará si debes dominar este contenido.</p>
-      </div>
-    </section>
-
-    <section>
-      <h2>El Caso Nominativo</h2>
-      <div class="rules">
-        <p>La función principal del caso nominativo es indicar el <strong>sujeto</strong> del verbo. Por ejemplo:</p>
-        <p><strong>ἠγάπησεν ὁ θεὸς τὸν κόσμον</strong> (Juan 3:16).</p>
-        <p>Traducción: <strong>Dios amó al mundo.</strong></p>
-        <p>En este caso, <strong>ὁ θεὸς</strong> (Dios) es el sujeto de la oración.</p>
-      </div>
-    </section>
-
-    <section>
-      <h2>El Caso Acusativo</h2>
-      <div class="rules">
-        <p>El caso acusativo tiene varios usos en griego:</p>
-        <ol>
-          <li><strong>Objeto directo:</strong> Indica el objeto directo del verbo.</li>
-          <p><strong>ἠγάπησεν ὁ θεὸς τὸν κόσμον</strong> (Juan 3:16).</p>
-          <p>Traducción: <strong>Dios amó al mundo.</strong></p>
-          <p>Aquí, <strong>τὸν κόσμον</strong> (el mundo) es el objeto directo.</p>
-
-          <li><strong>Doble acusativo:</strong> Algunos verbos requieren dos objetos para completar su significado.</li>
-          <p><strong>ἐκεῖνος ὑμᾶς διδάξει πάντα</strong> (Juan 14:26).</p>
-          <p>Traducción: <strong>Él os enseñará todas las cosas.</strong></p>
-          <p>En este caso, <strong>ὑμᾶς</strong> (a vosotros) y <strong>πάντα</strong> (todas las cosas) son ambos objetos directos.</p>
-
-          <li><strong>Acusativo adverbial:</strong> El acusativo puede funcionar como un adverbio, modificando al verbo.</li>
-          <p><strong>δωρεὰν ἐλάβετε, δωρεὰν δότε</strong> (Mateo 10:8).</p>
-          <p>Traducción: <strong>De gracia recibisteis, dad de gracia.</strong></p>
-          <p>Aquí, <strong>δωρεὰν</strong> (de gracia) funciona como un adverbio.</p>
-        </ol>
-      </div>
-    </section>
-
-    <section>
-      <h2>Ejemplos Adicionales</h2>
-      <div class="pronunciation">
-        <p>Aquí hay más ejemplos del uso del acusativo en el Nuevo Testamento:</p>
-        <ul>
-          <li><strong>ζητεῖτε πρῶτον τὴν βασιλείαν τοῦ θεοῦ</strong> (Mateo 6:33).</li>
-          <p>Traducción: <strong>Buscad primeramente el reino de Dios.</strong></p>
-          <p>En este caso, <strong>τὴν βασιλείαν</strong> (el reino) es el objeto directo.</p>
-          <li><strong>ἀπέστειλεν τὸν υἱὸν αὐτοῦ ἱλασμόν</strong> (1 Juan 4:10).</li>
-          <p>Traducción: <strong>Él envió a su Hijo como propiciación.</strong></p>
-          <p>Aquí, <strong>τὸν υἱὸν</strong> (a su Hijo) y <strong>ἱλασμόν</strong> (como propiciación) son ambos objetos directos.</p>
-        </ul>
-      </div>
-    </section>
-
-    <section>
-      <h2>Comprueba tu Conocimiento</h2>
-      <div class="quiz">
-        <div class="quiz-question">
-          <p><strong>Pregunta 1:</strong> ¿Qué función principal tiene el caso nominativo?</p>
-          <div class="quiz-options">
-            <label><input type="radio" name="q1" value="a"> Indicar el objeto directo</label>
-            <label><input type="radio" name="q1" value="b"> Indicar el sujeto del verbo</label>
-            <label><input type="radio" name="q1" value="c"> Modificar al verbo</label>
-          </div>
-          <div class="result" id="result1"></div>
-        </div>
-
-        <div class="quiz-question">
-          <p><strong>Pregunta 2:</strong> ¿Qué es un "doble acusativo"?</p>
-          <div class="quiz-options">
-            <label><input type="radio" name="q2" value="a"> Un verbo que requiere dos sujetos</label>
-            <label><input type="radio" name="q2" value="b"> Un verbo que requiere dos objetos directos</label>
-            <label><input type="radio" name="q2" value="c"> Un verbo que no requiere objetos</label>
-          </div>
-          <div class="result" id="result2"></div>
-        </div>
-
-        <div class="quiz-question">
-          <p><strong>Pregunta 3:</strong> ¿Qué caso se usa para indicar el objeto directo?</p>
-          <div class="quiz-options">
-            <label><input type="radio" name="q3" value="a"> Nominativo</label>
-            <label><input type="radio" name="q3" value="b"> Acusativo</label>
-            <label><input type="radio" name="q3" value="c"> Genitivo</label>
-          </div>
-          <div class="result" id="result3"></div>
-        </div>
-
-        <div class="quiz-question">
-          <p><strong>Pregunta 4:</strong> ¿Qué función tiene el acusativo adverbial?</p>
-          <div class="quiz-options">
-            <label><input type="radio" name="q4" value="a"> Indicar el sujeto</label>
-            <label><input type="radio" name="q4" value="b"> Modificar al verbo</label>
-            <label><input type="radio" name="q4" value="c"> Indicar posesión</label>
-          </div>
-          <div class="result" id="result4"></div>
-        </div>
-
-        <div class="quiz-question">
-          <p><strong>Pregunta 5:</strong> ¿Qué significa <strong>δωρεὰν</strong> en Mateo 10:8?</p>
-          <div class="quiz-options">
-            <label><input type="radio" name="q5" value="a"> Con esfuerzo</label>
-            <label><input type="radio" name="q5" value="b"> De gracia</label>
-            <label><input type="radio" name="q5" value="c"> Con amor</label>
-          </div>
-          <div class="result" id="result5"></div>
-        </div>
-
-        <button onclick="checkAnswers()">Comprobar Respuestas</button>
-      </div>
-    </section>
-  </div>
-
+  <title>Aprendiendo Griego Koiné: Casos Gramaticales Avanzados</title>
+  <link rel="stylesheet" href="../../semana.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Slab:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script>
-    function checkAnswers() {
-      const answers = {
-        q1: 'b', // Respuesta correcta para la pregunta 1
-        q2: 'b', // Respuesta correcta para la pregunta 2
-        q3: 'b', // Respuesta correcta para la pregunta 3
-        q4: 'b', // Respuesta correcta para la pregunta 4
-        q5: 'b', // Respuesta correcta para la pregunta 5
-      };
-
-      for (const question in answers) {
-        const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
-        const resultElement = document.getElementById(`result${question.slice(1)}`);
-        if (selectedOption) {
-          if (selectedOption.value === answers[question]) {
-            resultElement.textContent = "¡Correcto!";
-            resultElement.className = "result correct";
-          } else {
-            resultElement.textContent = "Incorrecto. La respuesta correcta es: " + answers[question];
-            resultElement.className = "result incorrect";
-          }
-        } else {
-          resultElement.textContent = "Por favor, selecciona una respuesta.";
-          resultElement.className = "result";
-        }
-      }
+    if(!localStorage.getItem('authenticated')) {
+      window.location.href = "../login.html";
     }
   </script>
+</head>
+<body>
+  <header class="week-header">
+    <div class="header-logo">
+      <img src="https://i.postimg.cc/QtgrGy8X/verde.png" alt="Logo del ministerio Vivos para servir" class="logo-main">
+    </div>
+    <div class="header-title">
+      <h1>Aprendiendo Griego Koiné</h1>
+      <p class="subtitle">Casos Gramaticales Avanzados</p>
+    </div>
+  </header>
+
+  <div class="week-container">
+    <!-- Aviso Importante -->
+    <div class="content-card" style="border-left: 5px solid var(--danger);">
+      <h2><i class="fas fa-exclamation-triangle"></i> Nota Importante</h2>
+      <div class="important-note">
+        <p><strong>Atención:</strong> A continuación presentaremos algunas funciones avanzadas de los casos gramaticales. Esta parte es información avanzada y por tanto no será evaluada en el examen de la semana 3. No es necesario que el estudiante aprenda estas funciones de memoria.</p>
+        <p>Léalo, mire los ejemplos, admire la riqueza del griego koiné, pero si no logra entender alguno de los usos, no se preocupe, más adelante será capaz de comprender todo esto, y mucho más.</p>
+        <p>Esta información no es imprescindible para vencer el curso, ni para leer o entender el griego del Nuevo Testamento, pero será interesante para el que desee profundizar en la sintaxis del griego koiné.</p>
+      </div>
+    </div>
+
+    <!-- Nominativo -->
+    <div class="content-card">
+      <h2><i class="fas fa-a"></i> Nominativo</h2>
+      <p>La función principal del caso nominativo es indicar el sujeto del verbo.</p>
+      
+      <div class="important-note">
+        <p><strong>Nota:</strong> En la semana 4 se introducirá otro uso del nominativo.</p>
+      </div>
+    </div>
+
+    <!-- Genitivo -->
+    <div class="content-card pronunciation">
+      <h2><i class="fas fa-b"></i> Genitivo</h2>
+      
+      <div class="example-box">
+        <h3>1. Posesivo:</h3>
+        <p><span class="greek-example">"ὕπαγε πώλησόν σου τὰ ὑπάρχοντα" (Mateo 19:21)</span></p>
+        <p><em>"Ve, vende tus posesiones".</em></p>
+        <p>Esta es la función básica del genitivo estudiada en clases.</p>
+      </div>
+      
+      <div class="example-box">
+        <h3>2. Aposición:</h3>
+        <p><span class="greek-example">"λήμψεσθε τὴν δωρεὰν τοῦ ἁγίου πνεύματος" (Hechos 2:38)</span></p>
+        <p><em>"Recibiréis el don, el Espíritu Santo".</em></p>
+        <p>Este es el genitivo en aposición simple, en este caso tenemos dos sustantivos en genitivo, donde el segundo describe mejor al primero.</p>
+      </div>
+      
+      <div class="example-box">
+        <h3>3. Separación:</h3>
+        <p><span class="greek-example">"ἀπηλλοτριωμένοι τῆς πολιτείας τοῦ Ἰσραήλ" (Efesios 2:12)</span></p>
+        <p><em>"Alejados de la ciudadanía de Israel".</em></p>
+      </div>
+      
+      <div class="example-box">
+        <h3>4. Objetivo:</h3>
+        <p><span class="greek-example">"ἡ τοῦ πνεύματος βλασφημία οὐκ ἀφεθήσεται" (Mateo 12:31)</span></p>
+        <p><em>"La blasfemia contra el Espíritu no será perdonada" (la blasfemia que recibe el Espíritu).</em></p>
+        
+        <div class="important-note">
+          <p>En este tipo de genitivo, es como si el genitivo funcionara como objeto directo, es conocido como genitivo de objeto directo. El sustantivo en genitivo recibe la acción de la idea verbal contenida en el sustantivo modificado.</p>
+          <p><strong>"Un genitivo objetivo solamente puede darse con sustantivos descritos que tengan ideas verbales transitivas".</strong></p>
+        </div>
+      </div>
+      
+      <div class="example-box">
+        <h3>5. Relación familiar:</h3>
+        <p><span class="greek-example">"Σίμων Ἰωάννου" (Juan 21:15)</span></p>
+        <p><em>"Simón, hijo de Juan".</em></p>
+        <p><span class="greek-example">"Μαρία ἡ Ἰακώβου" (Lucas 24:10)</span></p>
+        <p><em>"María, la madre de Jacobo".</em></p>
+      </div>
+    </div>
+
+    <!-- Dativo -->
+    <div class="content-card rules">
+      <h2><i class="fas fa-c"></i> Dativo</h2>
+      
+      <div class="example-box">
+        <h3>Dativo Propio</h3>
+        
+        <div class="example-box">
+          <h4>1. Objeto indirecto:</h4>
+          <p><span class="greek-example">"ἐξουσίαν ἔδωκεν αὐτῷ κρίσιν ποιεῖν" (Juan 5:27)</span></p>
+          <p><em>"Le dio autoridad a él para juzgar".</em></p>
+        </div>
+        
+        <div class="example-box">
+          <h4>2. Interés (ventaja/desventaja):</h4>
+          <p><span class="greek-example">"ἡ γυνή σου Ἐλισάβετ γεννήσει υἱόν σοι" (Lucas 1:13)</span></p>
+          <p><em>"Tu esposa Elisabet te dará un hijo para ti" (ventaja).</em></p>
+          <p><span class="greek-example">"μαρτυρεῖτε ἑαυτοῖς" (Mateo 23:31)</span></p>
+          <p><em>"Testificáis contra vosotros mismos" (desventaja).</em></p>
+        </div>
+        
+        <div class="example-box">
+          <h4>3. Referencia:</h4>
+          <p><span class="greek-example">"λογίζεσθε ἑαυτοὺς εἶναι νεκροὺς τῇ ἁμαρτίᾳ" (Romanos 6:11)</span></p>
+          <p><em>"Consideraos muertos al pecado".</em></p>
+        </div>
+      </div>
+      
+      <div class="example-box">
+        <h3>Locativo</h3>
+        
+        <div class="example-box">
+          <h4>4. Esfera:</h4>
+          <p><span class="greek-example">"μακάριοι οἱ καθαροὶ τῇ καρδίᾳ" (Mateo 5:8)</span></p>
+          <p><em>"Bienaventurados los puros de corazón".</em></p>
+        </div>
+        
+        <div class="example-box">
+          <h4>5. Tiempo:</h4>
+          <p><span class="greek-example">"τῇ τρίτῃ ἡμέρᾳ ἐγερθήσεται" (Mateo 17:23)</span></p>
+          <p><em>"Al tercer día resucitará".</em></p>
+        </div>
+        
+        <div class="example-box">
+          <h4>6. Asociación:</h4>
+          <p><span class="greek-example">"μὴ γίνεσθε ἑτεροζυγοῦντες ἀπίστοις" (2 Corintios 6:14)</span></p>
+          <p><em>"No os unáis con incrédulos".</em></p>
+        </div>
+      </div>
+      
+      <div class="example-box">
+        <h3>Instrumental</h3>
+        
+        <div class="example-box">
+          <h4>7. Modo:</h4>
+          <p><span class="greek-example">"παρρησίᾳ λαλεῖ" (Juan 7:26)</span></p>
+          <p><em>"Habla con valentía".</em></p>
+        </div>
+        
+        <div class="example-box">
+          <h4>8. Medio/Instrumento:</h4>
+          <p><span class="greek-example">"Τῇ γὰρ χάριτί ἐστε σεσῳσμένοι" (Efesios 2:8)</span></p>
+          <p><em>"Por gracia sois salvos".</em></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Acusativo -->
+    <div class="content-card">
+      <h2><i class="fas fa-d"></i> Acusativo</h2>
+      
+      <div class="example-box">
+        <h3>1. Objeto directo:</h3>
+        <p>Su uso principal es marcar el objeto directo del verbo.</p>
+        <p><span class="greek-example">"ἠγάπησεν ὁ θεὸς τὸν κόσμον" (Juan 3:16)</span></p>
+        <p><em>"Dios amó al mundo."</em></p>
+        <p><span class="greek-text">τὸν κόσμον</span> (acusativo) = objeto directo.</p>
+      </div>
+      
+      <div class="example-box">
+        <h3>2. Doble acusativo:</h3>
+        <p>Algunos verbos requieren dos objetos para completar su significado.</p>
+        <p><span class="greek-example">"ἐκεῖνος ὑμᾶς διδάξει πάντα" (Juan 14:26)</span></p>
+        <p><em>"Él os enseñará todas las cosas."</em></p>
+        <p><span class="greek-text">ὑμᾶς</span> (acusativo: objeto indirecto) + <span class="greek-text">πάντα</span> (acusativo: objeto directo).</p>
+        
+        <div class="important-note">
+          <p><strong>Para claridad:</strong> a veces se añade "como" en la traducción:</p>
+          <p><span class="greek-example">"ἀπέστειλεν τὸν υἱὸν αὐτοῦ ἱλασμόν" (1 Juan 4:10)</span></p>
+          <p><em>"Envió a su Hijo como propiciación."</em></p>
+        </div>
+      </div>
+      
+      <div class="example-box">
+        <h3>3. Acusativo adverbial:</h3>
+        <p>Modifica al verbo, indicando manera, medida o extensión.</p>
+        
+        <div class="example-box">
+          <p><span class="greek-example">"δωρεὰν ἐλάβετε, δωρεὰν δότε" (Mateo 10:8)</span></p>
+          <p><em>"Gratis recibisteis, gratis dad."</em></p>
+          <p><span class="greek-text">δωρεὰν</span> (acusativo de modo).</p>
+        </div>
+        
+        <div class="example-box">
+          <p><span class="greek-example">"ζητεῖτε πρῶτον τὴν βασιλείαν τοῦ θεοῦ" (Mateo 6:33)</span></p>
+          <p><em>"Buscad primero el reino de Dios."</em></p>
+          <p><span class="greek-text">πρῶτον</span> (acusativo de tiempo).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="week-footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="Logos del ministerio">
+      </div>
+      <div class="footer-info">
+        <p>Sección educativa del ministerio: "Vivos para Servir"</p>
+        <p class="copyright">© Copyright 2023</p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

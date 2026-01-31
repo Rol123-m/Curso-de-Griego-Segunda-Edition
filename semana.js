@@ -69,6 +69,7 @@ class SemanaManager {
                     { tipo: 'html', titulo: 'Artículo Definido, continuación', url: 'semanas/semana3/HTML/2. Aticulo Definido, continuación.html', icono: '📖' },
                     { tipo: 'html', titulo: 'Más sobre sustantivos', url: 'semanas/semana3/HTML/3. Mas sobre sustantivos.html', icono: '✏️' },
                     { tipo: 'html', titulo: 'Práctica de Traducción', url: 'semanas/semana3/HTML/4. Traducción.html', icono: '🌍' },
+                    { tipo: 'html', titulo: 'Información Avanzada (Opcional)', url: 'semanas/semana3/HTML/5. Información avanzada.html', icono: '🌍' },
                     { tipo: 'html', titulo: 'Vocabulario semana 3', url: 'semanas/semana3/HTML/6. vocabulario3.html', icono: '📖' },
                 ],
                 juegos: [
