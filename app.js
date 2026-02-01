@@ -4,7 +4,7 @@
 // CONFIGURACIÓN INICIAL
 // ===============================
 const CONFIG = {
-    PASSWORD_UNICA: "griego2025",
+    PASSWORD_UNICA: "griego2026",
     CODIGO_ADMIN: "ADMIN2026",
     TOTAL_SEMANAS: 30,
     DIAS_DESBLOQUEO: 7
