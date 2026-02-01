@@ -41,15 +41,11 @@ class CursoGriegoApp {
 
     mostrarLogin() {
         const estudiantes = [
-            "Alejandro Foubelo", "Alexei Lores Lamorú", "Ana Margarita Concepción Noa",
-            "Daniel Ramirez", "Jaider Portales Díaz", "Jeremias Cifuentes Lastre",
-            "Jose A. Cantillo", "Laura Montero Gandol", "Leonard Carrera",
-            "Maikel Molina Figueredo", "Marcos González", "María C. Grave de Peralta Concepción",
-            "Mario Mondeja Leyva", "Marlon R.", "Midel Pileta", "Miguel Torres Morera",
-            "Orlando Aguilar Fonseca", "Orlei", "Raidel Verdecia", "Raydel Ramón Toranzo Hidalgo",
-            "Roleydis Cantillo Furones", "Samuel Gonzalez", "Yanet González Tamayo",
-            "Yordanka Álvarez Pérez", "Rolando Desdín", "Magdiel García", "Ángel Saiz",
-            "Yurleydy Dominguez", "Profesor: Joel Gutiérrez", "Dr. David Roach"
+            "facilitadores","Yordanka Álvarez Pérez","student","student","student","student",
+            "student","student","student","student","student",
+            "student","student","student","student","student","student","student",
+            "student","student","student","student","student","student", "Rolando Desdín",
+            "Yurleydy Dominguez", "Profesor: Joel Gutiérrez"
         ];
 
         const container = document.getElementById('app-container');
