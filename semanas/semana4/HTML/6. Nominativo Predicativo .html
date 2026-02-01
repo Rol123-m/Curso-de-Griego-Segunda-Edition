@@ -4,294 +4,236 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aprendiendo Griego Koiné: Nominativo Predicativo</title>
-  <link rel="stylesheet" href="../../circle.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f9;
-      color: #333;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-    }
-    header {
-      background-color: #4CAF50;
-      color: white;
-      padding: 20px;
-      text-align: center;
-      display: flex;
-    }
-    img {
-      width: 170px;
-      height: 140px;
-    }
-    h1 {
-      margin: 0;
-      font-size: 2.5rem;
-      margin-left: 300px;
-    }
-    .container {
-      max-width: 800px;
-      margin: 20px auto;
-      padding: 20px;
-      background: white;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    h2 {
-      color: #4CAF50;
-      margin-top: 0;
-    }
-    .pronunciation {
-      background-color: #e8f5e9;
-      padding: 15px;
-      border-left: 5px solid #4CAF50;
-      margin: 20px 0;
-    }
-    .rules {
-      background-color: #fff3e0;
-      padding: 15px;
-      border-left: 5px solid #ff9800;
-      margin: 20px 0;
-    }
-    .rules ul {
-      list-style-type: decimal;
-      padding-left: 20px;
-    }
-    .rules li {
-      margin-bottom: 10px;
-    }
-    .examples {
-      background-color: #e3f2fd;
-      padding: 15px;
-      border-left: 5px solid #2196F3;
-      margin: 20px 0;
-    }
-    .quiz {
-      background-color: #fff3e0;
-      padding: 15px;
-      border-left: 5px solid #ff9800;
-      margin: 20px 0;
-    }
-    .quiz-question {
-      margin-bottom: 15px;
-    }
-    .quiz-options {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .quiz-options label {
-      display: block;
-      padding: 10px;
-      background-color: #f9f9f9;
-      border: 1px solid #ddd;
-      cursor: pointer;
-    }
-    .quiz-options label:hover {
-      background-color: #f1f1f1;
-    }
-    .quiz-options input[type="radio"] {
-      margin-right: 10px;
-    }
-    .result {
-      margin-top: 10px;
-      font-weight: bold;
-    }
-    .correct {
-      color: green;
-    }
-    .incorrect {
-      color: red;
-    }
-    button {
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
-      font-size: 1rem;
-    }
-    button:hover {
-      background-color: #45a049;
-    }
-    footer {
-      display: flex;
-      width: 100%;
-      margin-top: 80px;
-      background-color: #ffffff;
-      padding: 50px;
-      padding-bottom: 20px;
-    }
-    #foot {
-      text-align: center;
-      margin-left: 300px;
-      font-size: 16px;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 20px 0;
-    }
-    th, td {
-      border: 1px solid #ddd;
-      padding: 8px;
-      text-align: left;
-    }
-    th {
-      background-color: #4CAF50;
-      color: white;
-    }
-    tr:nth-child(even) {
-      background-color: #f2f2f2;
-    }
-    .bible-ref {
-      font-style: italic;
-      color: #555;
-    }
-    .breakdown {
-      background-color: #f5f5f5;
-      padding: 10px;
-      border-radius: 5px;
-      margin: 10px 0;
-    }
-    .highlight {
-      background-color: #fff8e1;
-      padding: 2px 5px;
-      border-radius: 3px;
-    }
-  </style>
+  <link rel="stylesheet" href="semana.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Slab:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script>
-    // Verificar autenticación al cargar la página
     if(!localStorage.getItem('authenticated')) {
-        window.location.href = "../index.html";
+        window.location.href = "../../index.html";
     }
   </script>
 </head>
 <body>
-  <header>
-    <img src="https://i.postimg.cc/QtgrGy8X/verde.png" alt="Logo del ministerio Vivos para servir">
-    <h1>Aprendiendo Griego Koiné: Nominativo Predicativo</h1>
+  <header class="week-header">
+    <div class="header-logo">
+      <img src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="Logo del ministerio Vivos para servir" class="logo-main">
+    </div>
+    <div class="header-title">
+      <h1>Aprendiendo Griego Koiné: Nominativo Predicativo</h1>
+      <p class="subtitle">Lección 6: El predicado nominal en griego koiné</p>
+    </div>
   </header>
-  <a href="../../home.html" class="back-link">← HOME</a>
-  <div class="container">
-    <section>
-      <h2>Predicado Nominal en Español</h2>
-      <div class="pronunciation">
+
+  <div class="week-container">
+    <section class="content-card pronunciation">
+      <h2><i class="fas fa-chalkboard-teacher"></i> Predicado Nominal en Español</h2>
+      <div class="vocab-item">
+        <div class="vocab-item-header">
+          <h3>Concepto del predicado nominal</h3>
+          <span class="vocab-tag">Concepto</span>
+        </div>
         <p>El verbo "ser" (y en algunos casos "estar") puede crear una estructura especial en la que un atributo (no un objeto directo) describe o identifica al sujeto.</p>
-        
-        <div class="examples">
-          <h3>Ejemplo:</h3>
-          <p><span class="highlight">"El profesor soy yo."</span></p>
+      </div>
+
+      <div class="vocab-item usage-card">
+        <div class="vocab-item-header">
+          <h3>Ejemplo en español</h3>
+          <span class="vocab-tag">Ejemplo</span>
+        </div>
+        <div class="example-box">
+          <p class="greek-example">"El profesor soy yo."</p>
           <ul>
-            <li>Aquí, "yo" no recibe la acción del verbo, sino que identifica al sujeto ("el profesor").</li>
-            <li>Gramaticalmente, "yo" funciona como predicado nominal (o atributo).</li>
+            <li>Aquí, "yo" no recibe la acción del verbo, sino que identifica al sujeto ("el profesor")</li>
+            <li>Gramaticalmente, "yo" funciona como predicado nominal (o atributo)</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section>
-      <h2>Características del Predicado Nominal</h2>
-      <div class="rules">
+    <section class="content-card rules">
+      <h2><i class="fas fa-ruler-combined"></i> Características del Predicado Nominal</h2>
+      
+      <div class="vocab-item">
+        <div class="vocab-item-header">
+          <h3>Propiedades gramaticales</h3>
+          <span class="vocab-tag">Gramática</span>
+        </div>
         <ul>
-          <li>No es un objeto directo, sino un complemento atributivo que concuerda con el sujeto.</li>
-          <li>Debe usarse el pronombre en caso nominativo (sujeto), no en acusativo.</li>
-          <li>El atributo debe concordar en género y número con el sujeto.
-            <div class="breakdown">
-              <p><span class="highlight">"La ganadora es ella."</span> (nominativo singular femenino)</p>
-              <p><span class="highlight">"Las mejores somos nosotras."</span> (nominativo plural femenino)</p>
-            </div>
-          </li>
+          <li>No es un objeto directo, sino un complemento atributivo que concuerda con el sujeto</li>
+          <li>Debe usarse el pronombre en caso nominativo (sujeto), no en acusativo</li>
+          <li>El atributo debe concordar en género y número con el sujeto</li>
         </ul>
       </div>
+
+      <div class="vocab-item mnemonic-card">
+        <div class="vocab-item-header">
+          <h3>Ejemplos de concordancia</h3>
+          <span class="vocab-tag">Concordancia</span>
+        </div>
+        <div class="example-box">
+          <p><span class="greek-text">"La ganadora es ella."</span> (nominativo singular femenino)</p>
+          <p><span class="greek-text">"Las mejores somos nosotras."</span> (nominativo plural femenino)</p>
+        </div>
+      </div>
     </section>
 
-    <section>
-      <h2>Nominativo Predicativo en Griego</h2>
-      <div class="examples">
-        <p>Tras <span class="highlight">εἰμί</span>, el sustantivo no recibe acción, sino que describe al sujeto (por eso va en nominativo).</p>
-        
-        <div class="breakdown">
-          <h3>Ejemplo:</h3>
-          <p><span class="highlight">θεὸς ἐστιν κύριος</span> = "Dios es Señor".</p>
+    <section class="content-card">
+      <h2><i class="fas fa-greek-temple"></i> Nominativo Predicativo en Griego</h2>
+      
+      <div class="vocab-item">
+        <div class="vocab-item-header">
+          <h3>Principio fundamental</h3>
+          <span class="vocab-tag">Regla</span>
+        </div>
+        <p>Tras <span class="greek-text">εἰμί</span>, el sustantivo no recibe acción, sino que describe al sujeto (por eso va en nominativo)</p>
+      </div>
+
+      <div class="vocab-item usage-card">
+        <div class="vocab-item-header">
+          <h3>Ejemplo bíblico</h3>
+          <span class="vocab-tag">Ejemplo</span>
+        </div>
+        <div class="example-box">
+          <p class="greek-example">θεὸς ἐστιν κύριος</p>
+          <p><strong>Traducción:</strong> "Dios es Señor"</p>
           <ul>
-            <li><strong>θεὸς</strong> (nominativo, sujeto)</li>
-            <li><strong>κύριος</strong> (nominativo, predicado)</li>
+            <li><strong><span class="greek-text">θεὸς</span></strong> (nominativo, sujeto)</li>
+            <li><strong><span class="greek-text">κύριος</span></strong> (nominativo, predicado)</li>
           </ul>
         </div>
-        
-        <div class="pronunciation">
+      </div>
+
+      <div class="vocab-item etymology-card">
+        <div class="vocab-item-header">
+          <h3>Pregunta clave</h3>
+          <span class="vocab-tag">Análisis</span>
+        </div>
+        <div class="important-note">
           <p>La pregunta lógica sería: <em>si ambos sustantivos están en caso nominativo, ¿cómo puedo saber cuál de los dos es el sujeto?</em></p>
-          <p>En realidad esta es una excelente pregunta. El contexto es nuestra mayor arma en este punto.</p>
+          <p>En realidad esta es una excelente pregunta. El contexto es nuestra mayor arma en este punto</p>
         </div>
       </div>
     </section>
 
-    <section>
-      <h2>Identificando el Sujeto</h2>
-      <div class="rules">
-        <p>Cuando ambos sustantivos están en nominativo con el verbo εἰμί, podemos identificar el sujeto mediante:</p>
-        <ol>
-          <li><strong>El artículo definido:</strong> El sustantivo con artículo es más probable que sea el sujeto.
-            <div class="breakdown">
-              <p><span class="highlight">ὁ θεὸς ἐστιν κύριος</span> = "Dios es Señor" (θεὸς es sujeto por tener artículo)</p>
-            </div>
-          </li>
-          <li><strong>El orden de las palabras:</strong> Generalmente el sujeto precede al predicado nominal.</li>
-          <li><strong>El contexto:</strong> Lo que sabemos por el contexto más amplio del pasaje.</li>
-        </ol>
+    <section class="content-card rules">
+      <h2><i class="fas fa-search"></i> Identificando el Sujeto</h2>
+      
+      <div class="vocab-item">
+        <div class="vocab-item-header">
+          <h3>Estrategias de identificación</h3>
+          <span class="vocab-tag">Estrategia</span>
+        </div>
+        <p>Cuando ambos sustantivos están en nominativo con el verbo <span class="greek-text">εἰμί</span>, podemos identificar el sujeto mediante:</p>
+      </div>
+
+      <div class="vocab-item mnemonic-card">
+        <div class="vocab-item-header">
+          <h4>1. El artículo definido</h4>
+          <span class="vocab-tag">Artículo</span>
+        </div>
+        <p>El sustantivo con artículo es más probable que sea el sujeto</p>
+        <div class="example-box">
+          <p class="greek-example">ὁ θεὸς ἐστιν κύριος</p>
+          <p><strong>Traducción:</strong> "Dios es Señor"</p>
+          <p><strong>Análisis:</strong> <span class="greek-text">θεὸς</span> es sujeto por tener artículo (<span class="greek-text">ὁ</span>)</p>
+        </div>
+      </div>
+
+      <div class="vocab-item usage-card">
+        <div class="vocab-item-header">
+          <h4>2. El orden de las palabras</h4>
+          <span class="vocab-tag">Sintaxis</span>
+        </div>
+        <p>Generalmente el sujeto precede al predicado nominal</p>
+        <div class="example-box">
+          <p class="greek-example">Ἰησοῦς ἐστιν ὁ χριστός</p>
+          <p><strong>Análisis:</strong> <span class="greek-text">Ἰησοῦς</span> (sujeto) va primero, <span class="greek-text">ὁ χριστός</span> (predicado) va después</p>
+        </div>
+      </div>
+
+      <div class="vocab-item etymology-card">
+        <div class="vocab-item-header">
+          <h4>3. El contexto</h4>
+          <span class="vocab-tag">Interpretación</span>
+        </div>
+        <p>Lo que sabemos por el contexto más amplio del pasaje</p>
+        <div class="important-note">
+          <p>El contexto bíblico y teológico a menudo nos ayuda a determinar cuál sustantivo funciona como sujeto</p>
+        </div>
       </div>
     </section>
 
-    <section>
-      <h2>Practica con Nominativo Predicativo</h2>
-      <div class="quiz">
-        <div class="quiz-question">
-          <p><strong>Pregunta 1:</strong> En la frase "ὁ ἀπόστολος ἐστὶν Παῦλος", ¿cuál es el predicado nominal?</p>
-          <div class="quiz-options">
-            <label><input type="radio" name="q1" value="a"> ὁ ἀπόστολος</label>
-            <label><input type="radio" name="q1" value="b"> ἐστὶν</label>
-            <label><input type="radio" name="q1" value="c"> Παῦλος</label>
-          </div>
-          <div class="result" id="result1"></div>
+    <section class="content-card quiz">
+      <h2><i class="fas fa-brain"></i> Practica con Nominativo Predicativo</h2>
+      
+      <div class="quiz-question">
+        <p><strong>Pregunta 1:</strong> En la frase "<span class="greek-text">ὁ ἀπόστολος ἐστὶν Παῦλος</span>", ¿cuál es el predicado nominal?</p>
+        <div class="quiz-options">
+          <label><input type="radio" name="q1" value="a"> <span class="greek-text">ὁ ἀπόστολος</span></label>
+          <label><input type="radio" name="q1" value="b"> <span class="greek-text">ἐστὶν</span></label>
+          <label><input type="radio" name="q1" value="c"> <span class="greek-text">Παῦλος</span></label>
         </div>
-
-        <div class="quiz-question">
-          <p><strong>Pregunta 2:</strong> ¿Por qué el predicado nominal va en nominativo?</p>
-          <div class="quiz-options">
-            <label><input type="radio" name="q2" value="a"> Porque recibe la acción del verbo</label>
-            <label><input type="radio" name="q2" value="b"> Porque describe al sujeto, no recibe acción</label>
-            <label><input type="radio" name="q2" value="c"> Porque siempre va en nominativo después de cualquier verbo</label>
-          </div>
-          <div class="result" id="result2"></div>
-        </div>
-
-        <div class="quiz-question">
-          <p><strong>Pregunta 3:</strong> En la frase "Ἰησοῦς ἐστιν ὁ χριστός", ¿qué indica que "Ἰησοῦς" es el sujeto?</p>
-          <div class="quiz-options">
-            <label><input type="radio" name="q3" value="a"> Va primero y no tiene artículo</label>
-            <label><input type="radio" name="q3" value="b"> Es un nombre propio</label>
-            <label><input type="radio" name="q3" value="c"> Ambas respuestas anteriores</label>
-          </div>
-          <div class="result" id="result3"></div>
-        </div>
-
-        <button onclick="checkAnswers()">Comprobar Respuestas</button>
+        <div class="result" id="result1"></div>
       </div>
+
+      <div class="quiz-question">
+        <p><strong>Pregunta 2:</strong> ¿Por qué el predicado nominal va en nominativo?</p>
+        <div class="quiz-options">
+          <label><input type="radio" name="q2" value="a"> Porque recibe la acción del verbo</label>
+          <label><input type="radio" name="q2" value="b"> Porque describe al sujeto, no recibe acción</label>
+          <label><input type="radio" name="q2" value="c"> Porque siempre va en nominativo después de cualquier verbo</label>
+        </div>
+        <div class="result" id="result2"></div>
+      </div>
+
+      <div class="quiz-question">
+        <p><strong>Pregunta 3:</strong> En la frase "<span class="greek-text">Ἰησοῦς ἐστιν ὁ χριστός</span>", ¿qué indica que "<span class="greek-text">Ἰησοῦς</span>" es el sujeto?</p>
+        <div class="quiz-options">
+          <label><input type="radio" name="q3" value="a"> Va primero y no tiene artículo</label>
+          <label><input type="radio" name="q3" value="b"> Es un nombre propio</label>
+          <label><input type="radio" name="q3" value="c"> Ambas respuestas anteriores</label>
+        </div>
+        <div class="result" id="result3"></div>
+      </div>
+
+      <div class="quiz-question">
+        <p><strong>Pregunta 4:</strong> ¿Qué recurso es más importante para identificar el sujeto cuando ambos sustantivos están en nominativo?</p>
+        <div class="quiz-options">
+          <label><input type="radio" name="q4" value="a"> El artículo definido</label>
+          <label><input type="radio" name="q4" value="b"> El orden de las palabras</label>
+          <label><input type="radio" name="q4" value="c"> El contexto del pasaje</label>
+        </div>
+        <div class="result" id="result4"></div>
+      </div>
+
+      <button class="week-button" onclick="checkAnswers()">
+        <i class="fas fa-check-circle"></i> Comprobar Respuestas
+      </button>
+      <a href="../../home.html" class="week-button secondary">
+        <i class="fas fa-home"></i> Volver al Home
+      </a>
     </section>
   </div>
-  <footer>
-    <img src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="">
-    <p id="foot"> @Copyright Sección educativa del ministerio: "Vivos para Servir"</p>
+
+  <footer class="week-footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="Logos ministeriales">
+      </div>
+      <div class="footer-info">
+        <p>Sección educativa del ministerio: "Vivos para Servir"</p>
+        <p class="copyright">© 2024 - Todos los derechos reservados</p>
+      </div>
+    </div>
   </footer>
-  <script src="../../auth.js"></script>
-  <script src="../../user-tooltip.js"></script>
+
   <script>
     function checkAnswers() {
       const answers = {
         q1: 'c', // Παῦλος
         q2: 'b', // Porque describe al sujeto, no recibe acción
-        q3: 'c'  // Ambas respuestas anteriores
+        q3: 'c', // Ambas respuestas anteriores
+        q4: 'c'  // El contexto del pasaje
       };
 
       for (const question in answers) {
@@ -302,7 +244,7 @@
             resultElement.textContent = "¡Correcto!";
             resultElement.className = "result correct";
           } else {
-            resultElement.textContent = "Incorrecto. La respuesta correcta es: " + answers[question];
+            resultElement.textContent = "Incorrecto. Intenta de nuevo.";
             resultElement.className = "result incorrect";
           }
         } else {

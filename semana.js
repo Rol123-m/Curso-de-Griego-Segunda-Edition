@@ -86,7 +86,7 @@ class SemanaManager {
                 titulo: "Preposiciones y Eimi",
                 tema: "Preposiciones básicas y el verbo 'ser'",
                 recursos: [
-                    { tipo: 'pdf', titulo: 'PDF Contenido de la semana 4', url: 'contenido_privado.html', icono: '📄' },
+                    { tipo: 'pdf', titulo: 'PDF Contenido de la semana 4', url: 'https://drive.google.com/file/d/1EKnBMo4vbzAcsUWUXeUotp6ca7hcz0sP/view?usp=sharing', icono: '📄' },
                     { tipo: 'html', titulo: 'Introducción a preposiciones', url: 'semanas/semana4/HTML/1. Introducción a Preposiciones .html', icono: '1️⃣' },
                     { tipo: 'html', titulo: 'Más sobre preposiciones', url: 'semanas/semana4/HTML/2. Más sobre preposiciones .html', icono: '2️⃣' },
                     { tipo: 'html', titulo: 'Frase preposicional', url: 'semanas/semana4/HTML/3. Frase preposicional.html', icono: '3️⃣' },
@@ -97,16 +97,16 @@ class SemanaManager {
                     { tipo: 'html', titulo: 'Tabla de preposiciones completas', url: 'semanas/semana4/HTML/tabla de preposiciones.html', icono: '8️⃣' },
                     { tipo: 'html', titulo: 'Vocabulario solo de preposiciones', url: 'semanas/semana4/HTML/preposiciones completas.html', icono: '9️⃣' },
                     { tipo: 'html', titulo: 'Vocabulario semana 4', url: 'semanas/semana4/HTML/9. Vocabulario semana 4.html', icono: '📖' },
-                    { tipo: 'examen', titulo: 'Examen Semana 4', url: 'https://docs.google.com/forms/d/e/1FAIpQLSeS4A6utJyRemrNGkagZ9-uRpBqGyMIwKVByWcf5ehHFFR1yg/viewform?usp=sharing', icono: '📝' }
+                    { tipo: 'html', titulo: 'Información Avanzada. Usos sintácticos. ', url: 'https://drive.google.com/file/d/1gmOBvQEmOqJETLT7TDB6OMM-oxoQP5nR/view?usp=sharing', icono: '📖' }
+                    
                 ],
                 juegos: [
                     { titulo: 'Empareja las palabras', url: 'semanas/semana4/Juegos/3. Empareja las palabras.html', icono: '🔄', nota: 'Disponible solo en computadora - Arrastra la palabra griega a su traducción' },
                     { titulo: 'Juego de palabras', url: 'semanas/semana4/Juegos/4.juego de palabras, solo en la computadora.html', icono: '🔠', nota: 'Disponible solo en computadora - Selecciona la respuesta correcta' },
                     { titulo: 'Practica las preposiciones', url: 'semanas/semana4/Juegos/juego.html', icono: '⭐', nota: 'Recomendado - Llena los espacios en blanco' },
-                    { titulo: 'Otros ejercicios de preposiciones', url: 'semanas/semana4/Juegos/identificalo.html', icono: '📝', nota: 'Disponible solo en computadora' },
                     { titulo: 'Verbo εἶμι', url: 'semanas/semana4/Juegos/eimi.html', icono: '5️⃣', nota: 'Disponible solo en computadora' },
                     { titulo: 'Ejercicio de traducción', url: 'semanas/semana4/Juegos/traducción .html', icono: '✍️', nota: 'Traduce el prólogo de Juan' },
-                    { titulo: 'Lectura de Juan', url: 'semanas/semana4/Juegos/lectura de juan.html', icono: '✍️', nota: 'Lee el NT Griego' }
+                    { titulo: 'Lectura de Juan 2', url: 'semanas/semana4/juan 2/JN2.html', icono: '🌍', nota: 'Practica traduciendo frases simples' }
                 ]
             },
             
