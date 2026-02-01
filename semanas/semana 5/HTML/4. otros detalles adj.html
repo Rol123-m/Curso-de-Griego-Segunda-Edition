@@ -4,159 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aprendiendo Griego Koiné: Reconocimiento del Adjetivo</title>
-  <link rel="stylesheet" href="../../circle.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f9;
-      color: #333;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-    }
-    header {
-      background-color: #4CAF50;
-      color: white;
-      padding: 20px;
-      text-align: center;
-      display: flex;
-    }
-    img {
-      width: 170px;
-      height: 140px;
-    }
-    h1 {
-      margin: 0;
-      font-size: 2.5rem;
-      margin-left: 300px;
-    }
-    .container {
-      max-width: 800px;
-      margin: 20px auto;
-      padding: 20px;
-      background: white;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    h2 {
-      color: #4CAF50;
-      margin-top: 0;
-    }
-    .pronunciation {
-      background-color: #e8f5e9;
-      padding: 15px;
-      border-left: 5px solid #4CAF50;
-      margin: 20px 0;
-    }
-    .rules {
-      background-color: #fff3e0;
-      padding: 15px;
-      border-left: 5px solid #ff9800;
-      margin: 20px 0;
-    }
-    .rules ul {
-      list-style-type: decimal;
-      padding-left: 20px;
-    }
-    .rules li {
-      margin-bottom: 10px;
-    }
-    .examples {
-      background-color: #e3f2fd;
-      padding: 15px;
-      border-left: 5px solid #2196F3;
-      margin: 20px 0;
-    }
-    .quiz {
-      background-color: #fff3e0;
-      padding: 15px;
-      border-left: 5px solid #ff9800;
-      margin: 20px 0;
-    }
-    .quiz-question {
-      margin-bottom: 15px;
-    }
-    .quiz-options {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .quiz-options label {
-      display: block;
-      padding: 10px;
-      background-color: #f9f9f9;
-      border: 1px solid #ddd;
-      cursor: pointer;
-    }
-    .quiz-options label:hover {
-      background-color: #f1f1f1;
-    }
-    .quiz-options input[type="radio"] {
-      margin-right: 10px;
-    }
-    .result {
-      margin-top: 10px;
-      font-weight: bold;
-    }
-    .correct {
-      color: green;
-    }
-    .incorrect {
-      color: red;
-    }
-    button {
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
-      font-size: 1rem;
-    }
-    button:hover {
-      background-color: #45a049;
-    }
-    footer {
-      display: flex;
-      width: 100%;
-      margin-top: 80px;
-      background-color: #ffffff;
-      padding: 50px;
-      padding-bottom: 20px;
-    }
-    #foot {
-      text-align: center;
-      margin-left: 300px;
-      font-size: 16;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 20px 0;
-    }
-    th, td {
-      border: 1px solid #ddd;
-      padding: 8px;
-      text-align: left;
-    }
-    th {
-      background-color: #4CAF50;
-      color: white;
-    }
-    tr:nth-child(even) {
-      background-color: #f2f2f2;
-    }
-    .note {
-      background-color: #fffde7;
-      padding: 15px;
-      border-left: 5px solid #ffc107;
-      margin: 20px 0;
-    }
-    .warning {
-      background-color: #ffebee;
-      padding: 15px;
-      border-left: 5px solid #f44336;
-      margin: 20px 0;
-    }
-  </style>
+  <link rel="stylesheet" href="semana.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Roboto+Slab:wght@400;500;600&display=swap" rel="stylesheet">
   <script>
     // Verificar autenticación al cargar la página
     if(!localStorage.getItem('authenticated')) {
@@ -165,21 +15,25 @@
   </script>
 </head>
 <body>
-  <header>
-    <img src="https://i.postimg.cc/QtgrGy8X/verde.png" alt="Logo del ministerio Vivos para servir">
-    <h1>Aprendiendo Griego Koiné: Reconocimiento del Adjetivo</h1>
+  <header class="week-header">
+    <div class="header-logo">
+      <img src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="Logo del ministerio Vivos para servir" class="logo-main">
+    </div>
+    <div class="header-title">
+      <h1>Aprendiendo Griego Koiné: Reconocimiento del Adjetivo</h1>
+      <p class="subtitle">Identificación de funciones gramaticales a través del artículo y posición</p>
+    </div>
   </header>
-  <div class="container">
-    <section>
-      <h2>4. Reconocimiento del Adjetivo</h2>
-      <div class="pronunciation">
-        <p>El uso del artículo y la posición del adjetivo son clave para identificar su función gramatical en griego koiné.</p>
-      </div>
+
+  <main class="week-container">
+    <section class="content-card">
+      <h2><i class="fas fa-eye"></i> Reconocimiento del Adjetivo</h2>
+      <p>El uso del artículo y la posición del adjetivo son clave para identificar su función gramatical en griego koiné.</p>
     </section>
 
-    <section>
-      <h2>4.1. Presencia del artículo</h2>
-      <div class="rules">
+    <section class="content-card rules">
+      <h2><i class="fas fa-article"></i> 4.1. Presencia del artículo</h2>
+      <div class="example-box">
         <ul>
           <li><strong>Sin artículo (anartro):</strong> Generalmente predicativo.</li>
           <li><strong>Con artículo (articular):</strong> Puede ser atributivo o sustantivado.</li>
@@ -187,104 +41,134 @@
       </div>
     </section>
 
-    <section>
-      <h2>4.2. Posiciones del adjetivo atributivo</h2>
-      <div class="rules">
+    <section class="content-card">
+      <h2><i class="fas fa-arrows-alt-h"></i> 4.2. Posiciones del adjetivo atributivo</h2>
+      <div class="important-note">
         <ol>
           <li><strong>Primera posición atributiva:</strong><br>
-            ὁ ἀγαθὸς ἄνθρωπος ("El hombre bueno")</li>
+            <span class="greek-example">ὁ ἀγαθὸς ἄνθρωπος</span> ("El hombre bueno")</li>
           <li><strong>Segunda posición atributiva:</strong><br>
-            ὁ ἄνθρωπος ὁ ἀγαθός ("El hombre bueno")</li>
+            <span class="greek-example">ὁ ἄνθρωπος ὁ ἀγαθός</span> ("El hombre bueno")</li>
         </ol>
-        <div class="warning">
-          <p><strong>¡Nunca se encuentra:</strong><br>
-          ὁ ἀγαθὸς ὁ ἄνθρωπος (incorrecto).</p>
+      </div>
+      
+      <div class="vocab-item" style="border-left: 4px solid var(--danger); background: rgba(231, 76, 60, 0.05);">
+        <div class="vocab-item-header">
+          <h3><i class="fas fa-exclamation-triangle"></i> ¡Nunca se encuentra!</h3>
+          <span class="vocab-tag" style="background: var(--danger); color: white;">Error común</span>
         </div>
+        <p><span class="greek-text">ὁ ἀγαθὸς ὁ ἄνθρωπος</span> (incorrecto)</p>
       </div>
     </section>
 
-    <section>
-      <h2>4.3. Predicativo con artículo</h2>
-      <div class="rules">
-        <p>Si el sustantivo tiene artículo pero el adjetivo no:</p>
-        <p>ὁ ἄνθρωπος ἀγαθός → "El hombre es bueno."</p>
+    <section class="content-card pronunciation">
+      <h2><i class="fas fa-comment-alt"></i> 4.3. Predicativo con artículo</h2>
+      <p>Si el sustantivo tiene artículo pero el adjetivo no:</p>
+      <div class="example-box">
+        <p><span class="greek-example">ὁ ἄνθρωπος ἀγαθός</span> → "El hombre es bueno."</p>
       </div>
     </section>
 
-    <section>
-      <h2>4.4. Falta de artículo (anartro)</h2>
-      <div class="rules">
-        <p>Cuando no hay artículo antes del sustantivo ni del adjetivo, el contexto determina su función. Hay que decidir si el adjetivo:</p>
+    <section class="content-card">
+      <h2><i class="fas fa-ban"></i> 4.4. Falta de artículo (anartro)</h2>
+      <p>Cuando no hay artículo antes del sustantivo ni del adjetivo, el contexto determina su función. Hay que decidir si el adjetivo:</p>
+      
+      <div class="important-note">
         <ol>
           <li>Atribuye una cualidad al sustantivo (atributivo).</li>
-          <li>Afirma algo sobre el sujeto (predicativo, con el verbo εἰμί implícito).</li>
+          <li>Afirma algo sobre el sujeto (predicativo, con el verbo <span class="greek-text">εἰμί</span> implícito).</li>
         </ol>
+      </div>
+      
+      <div class="vocab-item mnemonic-card">
+        <div class="vocab-item-header">
+          <h3>Ejemplos de uso anartro</h3>
+          <span class="vocab-tag">Contextual</span>
+        </div>
         
-        <div class="examples">
-          <p><strong>Ejemplos:</strong></p>
-          <p>• ἀγαθὸς ἄνθρωπος<br>
-          &nbsp;&nbsp;o "Un hombre bueno" (atributivo).<br>
-          &nbsp;&nbsp;o "Un hombre es bueno" (predicativo, si el contexto lo exige).</p>
-          
-          <p>• ἄνθρωπος ἀγαθός<br>
-          &nbsp;&nbsp;o "Un hombre bueno" (atributivo).<br>
-          &nbsp;&nbsp;o "Un hombre es bueno" (predicativo).</p>
+        <div class="example-box">
+          <p><strong>• <span class="greek-text">ἀγαθὸς ἄνθρωπος</span></strong></p>
+          <ul>
+            <li>"Un hombre bueno" (atributivo).</li>
+            <li>"Un hombre es bueno" (predicativo, si el contexto lo exige).</li>
+          </ul>
+        </div>
+        
+        <div class="example-box">
+          <p><strong>• <span class="greek-text">ἄνθρωπος ἀγαθός</span></strong></p>
+          <ul>
+            <li>"Un hombre bueno" (atributivo).</li>
+            <li>"Un hombre es bueno" (predicativo).</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <section>
-      <div class="warning">
-        <p><strong>¡Precaución!</strong></p>
+    <section class="content-card">
+      <div class="vocab-item" style="border-left: 4px solid var(--warning); background: rgba(241, 196, 15, 0.05);">
+        <div class="vocab-item-header">
+          <h3><i class="fas fa-exclamation-circle"></i> ¡Precaución!</h3>
+          <span class="vocab-tag" style="background: var(--warning); color: var(--dark);">Advertencia</span>
+        </div>
         <ul>
           <li>No añadas el artículo en la traducción a menos que el español lo requiera.</li>
           <li>Un adjetivo anartro puede funcionar como sustantivo, pero es raro:<br>
-          &nbsp;&nbsp;o ἀγαθός → *"Un bueno (hombre/persona)"*.</li>
+            &nbsp;&nbsp;<span class="greek-text">ἀγαθός</span> → <em>"Un bueno (hombre/persona)"</em>.</li>
         </ul>
       </div>
     </section>
 
-    <section>
-      <h2>Practica con el Reconocimiento del Adjetivo</h2>
-      <div class="quiz">
-        <div class="quiz-question">
-          <p><strong>Pregunta 1:</strong> En la frase "ὁ ἄνθρωπος ἀγαθός", ¿qué función cumple el adjetivo "ἀγαθός"?</p>
-          <div class="quiz-options">
-            <label><input type="radio" name="q1" value="a"> Atributiva</label>
-            <label><input type="radio" name="q1" value="b"> Sustantivada</label>
-            <label><input type="radio" name="q1" value="c"> Predicativa</label>
-          </div>
-          <div class="result" id="result1"></div>
+    <section class="content-card quiz">
+      <h2><i class="fas fa-search"></i> Practica con el Reconocimiento del Adjetivo</h2>
+      
+      <div class="quiz-question">
+        <p><strong>Pregunta 1:</strong> En la frase "<span class="greek-text">ὁ ἄνθρωπος ἀγαθός</span>", ¿qué función cumple el adjetivo "<span class="greek-text">ἀγαθός</span>"?</p>
+        <div class="quiz-options">
+          <label><input type="radio" name="q1" value="a"> Atributiva</label>
+          <label><input type="radio" name="q1" value="b"> Sustantivada</label>
+          <label><input type="radio" name="q1" value="c"> Predicativa</label>
         </div>
-
-        <div class="quiz-question">
-          <p><strong>Pregunta 2:</strong> ¿Cuál de estas frases muestra la segunda posición atributiva?</p>
-          <div class="quiz-options">
-            <label><input type="radio" name="q2" value="a"> ὁ ἀγαθὸς ἄνθρωπος</label>
-            <label><input type="radio" name="q2" value="b"> ὁ ἄνθρωπος ὁ ἀγαθός</label>
-            <label><input type="radio" name="q2" value="c"> ἄνθρωπος ἀγαθός</label>
-          </div>
-          <div class="result" id="result2"></div>
-        </div>
-
-        <div class="quiz-question">
-          <p><strong>Pregunta 3:</strong> En la frase "ἀγαθὸς ἄνθρωπος", ¿qué dos posibles funciones puede tener el adjetivo?</p>
-          <div class="quiz-options">
-            <label><input type="radio" name="q3" value="a"> Atributiva o Sustantivada</label>
-            <label><input type="radio" name="q3" value="b"> Atributiva o Predicativa</label>
-            <label><input type="radio" name="q3" value="c"> Sustantivada o Predicativa</label>
-          </div>
-          <div class="result" id="result3"></div>
-        </div>
-
-        <button onclick="checkAnswers()">Comprobar Respuestas</button>
+        <div class="result" id="result1"></div>
       </div>
+
+      <div class="quiz-question">
+        <p><strong>Pregunta 2:</strong> ¿Cuál de estas frases muestra la segunda posición atributiva?</p>
+        <div class="quiz-options">
+          <label><input type="radio" name="q2" value="a"> <span class="greek-text">ὁ ἀγαθὸς ἄνθρωπος</span></label>
+          <label><input type="radio" name="q2" value="b"> <span class="greek-text">ὁ ἄνθρωπος ὁ ἀγαθός</span></label>
+          <label><input type="radio" name="q2" value="c"> <span class="greek-text">ἄνθρωπος ἀγαθός</span></label>
+        </div>
+        <div class="result" id="result2"></div>
+      </div>
+
+      <div class="quiz-question">
+        <p><strong>Pregunta 3:</strong> En la frase "<span class="greek-text">ἀγαθὸς ἄνθρωπος</span>", ¿qué dos posibles funciones puede tener el adjetivo?</p>
+        <div class="quiz-options">
+          <label><input type="radio" name="q3" value="a"> Atributiva o Sustantivada</label>
+          <label><input type="radio" name="q3" value="b"> Atributiva o Predicativa</label>
+          <label><input type="radio" name="q3" value="c"> Sustantivada o Predicativa</label>
+        </div>
+        <div class="result" id="result3"></div>
+      </div>
+
+      <button onclick="checkAnswers()" class="week-button">
+        <i class="fas fa-check-circle"></i> Comprobar Respuestas
+      </button>
     </section>
-  </div>
-  <footer>
-    <img src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="">
-    <p id="foot"> @Copyright Sección educativa del ministerio: "Vivos para Servir"</p>
+  </main>
+
+  <footer class="week-footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="Logos ministeriales">
+      </div>
+      <div class="footer-info">
+        <p>Sección educativa del ministerio: "Vivos para Servir"</p>
+        <p class="copyright">@Copyright Todos los derechos reservados</p>
+      </div>
+    </div>
   </footer>
+
   <script src="../../auth.js"></script>
   <script src="../../user-tooltip.js"></script>
   <script>

@@ -115,23 +115,22 @@ class SemanaManager {
                 titulo: "Adjetivos",
                 tema: "Concordancia y grados del adjetivo",
                 recursos: [
-                    { tipo: 'pdf', titulo: 'PDF Contenido de la semana 5', url: 'contenido_privado.html', icono: '📄' },
+                    { tipo: 'pdf', titulo: 'PDF Contenido de la semana 5', url: 'https://drive.google.com/file/d/1YwZ6aYQwslg4QAsrwXj70g4xbKIKPoxf/view?usp=sharing', icono: '📄' },
                     { tipo: 'html', titulo: 'Introducción a Adjetivos', url: 'semanas/semana 5/HTML/1. Introducción a adjetivos.html', icono: '1️⃣' },
                     { tipo: 'html', titulo: 'Forma de los adjetivos', url: 'semanas/semana 5/HTML/2. Ajetivos 2.html', icono: '2️⃣' },
                     { tipo: 'html', titulo: 'Funciones de los adjetivos', url: 'semanas/semana 5/HTML/3. Funciones de los adjetivos .html', icono: '3️⃣' },
                     { tipo: 'html', titulo: 'Frases preposicionales', url: 'semanas/semana 5/HTML/4. otros detalles adj.html', icono: '4️⃣' },
                     { tipo: 'html', titulo: 'Otros asuntos', url: 'semanas/semana 5/HTML/5. Otras ideas.html', icono: '5️⃣' },
-                    { tipo: 'html', titulo: 'Vocabulario semana 5', url: 'semanas/semana 5/HTML/6. vocabulario5.html', icono: '📖' },
-                    { tipo: 'examen', titulo: 'Examen Semana 5', url: 'https://docs.google.com/forms/d/e/1FAIpQLSehnAfgP15WFNgTHHtY35VBCXIVwWFtzhRrNojlUE-uILRaUg/viewform?usp=sharing', icono: '📝' }
+                    { tipo: 'html', titulo: 'Vocabulario semana 5', url: 'semanas/semana 5/HTML/6. vocabulario5.html', icono: '📖' }
                 ],
                 juegos: [
                     { titulo: 'Empareja las palabras', url: 'semanas/semana 5/Juegos/3. Empareja las palabras.html', icono: '🔄', nota: 'Disponible solo en computadora - Arrastra la palabra griega a su traducción' },
                     { titulo: 'Juego de palabras', url: 'semanas/semana 5/Juegos/4.juego de palabras, solo en la computadora.html', icono: '🔠', nota: 'Disponible solo en computadora - Selecciona la respuesta correcta' },
                     { titulo: 'Tablero', url: 'semanas/semana 5/Juegos/tablero.html', icono: '⭐', nota: 'Disponible solo en computadora - Practica el conocimiento' },
                     { titulo: 'Ejercicio de traducción', url: 'semanas/semana 5/Juegos/traducción .html', icono: '✍️', nota: 'Traduce el prólogo de Juan' },
-                    { titulo: 'Lectura de Juan', url: 'semanas/semana 5/Juegos/lectura de juan.html', icono: '✍️', nota: 'Lee el NT Griego' }
-                ]
-            },
+                    { titulo: 'Lectura de Juan 3', url: 'semanas/semana 5/juan 3/JN3.html', icono: '🌍', nota: 'Practica traduciendo frases simples' }
+           ],
+                },
             
             // SEMANA 6 - Tercera Declinación
             6: {
