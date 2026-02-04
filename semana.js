@@ -175,7 +175,7 @@ class SemanaManager {
         { titulo: 'Juego de palabras', url: 'semanas/semana 7/Juegos/4.juego de palabras, solo en la computadora.html', icono: '🔠', nota: 'Disponible solo en computadora - Selecciona la respuesta correcta' },
         { titulo: 'Aprende los pronombres', url: 'semanas/semana 7/Juegos/Pronombres.html', icono: '⭐', nota: 'Disponible solo en computadora - Practica el conocimiento' },
         { titulo: 'Ejercicio de traducción', url: 'semanas/semana 7/Juegos/traducción .html', icono: '✍️', nota: 'Traduce el prólogo de Juan' },
-        { titulo: 'Lectura de Juan', url: 'semanas/semana 7/Juegos/lectura de juan.html', icono: '✍️', nota: 'Lee el NT Griego' }
+        { titulo: 'Lectura de Juan 5', url: 'semanas/semana 7/juan 5/JN5.html', icono: '🌍', nota: 'Practica traduciendo frases simples' }
     ]
 },
             // SEMANA 8 - Pronombres Personales de Tercera
@@ -183,7 +183,7 @@ class SemanaManager {
                 titulo: "Pronombres personales de tercera",
                 tema: "Pronombres demostrativos y relativos",
                 recursos: [
-                    { tipo: 'pdf', titulo: 'PDF Contenido de la semana 8', url: 'contenido_privado.html', icono: '📄' },
+                    { tipo: 'pdf', titulo: 'PDF Contenido de la semana 8', url: 'https://drive.google.com/file/d/1ZbuuI2rMXgI-TxKRXFKsTuFnCedkmwcl/view?usp=sharing', icono: '📄' },
                     { tipo: 'html', titulo: 'Introducción a los pronombres personales de tercera persona', url: 'Semana 8/HTML/1. Introducción al pronombre de tercera persona.html', icono: '1️⃣' },
                     { tipo: 'html', titulo: 'Forma de los pronombres', url: 'Semana 8/HTML/2.Forma del pronombre de tercera persona.html', icono: '2️⃣' },
                     { tipo: 'html', titulo: 'Funciones de los pronombres', url: 'Semana 8/HTML/3. Funciones del pronombre.html', icono: '3️⃣' },
@@ -450,6 +450,7 @@ class SemanaManager {
             4: "https://docs.google.com/forms/d/e/1FAIpQLSeS4A6utJyRemrNGkagZ9-uRpBqGyMIwKVByWcf5ehHFFR1yg/viewform",
             5: "https://docs.google.com/forms/d/e/1FAIpQLSehnAfgP15WFNgTHHtY35VBCXIVwWFtzhRrNojlUE-uILRaUg/viewform",
             6: "https://docs.google.com/forms/d/e/1FAIpQLSceeGgNjpdOpgnbwDJvQHvOuiq_bgEWh7YJ2L6ywuPStVC_9g/viewform",
+            7: "https://forms.gle/RxTnuZjC8EseewC58",
             8: "https://forms.gle/4Uywaf7uMXN81dfA8",
             9: "https://forms.gle/rX84HANaX2EeDGmD6",
             10: "https://forms.gle/JKVt5TVLBSaBncdf9"
