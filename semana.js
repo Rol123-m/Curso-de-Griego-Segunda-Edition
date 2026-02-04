@@ -21,7 +21,7 @@ class SemanaManager {
                 tema: "Introducción al alfabeto, pronunciación y escritura",
                 recursos: [
                     { tipo: 'video', titulo: 'Canción del alfabeto (Video)', url: 'https://drive.google.com/file/d/1lR8TBKFytimWZ4bl5PdICqnfIHYGX6qt/view?usp=sharing', icono: '▶️' },
-                     { tipo: 'pdf', titulo: 'PDF Contenido de la semana 1', url: 'https://drive.google.com/file/d/1Ty84WkqECgJ8emq8LVGZE5y2pXCL5E6-/view?usp=sharing', icono: '📄' },
+                     { tipo: 'pdf', titulo: 'PDF Contenido de la semana 1', url: 'https://drive.google.com/file/d/1Ty84WkqECgJ8emq8LVGZE5y2pXCL5E6-/preview', icono: '📄' },
                     { tipo: 'html', titulo: 'Alfabeto griego completo', url: 'semanas/semana1/alfabeto.html', icono: '🔤' },
                      { tipo: 'html', titulo: 'Otras reglas de pronunciación', url: 'semanas/semana1/diptongos.html', icono: '🔤' },
                     { tipo: 'html', titulo: 'Guía de acentos griegos', url: 'semanas/semana1/acentos.html', icono: '´' },
@@ -184,18 +184,18 @@ class SemanaManager {
                 tema: "Pronombres demostrativos y relativos",
                 recursos: [
                     { tipo: 'pdf', titulo: 'PDF Contenido de la semana 8', url: 'https://drive.google.com/file/d/1ZbuuI2rMXgI-TxKRXFKsTuFnCedkmwcl/view?usp=sharing', icono: '📄' },
-                    { tipo: 'html', titulo: 'Introducción a los pronombres personales de tercera persona', url: 'Semana 8/HTML/1. Introducción al pronombre de tercera persona.html', icono: '1️⃣' },
-                    { tipo: 'html', titulo: 'Forma de los pronombres', url: 'Semana 8/HTML/2.Forma del pronombre de tercera persona.html', icono: '2️⃣' },
-                    { tipo: 'html', titulo: 'Funciones de los pronombres', url: 'Semana 8/HTML/3. Funciones del pronombre.html', icono: '3️⃣' },
-                    { tipo: 'html', titulo: 'Vocabulario semana 8', url: 'Semana 8/HTML/4. vocabulario8.html', icono: '📖' },
-                    { tipo: 'examen', titulo: 'Examen Semana 8', url: 'https://forms.gle/4Uywaf7uMXN81dfA8', icono: '📝' }
+                    { tipo: 'html', titulo: 'Introducción a los pronombres personales de tercera persona', url: 'semanas/Semana 8/HTML/1. Introducción al pronombre de tercera persona.html', icono: '1️⃣' },
+                    { tipo: 'html', titulo: 'Forma de los pronombres', url: 'semanas/Semana 8/HTML/2.Forma del pronombre de tercera persona.html', icono: '2️⃣' },
+                    { tipo: 'html', titulo: 'Funciones de los pronombres', url: 'semanas/Semana 8/HTML/3. Funciones del pronombre.html', icono: '3️⃣' },
+                    { tipo: 'html', titulo: 'Resumen de la semana', url: 'semanas/Semana 8/HTML/resumen.html', icono: '4️⃣' },
+                    { tipo: 'html', titulo: 'Vocabulario semana 8', url: 'semanas/Semana 8/HTML/4. vocabulario8.html', icono: '📖' }
                 ],
                 juegos: [
-                    { titulo: 'Empareja las palabras', url: 'Semana 8/Juegos/3. Empareja las palabras.html', icono: '🔄', nota: 'Disponible solo en computadora - Arrastra la palabra griega a su traducción' },
-                    { titulo: 'Juego de palabras', url: 'Semana 8/Juegos/4.juego de palabras, solo en la computadora.html', icono: '🔠', nota: 'Disponible solo en computadora - Selecciona la respuesta correcta' },
-                    { titulo: 'Aprende los pronombres', url: 'Semana 8/Juegos/Pronombres.html', icono: '⭐', nota: 'Disponible solo en computadora - Practica el conocimiento' },
-                    { titulo: 'Ejercicio de traducción', url: 'Semana 8/Juegos/traducción .html', icono: '✍️', nota: 'Traduce el prólogo de Juan' },
-                    { titulo: 'Lectura de Juan', url: 'Semana 8/Juegos/lectura de juan.html', icono: '✍️', nota: 'Lee el NT Griego' }
+                    { titulo: 'Empareja las palabras', url: 'semanas/Semana 8/Juegos/3. Empareja las palabras.html', icono: '🔄', nota: 'Disponible solo en computadora - Arrastra la palabra griega a su traducción' },
+                    { titulo: 'Juego de palabras', url: 'semanas/Semana 8/Juegos/4.juego de palabras, solo en la computadora.html', icono: '🔠', nota: 'Disponible solo en computadora - Selecciona la respuesta correcta' },
+                    { titulo: 'Aprende los pronombres', url: 'semanas/Semana 8/Juegos/Pronombres.html', icono: '⭐', nota: 'Disponible solo en computadora - Practica el conocimiento' },
+                    { titulo: 'Ejercicio de traducción', url: 'semanas/Semana 8/Juegos/traducción .html', icono: '✍️', nota: 'Traduce el prólogo de Juan' },
+                   { titulo: 'Lectura de Juan 6', url: 'semanas/Semana 8/juan 6/JN6.html', icono: '🌍', nota: 'Practica traduciendo frases simples' }
                 ]
             },
             
@@ -443,6 +443,7 @@ class SemanaManager {
         }
         
         // Exámenes por defecto para las semanas 1-10
+        
         const examenes = {
             1: "https://docs.google.com/forms/d/e/1FAIpQLSdp4FVcShz_KqxaaoE3GzJEQNLl8c29SXWxEow5wXR5q3B8yQ/viewform",
             2: "https://forms.gle/yRPxnbKytVoJbKen6",
