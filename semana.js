@@ -137,22 +137,21 @@ class SemanaManager {
                 titulo: "Tercera Declinación",
                 tema: "Sustantivos de la tercera declinación",
                 recursos: [
-                    { tipo: 'pdf', titulo: 'PDF Contenido de la semana 6', url: 'contenido_privado.html', icono: '📄' },
+                    { tipo: 'pdf', titulo: 'PDF Contenido de la semana 6', url: 'https://drive.google.com/file/d/1o_adyh9XWYhzSgGN1NaRMx5hQtvi9vZy/view?usp=sharing', icono: '📄' },
                     { tipo: 'html', titulo: 'Introducción a la tercera declinación', url: 'semanas/semana 6/HTML/1. Introducción a la tercera declinación.html', icono: '1️⃣' },
                     { tipo: 'html', titulo: 'Paradigma de la tercera declinación', url: 'semanas/semana 6/HTML/2. paradigma de la tercera declinación.html', icono: '2️⃣' },
                     { tipo: 'html', titulo: 'Clasificaciones de los sustantivos de tercera declinación', url: 'semanas/semana 6/HTML/3. Clasificaciones en la tercera declinación.html', icono: '3️⃣' },
                     { tipo: 'html', titulo: 'Paradigma, Muy importante', url: 'semanas/semana 6/HTML/4. tabla maestra de la tercera declinación.html', icono: '4️⃣' },
                     { tipo: 'html', titulo: 'Otros asuntos', url: 'semanas/semana 6/HTML/5. otos temas.html', icono: '5️⃣' },
                     { tipo: 'html', titulo: 'Resumen de la semana 6', url: 'semanas/semana 6/HTML/6.resumen.html', icono: '📖' },
-                    { tipo: 'html', titulo: 'Vocabulario semana 6', url: 'semanas/semana 6/HTML/7. vocabulario6.html', icono: '📖' },
-                    { tipo: 'examen', titulo: 'Examen Semana 6', url: 'https://docs.google.com/forms/d/e/1FAIpQLSceeGgNjpdOpgnbwDJvQHvOuiq_bgEWh7YJ2L6ywuPStVC_9g/viewform?usp=sharing', icono: '📝' }
+                    { tipo: 'html', titulo: 'Vocabulario semana 6', url: 'semanas/semana 6/HTML/7. vocabulario6.html', icono: '📖' }
                 ],
                 juegos: [
                     { titulo: 'Empareja las palabras', url: 'semanas/semana 6/Juegos/3. Empareja las palabras.html', icono: '🔄', nota: 'Disponible solo en computadora - Arrastra la palabra griega a su traducción' },
                     { titulo: 'Juego de palabras', url: 'semanas/semana 6/Juegos/4.juego de palabras, solo en la computadora.html', icono: '🔠', nota: 'Disponible solo en computadora - Selecciona la respuesta correcta' },
                     { titulo: 'LLuvia de terminaciones', url: 'semanas/semana 6/Juegos/lluvia de terminaciones.html', icono: '⭐', nota: 'Disponible solo en computadora - Practica el conocimiento' },
                     { titulo: 'Ejercicio de traducción', url: 'semanas/semana 6/Juegos/traducción .html', icono: '✍️', nota: 'Traduce el prólogo de Juan' },
-                    { titulo: 'Lectura de Juan', url: 'semanas/semana 6/Juegos/lectura de juan.html', icono: '✍️', nota: 'Lee el NT Griego' }
+                     { titulo: 'Lectura de Juan 4', url: 'semanas/semana 6/juan 4/JN4.html', icono: '🌍', nota: 'Practica traduciendo frases simples' }
                 ]
             },
             
