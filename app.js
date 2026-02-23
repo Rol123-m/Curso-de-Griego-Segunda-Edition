@@ -2,8 +2,12 @@
 
 // ================================
 // CONFIGURACIÓN GLOBAL DEL CURSO
+// app.js - (al inicio del archivo)
+
 // ================================
-window.CONFIG = { // <--- CAMBIO CLAVE: Usar window.CONFIG
+// CONFIGURACIÓN GLOBAL DEL CURSO
+// ================================
+window.CONFIG = {
     PASSWORD_UNICA: "griego2026",
     CODIGO_ADMIN: "ADMIN2026",
     TOTAL_SEMANAS: 30,
@@ -34,14 +38,9 @@ window.CONFIG = { // <--- CAMBIO CLAVE: Usar window.CONFIG
     },
 
     // ================================================
-    // CONFIGURACIÓN DE EXÁMENES POR GRUPO (¡AQUÍ!)
-    // ================================================ 
-    
     // CONFIGURACIÓN DE EXÁMENES POR GRUPO
-    // ====================================
-    // IMPORTANTE: Reemplaza estos enlaces con los reales de tus exámenes
+    // ================================================
     EXAMENES_POR_GRUPO: {
-        // Grupo ALFA
         ALFA: {
             1: "https://forms.gle/1qbXukGfPFFJ8LAY8",
             2: "https://forms.gle/v1A2yX11SwFC6rX88",
@@ -57,7 +56,7 @@ window.CONFIG = { // <--- CAMBIO CLAVE: Usar window.CONFIG
             12: "https://forms.gle/EJEMPLO_ALFA_12",
             13: "https://forms.gle/EJEMPLO_ALFA_13",
             14: "https://forms.gle/EJEMPLO_ALFA_14",
-            15: "https://forms.gle/EJEMPLO_ALFA_15",
+            15: "https://forms.gle/EJEMPLO_ALFA_15", // Examen Intermedio
             16: "https://forms.gle/EJEMPLO_ALFA_16",
             17: "https://forms.gle/EJEMPLO_ALFA_17",
             18: "https://forms.gle/EJEMPLO_ALFA_18",
@@ -71,11 +70,10 @@ window.CONFIG = { // <--- CAMBIO CLAVE: Usar window.CONFIG
             26: "https://forms.gle/EJEMPLO_ALFA_26",
             27: "https://forms.gle/EJEMPLO_ALFA_27",
             28: "https://forms.gle/EJEMPLO_ALFA_28",
-            29: "https://forms.gle/EJEMPLO_ALFA_29",
+            29: "https://forms.gle/EJEMPLO_ALFA_29", // Examen Final
             30: "https://forms.gle/EJEMPLO_ALFA_30"
         },
         
-        // Grupo BETA
         BETA: {
             1: "https://forms.gle/ijdg5b22frXGrfKa9",
             2: "https://forms.gle/owx242yd5Qedi6gj7",
@@ -91,7 +89,7 @@ window.CONFIG = { // <--- CAMBIO CLAVE: Usar window.CONFIG
             12: "https://forms.gle/EJEMPLO_BETA_12",
             13: "https://forms.gle/EJEMPLO_BETA_13",
             14: "https://forms.gle/EJEMPLO_BETA_14",
-            15: "https://forms.gle/EJEMPLO_BETA_15",
+            15: "https://forms.gle/EJEMPLO_BETA_15", // Examen Intermedio
             16: "https://forms.gle/EJEMPLO_BETA_16",
             17: "https://forms.gle/EJEMPLO_BETA_17",
             18: "https://forms.gle/EJEMPLO_BETA_18",
@@ -105,11 +103,10 @@ window.CONFIG = { // <--- CAMBIO CLAVE: Usar window.CONFIG
             26: "https://forms.gle/EJEMPLO_BETA_26",
             27: "https://forms.gle/EJEMPLO_BETA_27",
             28: "https://forms.gle/EJEMPLO_BETA_28",
-            29: "https://forms.gle/EJEMPLO_BETA_29",
+            29: "https://forms.gle/EJEMPLO_BETA_29", // Examen Final
             30: "https://forms.gle/EJEMPLO_BETA_30"
         },
         
-        // Grupo GAMMA
         GAMMA: {
             1: "https://forms.gle/GZc8Yh3AN3aXR8DbA",
             2: "https://forms.gle/NPx8cvtMykYdXjYH7",
@@ -125,7 +122,7 @@ window.CONFIG = { // <--- CAMBIO CLAVE: Usar window.CONFIG
             12: "https://forms.gle/EJEMPLO_GAMMA_12",
             13: "https://forms.gle/EJEMPLO_GAMMA_13",
             14: "https://forms.gle/EJEMPLO_GAMMA_14",
-            15: "https://forms.gle/EJEMPLO_GAMMA_15",
+            15: "https://forms.gle/EJEMPLO_GAMMA_15", // Examen Intermedio
             16: "https://forms.gle/EJEMPLO_GAMMA_16",
             17: "https://forms.gle/EJEMPLO_GAMMA_17",
             18: "https://forms.gle/EJEMPLO_GAMMA_18",
@@ -139,11 +136,14 @@ window.CONFIG = { // <--- CAMBIO CLAVE: Usar window.CONFIG
             26: "https://forms.gle/EJEMPLO_GAMMA_26",
             27: "https://forms.gle/EJEMPLO_GAMMA_27",
             28: "https://forms.gle/EJEMPLO_GAMMA_28",
-            29: "https://forms.gle/EJEMPLO_GAMMA_29",
+            29: "https://forms.gle/EJEMPLO_GAMMA_29", // Examen Final
             30: "https://forms.gle/EJEMPLO_GAMMA_30"
         }
     }
 };
+
+// ... (resto del código de ESTUDIANTES_POR_GRUPO y PROFESORES permanece igual)
+// ... (desde "// ================================" hasta el final)
 
 // ... (resto de tu código de app.js continúa exactamente igual)
 // ... (todo el código existente después de CONFIG permanece igual)
