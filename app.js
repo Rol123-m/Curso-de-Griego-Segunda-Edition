@@ -235,7 +235,9 @@ const ESTUDIANTES_POR_GRUPO = {
         { id: 68, nombre: "Luis Ramón Verdecia Peramo", email: "verdeciaperamo@gmail.com", telefono: "58026276", nacionalidad: "Cuba" },
         { id: 69, nombre: "Juan Gabriel Villahermosa", email: "pastorgabrielv.na@gmail.com", telefono: "+584265589474", nacionalidad: "Venezuela" },
         { id: 70, nombre: "Lazara Salet Vera Gomez", email: "Veragomezlazarasslet@gmail.con", telefono: "50334200", nacionalidad: "Cuba" },
-         { id: 72, nombre: "Frank Rodríguez Díaz", email: "dyamila964@gmail.com", telefono: "52998335", nacionalidad: "Cuba" }
+         { id: 72, nombre: "Frank Rodríguez Díaz", email: "dyamila964@gmail.com", telefono: "52998335", nacionalidad: "Cuba" },
+          { id: 73, nombre: "José Daniel Arias Alvarez", email: "eliuarias@nauta.cu", telefono: "56535853", nacionalidad: "Cuba" }
+         
     ]
 };
 
