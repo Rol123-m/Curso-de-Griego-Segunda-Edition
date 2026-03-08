@@ -40,15 +40,14 @@
     <i class="fas fa-play-circle"></i> COMENZAR EXAMEN
 </button>
 
-<!-- SECCIÓN DEL EXAMEN - ESTRUCTURA CORREGIDA -->
+<!-- SECCIÓN DEL EXAMEN -->
 <div class="quiz hidden" id="quiz-section">
     <p>Traduce la siguiente palabra del griego al español:</p>
     <div id="quiz-question"></div>
     <input type="text" id="quiz-answer" placeholder="Escribe tu respuesta aquí">
     
-    <!-- CONTENEDOR DE BOTONES - ESTA ES LA PARTE CRÍTICA -->
-    <div class="quiz-buttons quiz-button-emergency">
-        <button onclick="checkQuizAnswer()">
+    <div class="quiz-buttons">
+        <button onclick="checkQuizAnswer()" id="check-quiz-btn">
             <i class="fas fa-check-circle"></i> COMPROBAR
         </button>
         <button onclick="nextQuizQuestion()" class="hidden" id="next-quiz-btn">
@@ -91,14 +90,17 @@
     let currentCardIndex = 0;
     let quizIndex = 0;
     let quizScore = 0;
+    let canAnswer = true;
 
     function normalizeText(text) {
+        if (!text) return '';
         return text
             .normalize('NFD')
             .replace(/[\u0300-\u036f]/g, '')
             .toLowerCase()
             .trim()
-            .replace(/\s+/g, ' ');
+            .replace(/\s+/g, ' ')
+            .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '');
     }
 
     function updateCard() {
@@ -106,6 +108,7 @@
         document.getElementById('spanish-word').textContent = vocabulary[currentCardIndex].spanish;
         document.getElementById('prev-btn').disabled = currentCardIndex === 0;
         document.getElementById('next-btn').disabled = currentCardIndex === vocabulary.length - 1;
+        
         if (currentCardIndex === vocabulary.length - 1) {
             document.getElementById('start-quiz-btn').classList.remove('hidden');
         } else {
@@ -135,83 +138,261 @@
         document.getElementById('flashcard-section').classList.add('hidden');
         document.getElementById('start-quiz-btn').classList.add('hidden');
         document.getElementById('quiz-section').classList.remove('hidden');
+        
         quizIndex = 0;
         quizScore = 0;
-        nextQuizQuestion();
+        canAnswer = true;
+        
+        loadQuizQuestion();
     }
 
-    function nextQuizQuestion() {
+    function loadQuizQuestion() {
         if (quizIndex < vocabulary.length) {
             document.getElementById('quiz-question').textContent = vocabulary[quizIndex].greek;
             document.getElementById('quiz-answer').value = '';
             document.getElementById('quiz-result').textContent = '';
             document.getElementById('quiz-result').className = 'result';
             document.getElementById('next-quiz-btn').classList.add('hidden');
+            document.getElementById('check-quiz-btn').disabled = false;
+            document.getElementById('quiz-answer').disabled = false;
+            canAnswer = true;
+            
+            setTimeout(() => {
+                document.getElementById('quiz-answer').focus();
+            }, 100);
         } else {
-            document.getElementById('quiz-section').classList.add('hidden');
-            alert(`🎉 ¡EXAMEN TERMINADO!\nPuntuación: ${quizScore} de ${vocabulary.length}\nPorcentaje: ${Math.round((quizScore/vocabulary.length)*100)}%`);
+            finishQuiz();
+        }
+    }
+
+    function nextQuizQuestion() {
+        quizIndex++;
+        loadQuizQuestion();
+    }
+
+    function finishQuiz() {
+        document.getElementById('quiz-section').classList.add('hidden');
+        
+        const percentage = Math.round((quizScore / vocabulary.length) * 100);
+        
+        let message = `🎉 ¡EXAMEN TERMINADO!\n\n`;
+        message += `Puntuación: ${quizScore} de ${vocabulary.length}\n`;
+        message += `Porcentaje: ${percentage}%\n\n`;
+        
+        if (percentage >= 90) message += "¡Excelente! 🌟";
+        else if (percentage >= 70) message += "¡Buen trabajo! 👍";
+        else if (percentage >= 50) message += "Puedes mejorar 💪";
+        else message += "Sigue practicando 📚";
+        
+        alert(message);
+        
+        document.getElementById('flashcard-section').classList.remove('hidden');
+        if (currentCardIndex === vocabulary.length - 1) {
+            document.getElementById('start-quiz-btn').classList.remove('hidden');
         }
     }
 
     function checkQuizAnswer() {
+        if (!canAnswer) return;
+        
         const userInput = document.getElementById('quiz-answer').value.trim();
+        const resultDiv = document.getElementById('quiz-result');
+        
         if (!userInput) {
-            document.getElementById('quiz-result').textContent = 'Por favor, escribe una respuesta';
-            document.getElementById('quiz-result').className = 'result incorrect';
+            resultDiv.textContent = '❌ Por favor, escribe una respuesta';
+            resultDiv.className = 'result incorrect';
             return;
         }
 
-        const userAnswers = userInput.split(',').map(answer => normalizeText(answer));
-        const correctAnswers = vocabulary[quizIndex].spanish.split(',').map(answer => normalizeText(answer));
-        const resultDiv = document.getElementById('quiz-result');
+        const normalizedUserInput = normalizeText(userInput);
+        
+        if (normalizedUserInput.length < 3) {
+            resultDiv.textContent = '❌ La respuesta es demasiado corta';
+            resultDiv.className = 'result incorrect';
+            return;
+        }
 
-        const isCorrect = userAnswers.some(userAnswer => 
-            correctAnswers.some(correctAnswer => 
-                userAnswer.includes(correctAnswer) || correctAnswer.includes(userAnswer)
-            )
-        );
+        const correctAnswers = vocabulary[quizIndex].spanish
+            .split(',')
+            .map(answer => normalizeText(answer))
+            .filter(answer => answer.length > 0);
+
+        let isCorrect = false;
+        
+        if (correctAnswers.includes(normalizedUserInput)) {
+            isCorrect = true;
+        } else {
+            isCorrect = correctAnswers.some(correctAnswer => {
+                const correctWords = correctAnswer.split(' ');
+                const userWords = normalizedUserInput.split(' ');
+                
+                if (userWords.length === 1 && correctWords.length > 1) {
+                    return correctWords.some(word => 
+                        word === userWords[0] || 
+                        (word.length > 4 && word.includes(userWords[0]) && userWords[0].length > 3)
+                    );
+                }
+                
+                return userWords.every(userWord => 
+                    correctWords.some(correctWord => 
+                        correctWord === userWord || 
+                        (correctWord.includes(userWord) && userWord.length > 3)
+                    )
+                );
+            });
+        }
 
         if (isCorrect) {
             resultDiv.textContent = '✅ ¡CORRECTO!';
             resultDiv.className = 'result correct';
             quizScore++;
         } else {
-            resultDiv.textContent = `❌ Incorrecto. La respuesta correcta es: ${vocabulary[quizIndex].spanish}`;
+            resultDiv.textContent = `❌ Incorrecto.\n\nRespuesta correcta: ${vocabulary[quizIndex].spanish}`;
             resultDiv.className = 'result incorrect';
         }
         
+        canAnswer = false;
+        document.getElementById('check-quiz-btn').disabled = true;
+        document.getElementById('quiz-answer').disabled = true;
         document.getElementById('next-quiz-btn').classList.remove('hidden');
-        quizIndex++;
     }
 
-    window.onload = updateCard;
-    
-    // GARANTIZAR QUE LOS BOTONES DEL EXAMEN SEAN VISIBLES
-    document.addEventListener('DOMContentLoaded', function() {
-        const emergencyStyle = document.createElement('style');
-        emergencyStyle.textContent = `
-            .quiz-buttons {
-                display: flex !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-                position: relative !important;
-                z-index: 1000 !important;
-            }
-            
-            .quiz-buttons button {
-                display: inline-flex !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-            }
-            
-            #quiz-section:not(.hidden) {
-                display: block !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-            }
-        `;
-        document.head.appendChild(emergencyStyle);
-    });
+    window.onload = function() {
+        updateCard();
+    };
 </script>
+
+<style>
+    /* Solo los estilos necesarios para el examen - los de las tarjetas se mantienen del archivo CSS original */
+    .hidden {
+        display: none !important;
+    }
+    
+    #quiz-section {
+        text-align: center;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    #quiz-question {
+        font-size: 48px;
+        font-weight: bold;
+        margin: 20px 0;
+        color: #333;
+        font-family: 'Roboto Slab', serif;
+    }
+    
+    .quiz-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin: 20px 0;
+    }
+    
+    .quiz-buttons button {
+        padding: 12px 30px;
+        font-size: 16px;
+        font-weight: 600;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    #check-quiz-btn {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+    }
+    
+    #check-quiz-btn:hover:not(:disabled) {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+    
+    #next-quiz-btn {
+        background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+        color: white;
+    }
+    
+    #next-quiz-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(246, 211, 101, 0.4);
+    }
+    
+    #quiz-answer {
+        width: 100%;
+        max-width: 400px;
+        padding: 15px 20px;
+        font-size: 18px;
+        border: 2px solid #e0e0e0;
+        border-radius: 10px;
+        margin: 15px auto;
+        display: block;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    #quiz-answer:focus {
+        outline: none;
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+    
+    #quiz-answer:disabled {
+        background-color: #f5f5f5;
+        opacity: 0.7;
+    }
+    
+    .result {
+        margin-top: 20px;
+        padding: 15px 20px;
+        border-radius: 10px;
+        font-size: 18px;
+        font-weight: 500;
+        text-align: center;
+        white-space: pre-line;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    .correct {
+        background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+        color: #2d3748;
+    }
+    
+    .incorrect {
+        background: linear-gradient(135deg, #fad0c4 0%, #ff9a9e 100%);
+        color: #2d3748;
+    }
+    
+    button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+    
+    #start-quiz-btn {
+        display: block;
+        margin: 30px auto;
+        padding: 15px 40px;
+        font-size: 20px;
+        font-weight: 600;
+        background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+        color: #2d3748;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    #start-quiz-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(132, 250, 176, 0.4);
+    }
+</style>
 </body>
 </html>
