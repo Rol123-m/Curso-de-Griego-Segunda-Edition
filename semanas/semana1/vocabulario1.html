@@ -206,11 +206,8 @@
 
         const normalizedUserInput = normalizeText(userInput);
         
-        if (normalizedUserInput.length < 3) {
-            resultDiv.textContent = '❌ La respuesta es demasiado corta';
-            resultDiv.className = 'result incorrect';
-            return;
-        }
+        // ELIMINADO: La validación de longitud mínima que causaba el error
+        // Ahora acepta respuestas de cualquier longitud, incluyendo "yo"
 
         const correctAnswers = vocabulary[quizIndex].spanish
             .split(',')
@@ -219,24 +216,28 @@
 
         let isCorrect = false;
         
+        // Primero verificamos coincidencia exacta (más eficiente)
         if (correctAnswers.includes(normalizedUserInput)) {
             isCorrect = true;
         } else {
+            // Si no hay coincidencia exacta, intentamos coincidencias parciales
             isCorrect = correctAnswers.some(correctAnswer => {
                 const correctWords = correctAnswer.split(' ');
                 const userWords = normalizedUserInput.split(' ');
                 
+                // Caso especial: respuesta de una palabra vs respuesta múltiple
                 if (userWords.length === 1 && correctWords.length > 1) {
                     return correctWords.some(word => 
                         word === userWords[0] || 
-                        (word.length > 4 && word.includes(userWords[0]) && userWords[0].length > 3)
+                        (word.length > 3 && word.includes(userWords[0]) && userWords[0].length > 2)
                     );
                 }
                 
+                // Caso general: comparación palabra por palabra
                 return userWords.every(userWord => 
                     correctWords.some(correctWord => 
                         correctWord === userWord || 
-                        (correctWord.includes(userWord) && userWord.length > 3)
+                        (correctWord.includes(userWord) && userWord.length > 2)
                     )
                 );
             });
