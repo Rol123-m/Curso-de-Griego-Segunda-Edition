@@ -1,8 +1,5 @@
-// app.js - (al inicio del archivo)
-
-// ================================
-// CONFIGURACIÓN GLOBAL DEL CURSO
-// app.js - (al inicio del archivo)
+// app.js - VERSIÓN CORREGIDA CON FECHA DE INICIO GLOBAL
+// Fecha de inicio del curso: Martes 3 de marzo de 2026
 
 // ================================
 // CONFIGURACIÓN GLOBAL DEL CURSO
@@ -12,6 +9,10 @@ window.CONFIG = {
     CODIGO_ADMIN: "ADMIN2026",
     TOTAL_SEMANAS: 30,
     DIAS_DESBLOQUEO: 7,
+    
+    // FECHA DE INICIO GLOBAL PARA TODOS LOS ESTUDIANTES
+    // Martes 3 de marzo de 2026 a las 00:00 horas
+    FECHA_INICIO_GLOBAL: "2026-03-02T00:00:00-05:00",
 
     // Configuración de grupos
     GRUPOS: {
@@ -56,7 +57,7 @@ window.CONFIG = {
             12: "https://forms.gle/EJEMPLO_ALFA_12",
             13: "https://forms.gle/EJEMPLO_ALFA_13",
             14: "https://forms.gle/EJEMPLO_ALFA_14",
-            15: "https://forms.gle/EJEMPLO_ALFA_15", // Examen Intermedio
+            15: "https://forms.gle/EJEMPLO_ALFA_15",
             16: "https://forms.gle/EJEMPLO_ALFA_16",
             17: "https://forms.gle/EJEMPLO_ALFA_17",
             18: "https://forms.gle/EJEMPLO_ALFA_18",
@@ -70,7 +71,7 @@ window.CONFIG = {
             26: "https://forms.gle/EJEMPLO_ALFA_26",
             27: "https://forms.gle/EJEMPLO_ALFA_27",
             28: "https://forms.gle/EJEMPLO_ALFA_28",
-            29: "https://forms.gle/EJEMPLO_ALFA_29", // Examen Final
+            29: "https://forms.gle/EJEMPLO_ALFA_29",
             30: "https://forms.gle/EJEMPLO_ALFA_30"
         },
         
@@ -89,7 +90,7 @@ window.CONFIG = {
             12: "https://forms.gle/EJEMPLO_BETA_12",
             13: "https://forms.gle/EJEMPLO_BETA_13",
             14: "https://forms.gle/EJEMPLO_BETA_14",
-            15: "https://forms.gle/EJEMPLO_BETA_15", // Examen Intermedio
+            15: "https://forms.gle/EJEMPLO_BETA_15",
             16: "https://forms.gle/EJEMPLO_BETA_16",
             17: "https://forms.gle/EJEMPLO_BETA_17",
             18: "https://forms.gle/EJEMPLO_BETA_18",
@@ -103,7 +104,7 @@ window.CONFIG = {
             26: "https://forms.gle/EJEMPLO_BETA_26",
             27: "https://forms.gle/EJEMPLO_BETA_27",
             28: "https://forms.gle/EJEMPLO_BETA_28",
-            29: "https://forms.gle/EJEMPLO_BETA_29", // Examen Final
+            29: "https://forms.gle/EJEMPLO_BETA_29",
             30: "https://forms.gle/EJEMPLO_BETA_30"
         },
         
@@ -122,7 +123,7 @@ window.CONFIG = {
             12: "https://forms.gle/EJEMPLO_GAMMA_12",
             13: "https://forms.gle/EJEMPLO_GAMMA_13",
             14: "https://forms.gle/EJEMPLO_GAMMA_14",
-            15: "https://forms.gle/EJEMPLO_GAMMA_15", // Examen Intermedio
+            15: "https://forms.gle/EJEMPLO_GAMMA_15",
             16: "https://forms.gle/EJEMPLO_GAMMA_16",
             17: "https://forms.gle/EJEMPLO_GAMMA_17",
             18: "https://forms.gle/EJEMPLO_GAMMA_18",
@@ -136,21 +137,11 @@ window.CONFIG = {
             26: "https://forms.gle/EJEMPLO_GAMMA_26",
             27: "https://forms.gle/EJEMPLO_GAMMA_27",
             28: "https://forms.gle/EJEMPLO_GAMMA_28",
-            29: "https://forms.gle/EJEMPLO_GAMMA_29", // Examen Final
+            29: "https://forms.gle/EJEMPLO_GAMMA_29",
             30: "https://forms.gle/EJEMPLO_GAMMA_30"
         }
     }
 };
-
-// ... (resto del código de ESTUDIANTES_POR_GRUPO y PROFESORES permanece igual)
-// ... (desde "// ================================" hasta el final)
-
-// ... (resto de tu código de app.js continúa exactamente igual)
-// ... (todo el código existente después de CONFIG permanece igual)
-// ... (desde "// ================================" hasta el final)
-
-// ... (resto del código de app.js continúa igual hasta el final)
-// ... (todo el código existente después de CONFIG permanece igual)
 
 // ================================
 // DATOS DE ESTUDIANTES POR GRUPO
@@ -207,8 +198,7 @@ const ESTUDIANTES_POR_GRUPO = {
         { id: 45, nombre: "Neftalis Sosa coello", email: "neftalisosa40@gmail.com", telefono: "59727809", nacionalidad: "Cuba" },
         { id: 46, nombre: "Emanuel Tito Guerrero", email: "titoemanuel03@gmail.com", telefono: "51464558", nacionalidad: "Cuba" },
         { id: 47, nombre: "Janet Vargas Cuevas", email: "janetvargascuevas155@gmail.com", telefono: "52998335", nacionalidad: "Cuba" },
-         { id: 71, nombre: "Yaquelín Ramírez", email: "ramirezcuadradoyaqulin@gmail.com", telefono: "56511185", nacionalidad: "Cuba" }
-
+        { id: 71, nombre: "Yaquelín Ramírez", email: "ramirezcuadradoyaqulin@gmail.com", telefono: "56511185", nacionalidad: "Cuba" }
     ],
     
     GAMMA: [
@@ -235,9 +225,8 @@ const ESTUDIANTES_POR_GRUPO = {
         { id: 68, nombre: "Luis Ramón Verdecia Peramo", email: "verdeciaperamo@gmail.com", telefono: "58026276", nacionalidad: "Cuba" },
         { id: 69, nombre: "Juan Gabriel Villahermosa", email: "pastorgabrielv.na@gmail.com", telefono: "+584265589474", nacionalidad: "Venezuela" },
         { id: 70, nombre: "Lazara Salet Vera Gomez", email: "Veragomezlazarasslet@gmail.con", telefono: "50334200", nacionalidad: "Cuba" },
-         { id: 72, nombre: "Frank Rodríguez Díaz", email: "dyamila964@gmail.com", telefono: "52998335", nacionalidad: "Cuba" },
-          { id: 73, nombre: "José Daniel Arias Alvarez", email: "eliuarias@nauta.cu", telefono: "56535853", nacionalidad: "Cuba" }
-         
+        { id: 72, nombre: "Frank Rodríguez Díaz", email: "dyamila964@gmail.com", telefono: "52998335", nacionalidad: "Cuba" },
+        { id: 73, nombre: "José Daniel Arias Alvarez", email: "eliuarias@nauta.cu", telefono: "56535853", nacionalidad: "Cuba" }
     ]
 };
 
@@ -271,7 +260,7 @@ class CursoGriegoApp {
     }
 
     // ================================
-    // AUTENTICACIÓN MEJORADA
+    // AUTENTICACIÓN
     // ================================
     verificarAutenticacion() {
         const usuario = localStorage.getItem('usuarioActual');
@@ -398,13 +387,9 @@ class CursoGriegoApp {
             return;
         }
         
-        // Mostrar contenedor de estudiantes
         estudiantesContainer.classList.remove('d-none');
-        
-        // Limpiar opciones anteriores
         estudianteSelect.innerHTML = '<option value="">-- Selecciona tu nombre --</option>';
         
-        // Cargar estudiantes del grupo seleccionado
         const estudiantes = ESTUDIANTES_POR_GRUPO[this.grupoSeleccionado];
         estudiantes.forEach(estudiante => {
             const option = document.createElement('option');
@@ -413,7 +398,6 @@ class CursoGriegoApp {
             estudianteSelect.appendChild(option);
         });
         
-        // Ocultar formulario de profesores
         profesoresContainer.classList.add('d-none');
     }
 
@@ -423,13 +407,9 @@ class CursoGriegoApp {
         const profesorSelect = document.getElementById('profesorSelect');
         const grupoSelect = document.getElementById('grupoSelect');
         
-        // Ocultar formulario de estudiantes
         estudiantesContainer.classList.add('d-none');
-        
-        // Limpiar opciones anteriores
         profesorSelect.innerHTML = '<option value="">-- Selecciona tu nombre --</option>';
         
-        // Cargar todos los profesores
         PROFESORES.forEach(profesor => {
             const option = document.createElement('option');
             option.value = profesor.id;
@@ -437,10 +417,7 @@ class CursoGriegoApp {
             profesorSelect.appendChild(option);
         });
         
-        // Mostrar formulario de profesores
         profesoresContainer.classList.remove('d-none');
-        
-        // Resetear selección de grupo
         grupoSelect.value = '';
     }
 
@@ -450,7 +427,6 @@ class CursoGriegoApp {
         const userId = document.getElementById('userId').value.trim();
         const password = document.getElementById('password').value;
         
-        // Validaciones
         if (!grupo) {
             this.mostrarError('Debes seleccionar un grupo');
             return;
@@ -471,15 +447,12 @@ class CursoGriegoApp {
             return;
         }
         
-        // Verificar que el ID del estudiante coincida con el seleccionado
         if (userId !== estudianteId.toString()) {
             this.mostrarError('El ID no coincide con el estudiante seleccionado');
             return;
         }
         
-        // Verificar credenciales
         if (password === CONFIG.PASSWORD_UNICA) {
-            // Buscar estudiante en el grupo seleccionado
             const estudiantes = ESTUDIANTES_POR_GRUPO[grupo];
             const estudiante = estudiantes.find(e => e.id === estudianteId);
             
@@ -488,7 +461,6 @@ class CursoGriegoApp {
                 return;
             }
             
-            // Crear objeto usuario
             const usuario = {
                 id: estudianteId.toString(),
                 nombre: estudiante.nombre,
@@ -502,7 +474,6 @@ class CursoGriegoApp {
                 progreso: this.obtenerProgresoUsuario(estudianteId.toString())
             };
             
-            // Guardar en localStorage
             localStorage.setItem('usuarioActual', JSON.stringify(usuario));
             localStorage.setItem('autenticado', 'true');
             
@@ -518,7 +489,6 @@ class CursoGriegoApp {
         const userId = document.getElementById('profesorId').value.trim();
         const password = document.getElementById('profesorPassword').value;
         
-        // Validaciones
         if (!profesorId) {
             this.mostrarError('Debes seleccionar tu nombre');
             return;
@@ -534,15 +504,12 @@ class CursoGriegoApp {
             return;
         }
         
-        // Verificar que el ID del profesor coincida
         if (userId !== profesorId.toString()) {
             this.mostrarError('El ID no coincide con el profesor seleccionado');
             return;
         }
         
-        // Verificar credenciales (contraseña especial para profesores)
         if (password === CONFIG.PASSWORD_UNICA || password === CONFIG.CODIGO_ADMIN) {
-            // Buscar profesor
             const profesor = PROFESORES.find(p => p.id === profesorId);
             
             if (!profesor) {
@@ -550,7 +517,6 @@ class CursoGriegoApp {
                 return;
             }
             
-            // Crear objeto usuario
             const usuario = {
                 id: profesorId.toString(),
                 nombre: profesor.nombre,
@@ -561,7 +527,6 @@ class CursoGriegoApp {
                 permisos: this.obtenerPermisosProfesor(profesor.rol)
             };
             
-            // Guardar en localStorage
             localStorage.setItem('usuarioActual', JSON.stringify(usuario));
             localStorage.setItem('autenticado', 'true');
             
@@ -593,11 +558,34 @@ class CursoGriegoApp {
     }
 
     // ================================
-    // DASHBOARD MEJORADO
+    // CÁLCULO DE SEMANA ACTUAL GLOBAL
+    // ================================
+    calcularSemanaActualGlobal() {
+        const fechaInicio = new Date(CONFIG.FECHA_INICIO_GLOBAL);
+        const hoy = new Date();
+        
+        // Si hoy es antes de la fecha de inicio, semana 0 (ninguna desbloqueada)
+        if (hoy < fechaInicio) {
+            return 0;
+        }
+        
+        // Calcular diferencia en días
+        const diffTiempo = hoy.getTime() - fechaInicio.getTime();
+        const diffDias = Math.floor(diffTiempo / (1000 * 60 * 60 * 24));
+        
+        // Calcular semana actual (1 = primera semana)
+        // +1 porque la semana 1 empieza el día 0
+        let semanaActual = Math.floor(diffDias / 7) + 1;
+        
+        // Limitar al total de semanas del curso
+        return Math.min(semanaActual, CONFIG.TOTAL_SEMANAS);
+    }
+
+    // ================================
+    // DASHBOARD
     // ================================
     mostrarDashboard() {
         const esProfesor = this.usuarioActual.esProfesor || false;
-        const progreso = this.usuarioActual.progreso || {};
         const semanasHTML = this.generarGridSemanas();
         
         const container = document.getElementById('app-container');
@@ -628,38 +616,26 @@ class CursoGriegoApp {
                     </div>
                 </div>
                 
-                ${!esProfesor ? this.generarResumenProgreso(progreso) : ''}
+                ${!esProfesor ? this.generarResumenProgreso() : ''}
                 
                 <!-- Semanas del Curso -->
                 <div class="weeks-section">
                     <div class="section-title">
                         <i class="fas fa-road"></i>
                         <h3>Plan de Estudios (${CONFIG.TOTAL_SEMANAS} semanas)</h3>
-                        ${esProfesor ? 
-                            `<span class="text-muted">Vista de ${this.usuarioActual.grupos ? this.usuarioActual.grupos.join(', ') : 'todos los grupos'}</span>` : 
-                            ''}
                     </div>
-                    <p class="text-muted mb-20">${esProfesor ? 'Gestiona las semanas del curso' : 'Haz clic en una semana para acceder a sus contenidos'}</p>
+                    <p class="text-muted mb-20">Haz clic en una semana para acceder a sus contenidos</p>
                     
                     <div class="weeks-grid" id="weeksGrid">
                         ${semanasHTML}
                     </div>
                 </div>
-                
-                ${esProfesor ? this.generarPanelAdministracion() : ''}
             </div>
-            
-            <!-- Modal Desbloquear (para estudiantes) -->
-            ${!esProfesor ? this.generarModalDesbloqueo() : ''}
-            
-            <!-- Modal Administración (para profesores) -->
-            ${esProfesor ? this.generarModalAdministracion() : ''}
         `;
-        
-        this.inicializarEventosDashboard();
     }
 
-    generarResumenProgreso(progreso) {
+    generarResumenProgreso() {
+        const progreso = this.usuarioActual.progreso || {};
         return `
             <div class="progress-summary">
                 <div class="section-title">
@@ -692,16 +668,6 @@ class CursoGriegoApp {
                         <p>Exámenes</p>
                     </div>
                 </div>
-                
-                <div class="mt-20 d-flex gap-10">
-                    <button onclick="app.descargarProgreso()" class="btn btn-secondary">
-                        <i class="fas fa-download"></i> Descargar Progreso
-                    </button>
-                    
-                    <button onclick="app.mostrarModalDesbloqueo()" class="btn btn-warning">
-                        <i class="fas fa-unlock"></i> Desbloquear Semana
-                    </button>
-                </div>
             </div>
         `;
     }
@@ -709,44 +675,40 @@ class CursoGriegoApp {
     generarGridSemanas() {
         let html = '';
         const esProfesor = this.usuarioActual.esProfesor || false;
+        const semanaActualGlobal = this.calcularSemanaActualGlobal();
         
         if (esProfesor) {
-            // Vista para profesores - mostrar todas las semanas desbloqueadas
+            // Vista para profesores - mostrar todas las semanas
             for (let semana = 1; semana <= CONFIG.TOTAL_SEMANAS; semana++) {
                 const tituloSemana = this.obtenerTituloSemana(semana);
                 
                 html += `
-                    <div class="week-card profesor-week" data-week="${semana}" onclick="app.abrirSemanaProfesor(${semana})">
+                    <div class="week-card profesor-week" data-week="${semana}" onclick="app.abrirSemana(${semana})">
                         <div class="week-number">${semana}</div>
                         <h4>${tituloSemana.titulo}</h4>
                         <p class="text-muted">${tituloSemana.tema}</p>
-                        <div class="mt-10">
-                            <button onclick="event.stopPropagation(); app.gestionarSemana(${semana})" class="btn btn-sm btn-info">
-                                <i class="fas fa-cog"></i> Gestionar
-                            </button>
-                        </div>
+                        <small>Semana actual global: ${semanaActualGlobal}</small>
                     </div>
                 `;
             }
         } else {
-            // Vista para estudiantes - lógica de desbloqueo por tiempo
+            // Vista para estudiantes - lógica de desbloqueo por fecha global
             const semanasDesbloqueadas = JSON.parse(localStorage.getItem(`semanasDesbloqueadas_${this.usuarioActual.id}`) || '[]');
             const semanasCompletadas = JSON.parse(localStorage.getItem(`semanasCompletadas_${this.usuarioActual.id}`) || '[]');
             
-            // Determinar semana actual basada en fecha de inicio
-            const fechaInicio = new Date(localStorage.getItem('fechaInicioCurso') || new Date().toISOString());
-            const semanaActual = Math.floor((Date.now() - fechaInicio.getTime()) / (CONFIG.DIAS_DESBLOQUEO * 24 * 60 * 60 * 1000)) + 1;
-            
             for (let semana = 1; semana <= CONFIG.TOTAL_SEMANAS; semana++) {
-                const estaDesbloqueada = semanasDesbloqueadas.includes(semana) || semana <= semanaActual;
+                // Una semana está desbloqueada si:
+                // 1. Es menor o igual a la semana actual global, O
+                // 2. Fue desbloqueada manualmente con código
+                const estaDesbloqueada = semanasDesbloqueadas.includes(semana) || semana <= semanaActualGlobal;
                 const estaCompletada = semanasCompletadas.includes(semana);
-                const esActual = semana === semanaActual && !estaCompletada;
+                const esActual = semana === semanaActualGlobal && !estaCompletada;
                 
                 let badge = '';
                 if (esActual) {
-                    badge = '<span class="week-badge">Actual</span>';
+                    badge = '<span class="week-badge" style="background: var(--warning); color: white;">Semana Actual</span>';
                 } else if (estaCompletada) {
-                    badge = '<span class="week-badge" style="background:var(--success);color:white;"><i class="fas fa-check"></i></span>';
+                    badge = '<span class="week-badge" style="background: var(--success); color: white;"><i class="fas fa-check"></i> Completada</span>';
                 }
                 
                 const tituloSemana = this.obtenerTituloSemana(semana);
@@ -760,7 +722,7 @@ class CursoGriegoApp {
                         <h4>${tituloSemana.titulo}</h4>
                         <p class="text-muted">${tituloSemana.tema}</p>
                         ${!estaDesbloqueada ? 
-                            `<p><small><i class="fas fa-lock"></i> Disponible en ${semana - semanaActual} semanas</small></p>` : ''}
+                            `<p><small><i class="fas fa-lock"></i> Disponible a partir del ${this.obtenerFechaDesbloqueo(semana)}</small></p>` : ''}
                     </div>
                 `;
             }
@@ -806,27 +768,19 @@ class CursoGriegoApp {
         return semanas[numero] || { titulo: `Semana ${numero}`, tema: "Contenido del curso" };
     }
 
-    // ================================
-    // GESTIÓN DE SEMANAS
-    // ================================
+    obtenerFechaDesbloqueo(semana) {
+        const fechaInicio = new Date(CONFIG.FECHA_INICIO_GLOBAL);
+        const fechaDesbloqueo = new Date(fechaInicio.getTime() + ((semana - 1) * 7 * 24 * 60 * 60 * 1000));
+        return fechaDesbloqueo.toLocaleDateString('es-ES', { day: 'numeric', month: 'long' });
+    }
+
     abrirSemana(numero) {
         localStorage.setItem('semanaActual', numero);
         window.location.href = `semana.html?semana=${numero}`;
     }
 
-    abrirSemanaProfesor(numero) {
-        localStorage.setItem('semanaActual', numero);
-        // Para profesores podría abrir una vista de edición
-        window.location.href = `semana.html?semana=${numero}&mode=edit`;
-    }
-
-    gestionarSemana(numero) {
-        // Lógica para gestionar semana (para profesores)
-        alert(`Gestión de semana ${numero}\nAquí puedes editar contenido, ver estadísticas, etc.`);
-    }
-
     // ================================
-    // PROGRESO Y DESBLOQUEO
+    // PROGRESO
     // ================================
     obtenerProgresoUsuario(userId) {
         return JSON.parse(localStorage.getItem(`progreso_${userId}`)) || {
@@ -838,302 +792,8 @@ class CursoGriegoApp {
         };
     }
 
-    guardarProgreso() {
-        if (this.usuarioActual && !this.usuarioActual.esProfesor) {
-            localStorage.setItem(`progreso_${this.usuarioActual.id}`, JSON.stringify(this.usuarioActual.progreso));
-        }
-    }
-
     // ================================
-    // MODALES
-    // ================================
-    generarModalDesbloqueo() {
-        return `
-            <div class="modal" id="unlockModal">
-                <div class="modal-content">
-                    <span class="close-modal" onclick="app.cerrarModalDesbloqueo()">&times;</span>
-                    <h3><i class="fas fa-unlock-alt"></i> Desbloquear Contenido</h3>
-                    
-                    <div class="form-group mt-20">
-                        <label for="unlockCode">Código de Desbloqueo:</label>
-                        <input type="text" id="unlockCode" class="form-control" 
-                               placeholder="Código especial proporcionado por el profesor">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="weekToUnlock">Semana a desbloquear:</label>
-                        <select id="weekToUnlock" class="form-control">
-                            ${Array.from({length: CONFIG.TOTAL_SEMANAS}, (_, i) => 
-                                `<option value="${i + 1}">Semana ${i + 1}</option>`
-                            ).join('')}
-                        </select>
-                    </div>
-                    
-                    <button onclick="app.desbloquearSemana()" class="btn btn-success btn-block mt-20">
-                        <i class="fas fa-check"></i> Desbloquear
-                    </button>
-                    
-                    <div id="unlockError" class="alert alert-danger mt-20 d-none">
-                        <i class="fas fa-exclamation-circle"></i>
-                        <span id="unlockErrorText"></span>
-                    </div>
-                </div>
-            </div>
-        `;
-    }
-
-    generarModalAdministracion() {
-        return `
-            <div class="modal" id="adminModal">
-                <div class="modal-content">
-                    <span class="close-modal" onclick="app.cerrarModalAdmin()">&times;</span>
-                    <h3><i class="fas fa-cogs"></i> Panel de Administración</h3>
-                    
-                    <div class="admin-controls">
-                        <div class="control-group">
-                            <h4><i class="fas fa-calendar-alt"></i> Configurar Fecha de Inicio</h4>
-                            <input type="date" id="fechaInicio" class="form-control mt-10" 
-                                   value="${new Date().toISOString().split('T')[0]}">
-                            <button onclick="app.configurarFechaInicio()" class="btn btn-secondary mt-10">
-                                <i class="fas fa-save"></i> Establecer Fecha
-                            </button>
-                        </div>
-                        
-                        <div class="control-group">
-                            <h4><i class="fas fa-key"></i> Generar Códigos de Acceso</h4>
-                            <input type="number" id="cantidadCodigos" class="form-control mt-10" 
-                                   placeholder="Número de códigos" min="1" max="100" value="10">
-                            <button onclick="app.generarCodigos()" class="btn btn-success mt-10">
-                                <i class="fas fa-key"></i> Generar Códigos
-                            </button>
-                            <div id="codigosGenerados" class="mt-10"></div>
-                        </div>
-                        
-                        <div class="control-group">
-                            <h4><i class="fas fa-chart-bar"></i> Ver Estadísticas</h4>
-                            <button onclick="app.verEstadisticas()" class="btn btn-info mt-10">
-                                <i class="fas fa-chart-pie"></i> Ver Estadísticas del Curso
-                            </button>
-                        </div>
-                        
-                        <div class="control-group">
-                            <h4><i class="fas fa-users"></i> Gestión de Grupos</h4>
-                            <select id="grupoGestion" class="form-control mt-10">
-                                <option value="ALFA">${CONFIG.GRUPOS.ALFA.nombre}</option>
-                                <option value="BETA">${CONFIG.GRUPOS.BETA.nombre}</option>
-                                <option value="GAMMA">${CONFIG.GRUPOS.GAMMA.nombre}</option>
-                            </select>
-                            <button onclick="app.gestionarGrupo()" class="btn btn-primary mt-10">
-                                <i class="fas fa-eye"></i> Ver Estudiantes del Grupo
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
-    }
-
-    generarPanelAdministracion() {
-        return `
-            <div class="admin-panel">
-                <div class="section-title">
-                    <i class="fas fa-cogs"></i>
-                    <h3>Panel de Administración</h3>
-                </div>
-                
-                <div class="admin-controls">
-                    <div class="control-group">
-                        <h4><i class="fas fa-tools"></i> Herramientas de Gestión</h4>
-                        <button onclick="app.mostrarModalAdmin()" class="btn btn-info mt-10">
-                            <i class="fas fa-cogs"></i> Abrir Panel Completo
-                        </button>
-                        <button onclick="app.verEstadisticasRapido()" class="btn btn-success mt-10">
-                            <i class="fas fa-chart-bar"></i> Estadísticas Rápidas
-                        </button>
-                    </div>
-                    
-                    <div class="control-group">
-                        <h4><i class="fas fa-unlock"></i> Desbloquear Contenido</h4>
-                        <p>Desbloquear semanas para estudiantes específicos</p>
-                        <button onclick="app.desbloquearParaEstudiante()" class="btn btn-warning mt-10">
-                            <i class="fas fa-user-unlock"></i> Desbloquear para Estudiante
-                        </button>
-                    </div>
-                    
-                    <div class="control-group">
-                        <h4><i class="fas fa-file-export"></i> Exportar Datos</h4>
-                        <button onclick="app.exportarDatosGrupo()" class="btn btn-secondary mt-10">
-                            <i class="fas fa-file-excel"></i> Exportar Progreso por Grupo
-                        </button>
-                    </div>
-                </div>
-            </div>
-        `;
-    }
-
-    mostrarModalDesbloqueo() {
-        document.getElementById('unlockModal').classList.add('active');
-    }
-
-    cerrarModalDesbloqueo() {
-        document.getElementById('unlockModal').classList.remove('active');
-    }
-
-    mostrarModalAdmin() {
-        document.getElementById('adminModal').classList.add('active');
-    }
-
-    cerrarModalAdmin() {
-        document.getElementById('adminModal').classList.remove('active');
-    }
-
-    desbloquearSemana() {
-        const codigo = document.getElementById('unlockCode').value.trim();
-        const semana = parseInt(document.getElementById('weekToUnlock').value);
-        
-        // Códigos especiales
-        if (codigo === 'DESBLOQUEAR_TODO') {
-            this.desbloquearTodasSemanas();
-            this.mostrarExito('¡Todas las semanas han sido desbloqueadas!');
-        } 
-        else if (codigo.startsWith('DESBLOQUEAR_')) {
-            const semanaCodigo = parseInt(codigo.replace('DESBLOQUEAR_', ''));
-            if (semanaCodigo >= 1 && semanaCodigo <= CONFIG.TOTAL_SEMANAS) {
-                this.agregarSemanaDesbloqueada(semanaCodigo);
-                this.mostrarExito(`¡Semana ${semanaCodigo} desbloqueada!`);
-            } else {
-                this.mostrarErrorDesbloqueo('Código inválido');
-            }
-        }
-        else if (codigo === this.generarCodigoDesbloqueo(semana)) {
-            this.agregarSemanaDesbloqueada(semana);
-            this.mostrarExito(`¡Semana ${semana} desbloqueada!`);
-        }
-        else {
-            this.mostrarErrorDesbloqueo('Código de desbloqueo inválido');
-        }
-    }
-
-    agregarSemanaDesbloqueada(semana) {
-        const semanasDesbloqueadas = JSON.parse(localStorage.getItem(`semanasDesbloqueadas_${this.usuarioActual.id}`) || '[]');
-        if (!semanasDesbloqueadas.includes(semana)) {
-            semanasDesbloqueadas.push(semana);
-            localStorage.setItem(`semanasDesbloqueadas_${this.usuarioActual.id}`, JSON.stringify(semanasDesbloqueadas));
-            this.mostrarDashboard(); // Refrescar
-        }
-    }
-
-    desbloquearTodasSemanas() {
-        const todasSemanas = Array.from({length: CONFIG.TOTAL_SEMANAS}, (_, i) => i + 1);
-        localStorage.setItem(`semanasDesbloqueadas_${this.usuarioActual.id}`, JSON.stringify(todasSemanas));
-    }
-
-    generarCodigoDesbloqueo(semana) {
-        return `SEMANA_${semana}_${this.usuarioActual.id}`;
-    }
-
-    // ================================
-    // ADMINISTRACIÓN
-    // ================================
-    configurarFechaInicio() {
-        const fecha = document.getElementById('fechaInicio').value;
-        localStorage.setItem('fechaInicioCurso', new Date(fecha).toISOString());
-        alert('Fecha de inicio actualizada correctamente');
-        this.mostrarDashboard();
-    }
-
-    generarCodigos() {
-        const cantidad = parseInt(document.getElementById('cantidadCodigos').value);
-        const codigos = [];
-        const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-        
-        for (let i = 0; i < cantidad; i++) {
-            let codigo = 'GRIEGO_';
-            for (let j = 0; j < 8; j++) {
-                codigo += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
-            }
-            codigos.push(codigo);
-        }
-        
-        const contenedor = document.getElementById('codigosGenerados');
-        contenedor.innerHTML = `
-            <h5>Códigos generados (${cantidad}):</h5>
-            <div style="background: #f8f9fa; padding: 10px; border-radius: 5px; max-height: 200px; overflow-y: auto; font-family: monospace;">
-                ${codigos.map(c => `<div>${c}</div>`).join('')}
-            </div>
-            <button onclick="this.parentElement.innerHTML=''" class="btn btn-sm btn-danger mt-10">
-                <i class="fas fa-times"></i> Ocultar
-            </button>
-        `;
-        
-        const codigosValidos = JSON.parse(localStorage.getItem('codigosValidos') || '[]');
-        codigosValidos.push(...codigos);
-        localStorage.setItem('codigosValidos', JSON.stringify(codigosValidos));
-    }
-
-    verEstadisticas() {
-        // Lógica para mostrar estadísticas detalladas
-        alert('Estadísticas del curso:\n\nAquí se mostrarían gráficos y datos del progreso de todos los estudiantes.');
-    }
-
-    verEstadisticasRapido() {
-        // Estadísticas rápidas para profesores
-        const totalEstudiantes = ESTUDIANTES_POR_GRUPO.ALFA.length + 
-                                ESTUDIANTES_POR_GRUPO.BETA.length + 
-                                ESTUDIANTES_POR_GRUPO.GAMMA.length;
-        
-        alert(`Estadísticas Rápidas:\n\nTotal Estudiantes: ${totalEstudiantes}\nGrupo Alfa: ${ESTUDIANTES_POR_GRUPO.ALFA.length} estudiantes\nGrupo Beta: ${ESTUDIANTES_POR_GRUPO.BETA.length} estudiantes\nGrupo Gamma: ${ESTUDIANTES_POR_GRUPO.GAMMA.length} estudiantes`);
-    }
-
-    gestionarGrupo() {
-        const grupo = document.getElementById('grupoGestion').value;
-        const estudiantes = ESTUDIANTES_POR_GRUPO[grupo];
-        
-        let listaHTML = `<h4>Estudiantes del ${CONFIG.GRUPOS[grupo].nombre}</h4><ul style="max-height: 300px; overflow-y: auto;">`;
-        estudiantes.forEach(est => {
-            listaHTML += `<li><strong>ID ${est.id}:</strong> ${est.nombre} - ${est.email}</li>`;
-        });
-        listaHTML += '</ul>';
-        
-        alert(listaHTML);
-    }
-
-    desbloquearParaEstudiante() {
-        // Lógica para desbloquear contenido para un estudiante específico
-        alert('Función para desbloquear semanas para estudiantes específicos.\nSelecciona estudiante y semana a desbloquear.');
-    }
-
-    exportarDatosGrupo() {
-        alert('Exportando datos del grupo...\nSe generará un archivo Excel/CSV con el progreso de los estudiantes.');
-    }
-
-    descargarProgreso() {
-        if (!this.usuarioActual || this.usuarioActual.esProfesor) return;
-        
-        const progreso = {
-            usuario: this.usuarioActual.nombre,
-            id: this.usuarioActual.id,
-            grupo: this.usuarioActual.grupoNombre,
-            fechaRegistro: this.usuarioActual.fechaRegistro,
-            progreso: this.usuarioActual.progreso,
-            semanasCompletadas: JSON.parse(localStorage.getItem(`semanasCompletadas_${this.usuarioActual.id}`) || '[]'),
-            ultimaActualizacion: new Date().toISOString()
-        };
-        
-        const blob = new Blob([JSON.stringify(progreso, null, 2)], {type: 'application/json'});
-        const url = URL.createObjectURL(blob);
-        
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `progreso_${this.usuarioActual.nombre}_${new Date().toISOString().split('T')[0]}.json`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-    }
-
-    // ================================
-    // MENSAJES DE ERROR Y ÉXITO
+    // MENSAJES DE ERROR
     // ================================
     mostrarError(mensaje) {
         const error = document.getElementById('loginError');
@@ -1146,26 +806,10 @@ class CursoGriegoApp {
         }
     }
 
-    mostrarErrorDesbloqueo(mensaje) {
-        const error = document.getElementById('unlockError');
-        if (error) {
-            document.getElementById('unlockErrorText').textContent = mensaje;
-            error.classList.remove('d-none');
-            setTimeout(() => error.classList.add('d-none'), 5000);
-        }
-    }
-
-    mostrarExito(mensaje) {
-        this.cerrarModalDesbloqueo();
-        alert(mensaje);
-        this.mostrarDashboard();
-    }
-
     // ================================
     // EVENTOS
     // ================================
     inicializarEventos() {
-        // Enter para login
         document.addEventListener('keyup', (e) => {
             if (e.key === 'Enter') {
                 if (document.getElementById('password')) {
@@ -1175,17 +819,6 @@ class CursoGriegoApp {
                 }
             }
         });
-        
-        // Cerrar modal al hacer clic fuera
-        document.addEventListener('click', (e) => {
-            if (e.target.classList.contains('modal')) {
-                e.target.classList.remove('active');
-            }
-        });
-    }
-
-    inicializarEventosDashboard() {
-        // Los eventos se manejan con onclick en los elementos
     }
 }
 
@@ -1196,7 +829,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.app = new CursoGriegoApp();
 });
 
-// Añadir estilos CSS adicionales para diferenciar profesores/estudiantes
+// Añadir estilos CSS adicionales
 const style = document.createElement('style');
 style.textContent = `
     .avatar-profesor {
@@ -1226,6 +859,16 @@ style.textContent = `
     .btn-outline:hover {
         background: var(--primary) !important;
         color: white !important;
+    }
+    
+    .week-badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 0.7rem;
+        padding: 3px 8px;
+        border-radius: 20px;
+        font-weight: 500;
     }
 `;
 document.head.appendChild(style);
