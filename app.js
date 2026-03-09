@@ -1,4 +1,4 @@
-// app.js - VERSIÓN CORREGIDA CON FECHA DE INICIO GLOBAL
+// app.js - VERSIÓN COMPLETA CON FECHA GLOBAL Y DESBLOQUEO POR CÓDIGO
 // Fecha de inicio del curso: Martes 3 de marzo de 2026
 
 // ================================
@@ -12,7 +12,7 @@ window.CONFIG = {
     
     // FECHA DE INICIO GLOBAL PARA TODOS LOS ESTUDIANTES
     // Martes 3 de marzo de 2026 a las 00:00 horas
-    FECHA_INICIO_GLOBAL: "2026-03-02T00:00:00-05:00",
+    FECHA_INICIO_GLOBAL: "2026-03-03T00:00:00-05:00",
 
     // Configuración de grupos
     GRUPOS: {
@@ -574,7 +574,6 @@ class CursoGriegoApp {
         const diffDias = Math.floor(diffTiempo / (1000 * 60 * 60 * 24));
         
         // Calcular semana actual (1 = primera semana)
-        // +1 porque la semana 1 empieza el día 0
         let semanaActual = Math.floor(diffDias / 7) + 1;
         
         // Limitar al total de semanas del curso
@@ -586,6 +585,7 @@ class CursoGriegoApp {
     // ================================
     mostrarDashboard() {
         const esProfesor = this.usuarioActual.esProfesor || false;
+        const progreso = this.usuarioActual.progreso || {};
         const semanasHTML = this.generarGridSemanas();
         
         const container = document.getElementById('app-container');
@@ -616,7 +616,7 @@ class CursoGriegoApp {
                     </div>
                 </div>
                 
-                ${!esProfesor ? this.generarResumenProgreso() : ''}
+                ${!esProfesor ? this.generarResumenProgreso(progreso) : ''}
                 
                 <!-- Semanas del Curso -->
                 <div class="weeks-section">
@@ -630,12 +630,47 @@ class CursoGriegoApp {
                         ${semanasHTML}
                     </div>
                 </div>
+                
+                ${!esProfesor ? this.generarSeccionDesbloqueo() : ''}
+            </div>
+            
+            <!-- Modal Desbloqueo -->
+            <div class="modal" id="unlockModal">
+                <div class="modal-content">
+                    <span class="close-modal" onclick="app.cerrarModalDesbloqueo()">&times;</span>
+                    <h3><i class="fas fa-unlock-alt"></i> Desbloquear Contenido</h3>
+                    
+                    <div class="form-group mt-20">
+                        <label for="unlockCode">Código de Desbloqueo:</label>
+                        <input type="text" id="unlockCode" class="form-control" 
+                               placeholder="Código especial proporcionado por el profesor">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="weekToUnlock">Semana a desbloquear:</label>
+                        <select id="weekToUnlock" class="form-control">
+                            ${Array.from({length: CONFIG.TOTAL_SEMANAS}, (_, i) => 
+                                `<option value="${i + 1}">Semana ${i + 1}</option>`
+                            ).join('')}
+                        </select>
+                    </div>
+                    
+                    <button onclick="app.desbloquearSemana()" class="btn btn-success btn-block mt-20">
+                        <i class="fas fa-check"></i> Desbloquear
+                    </button>
+                    
+                    <div id="unlockError" class="alert alert-danger mt-20 d-none">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span id="unlockErrorText"></span>
+                    </div>
+                </div>
             </div>
         `;
+        
+        this.inicializarEventosDashboard();
     }
 
-    generarResumenProgreso() {
-        const progreso = this.usuarioActual.progreso || {};
+    generarResumenProgreso(progreso) {
         return `
             <div class="progress-summary">
                 <div class="section-title">
@@ -672,6 +707,17 @@ class CursoGriegoApp {
         `;
     }
 
+    generarSeccionDesbloqueo() {
+        return `
+            <div class="mt-20 text-center">
+                <button onclick="app.mostrarModalDesbloqueo()" class="btn btn-warning">
+                    <i class="fas fa-unlock"></i> Desbloquear Semana con Código
+                </button>
+                <p class="text-muted mt-10"><small>¿Necesitas acceso anticipado? Solicita un código a tu profesor.</small></p>
+            </div>
+        `;
+    }
+
     generarGridSemanas() {
         let html = '';
         const esProfesor = this.usuarioActual.esProfesor || false;
@@ -687,12 +733,11 @@ class CursoGriegoApp {
                         <div class="week-number">${semana}</div>
                         <h4>${tituloSemana.titulo}</h4>
                         <p class="text-muted">${tituloSemana.tema}</p>
-                        <small>Semana actual global: ${semanaActualGlobal}</small>
                     </div>
                 `;
             }
         } else {
-            // Vista para estudiantes - lógica de desbloqueo por fecha global
+            // Vista para estudiantes - lógica de desbloqueo por fecha global + códigos
             const semanasDesbloqueadas = JSON.parse(localStorage.getItem(`semanasDesbloqueadas_${this.usuarioActual.id}`) || '[]');
             const semanasCompletadas = JSON.parse(localStorage.getItem(`semanasCompletadas_${this.usuarioActual.id}`) || '[]');
             
@@ -706,9 +751,11 @@ class CursoGriegoApp {
                 
                 let badge = '';
                 if (esActual) {
-                    badge = '<span class="week-badge" style="background: var(--warning); color: white;">Semana Actual</span>';
+                    badge = '<span class="week-badge" style="background: var(--warning);">Semana Actual</span>';
                 } else if (estaCompletada) {
-                    badge = '<span class="week-badge" style="background: var(--success); color: white;"><i class="fas fa-check"></i> Completada</span>';
+                    badge = '<span class="week-badge" style="background: var(--success);"><i class="fas fa-check"></i> Completada</span>';
+                } else if (semanasDesbloqueadas.includes(semana) && semana > semanaActualGlobal) {
+                    badge = '<span class="week-badge" style="background: var(--info);"><i class="fas fa-unlock"></i> Desbloqueada</span>';
                 }
                 
                 const tituloSemana = this.obtenerTituloSemana(semana);
@@ -722,7 +769,7 @@ class CursoGriegoApp {
                         <h4>${tituloSemana.titulo}</h4>
                         <p class="text-muted">${tituloSemana.tema}</p>
                         ${!estaDesbloqueada ? 
-                            `<p><small><i class="fas fa-lock"></i> Disponible a partir del ${this.obtenerFechaDesbloqueo(semana)}</small></p>` : ''}
+                            `<p><small><i class="fas fa-lock"></i> Disponible ${this.obtenerFechaDesbloqueo(semana)}</small></p>` : ''}
                     </div>
                 `;
             }
@@ -780,6 +827,61 @@ class CursoGriegoApp {
     }
 
     // ================================
+    // DESBLOQUEO CON CÓDIGO
+    // ================================
+    mostrarModalDesbloqueo() {
+        document.getElementById('unlockModal').classList.add('active');
+    }
+
+    cerrarModalDesbloqueo() {
+        document.getElementById('unlockModal').classList.remove('active');
+    }
+
+    desbloquearSemana() {
+        const codigo = document.getElementById('unlockCode').value.trim();
+        const semana = parseInt(document.getElementById('weekToUnlock').value);
+        
+        // Código para desbloquear todas las semanas
+        if (codigo === 'DESBLOQUEAR_TODO') {
+            this.desbloquearTodasSemanas();
+            this.mostrarExito('¡Todas las semanas han sido desbloqueadas!');
+        } 
+        // Código para desbloquear una semana específica
+        else if (codigo === `SEMANA_${semana}`) {
+            this.agregarSemanaDesbloqueada(semana);
+            this.mostrarExito(`¡Semana ${semana} desbloqueada!`);
+        }
+        // Código de administrador
+        else if (codigo === CONFIG.CODIGO_ADMIN) {
+            this.desbloquearTodasSemanas();
+            this.mostrarExito('¡Todas las semanas desbloqueadas con código de administrador!');
+        }
+        else {
+            this.mostrarErrorDesbloqueo('Código de desbloqueo inválido');
+        }
+    }
+
+    agregarSemanaDesbloqueada(semana) {
+        const semanasDesbloqueadas = JSON.parse(localStorage.getItem(`semanasDesbloqueadas_${this.usuarioActual.id}`) || '[]');
+        if (!semanasDesbloqueadas.includes(semana)) {
+            semanasDesbloqueadas.push(semana);
+            localStorage.setItem(`semanasDesbloqueadas_${this.usuarioActual.id}`, JSON.stringify(semanasDesbloqueadas));
+            this.mostrarDashboard(); // Refrescar
+        }
+    }
+
+    desbloquearTodasSemanas() {
+        const todasSemanas = Array.from({length: CONFIG.TOTAL_SEMANAS}, (_, i) => i + 1);
+        localStorage.setItem(`semanasDesbloqueadas_${this.usuarioActual.id}`, JSON.stringify(todasSemanas));
+        this.mostrarDashboard(); // Refrescar
+    }
+
+    mostrarExito(mensaje) {
+        this.cerrarModalDesbloqueo();
+        alert(mensaje);
+    }
+
+    // ================================
     // PROGRESO
     // ================================
     obtenerProgresoUsuario(userId) {
@@ -806,6 +908,15 @@ class CursoGriegoApp {
         }
     }
 
+    mostrarErrorDesbloqueo(mensaje) {
+        const error = document.getElementById('unlockError');
+        if (error) {
+            document.getElementById('unlockErrorText').textContent = mensaje;
+            error.classList.remove('d-none');
+            setTimeout(() => error.classList.add('d-none'), 5000);
+        }
+    }
+
     // ================================
     // EVENTOS
     // ================================
@@ -819,6 +930,17 @@ class CursoGriegoApp {
                 }
             }
         });
+        
+        // Cerrar modal al hacer clic fuera
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal')) {
+                e.target.classList.remove('active');
+            }
+        });
+    }
+
+    inicializarEventosDashboard() {
+        // Los eventos se manejan con onclick
     }
 }
 
@@ -869,6 +991,47 @@ style.textContent = `
         padding: 3px 8px;
         border-radius: 20px;
         font-weight: 500;
+        background: var(--info);
+        color: white;
+    }
+    
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .modal.active {
+        display: flex;
+    }
+    
+    .modal-content {
+        background: white;
+        padding: 30px;
+        border-radius: var(--radius);
+        max-width: 500px;
+        width: 90%;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+    
+    .close-modal {
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+        color: var(--text-muted);
+    }
+    
+    .close-modal:hover {
+        color: var(--danger);
     }
 `;
 document.head.appendChild(style);
