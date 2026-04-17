@@ -259,22 +259,22 @@ class SemanaManager {
                 tema: "οὗτος, ἐκεῖνος, αὐτός",
                 recursos: [
                     { tipo: 'pdf', titulo: 'PDF Contenido de la semana 9', url: 'contenido_privado.html', icono: '📄' },
-                    { tipo: 'html', titulo: 'Introducción a los pronombres demostrativos', url: 'semana 9/HTML/1. Pronombres demostrativos en español.html', icono: '1️⃣' },
-                    { tipo: 'html', titulo: 'Pronombres demostrativos en griego Koiné', url: 'semana 9/HTML/2. Pronombres demostrativos griegos.html', icono: '2️⃣' },
-                    { tipo: 'html', titulo: 'Más sobre los pronombre demostrativos', url: 'semana 9/HTML/3. Más sobre pronombres demostrativos.html', icono: '3️⃣' },
-                    { tipo: 'html', titulo: 'El caso Vocativo', url: 'semana 9/HTML/4. Vocativo.html', icono: '4️⃣' },
-                    { tipo: 'html', titulo: 'Resumen', url: 'semana 9/HTML/5. Grados del adjetivo y resumen.html', icono: '5️⃣' },
-                    { tipo: 'html', titulo: 'Pronombres relativos en español', url: 'semana 9/HTML/6. Pronombres relativos en español.html', icono: '5️⃣' },
-                    { tipo: 'html', titulo: 'Pronombres relativos en griego', url: 'semana 9/HTML/7. pronombres relativos en griego.html', icono: '5️⃣' },
-                    { tipo: 'html', titulo: 'Resumen de pronombres relativos', url: 'semana 9/HTML/8. final sobre pronombres relativos.html', icono: '5️⃣' },
-                    { tipo: 'html', titulo: 'Vocabulario semana 9', url: 'semana 9/HTML/9. Vocabulario9.html', icono: '📖' }
+                    { tipo: 'html', titulo: 'Introducción a los pronombres demostrativos', url: 'semanas/semana 9/HTML/1. Pronombres demostrativos en español.html', icono: '1️⃣' },
+                    { tipo: 'html', titulo: 'Pronombres demostrativos en griego Koiné', url: 'semanas/semana 9/HTML/2. Pronombres demostrativos griegos.html', icono: '2️⃣' },
+                    { tipo: 'html', titulo: 'Más sobre los pronombre demostrativos', url: 'semanas/semana 9/HTML/3. Más sobre pronombres demostrativos.html', icono: '3️⃣' },
+                    { tipo: 'html', titulo: 'El caso Vocativo', url: 'semanas/semana 9/HTML/4. Vocativo.html', icono: '4️⃣' },
+                    { tipo: 'html', titulo: 'Resumen', url: 'semanas/semana 9/HTML/5. Grados del adjetivo y resumen.html', icono: '5️⃣' },
+                    { tipo: 'html', titulo: 'Pronombres relativos en español', url: 'semanas/semana 9/HTML/6. Pronombres relativos en español.html', icono: '5️⃣' },
+                    { tipo: 'html', titulo: 'Pronombres relativos en griego', url: 'semanas/semana 9/HTML/7. pronombres relativos en griego.html', icono: '5️⃣' },
+                    { tipo: 'html', titulo: 'Resumen de pronombres relativos', url: 'semanas/semana 9/HTML/8. final sobre pronombres relativos.html', icono: '5️⃣' },
+                    { tipo: 'html', titulo: 'Vocabulario semana 9', url: 'semanas/semana 9/HTML/9. Vocabulario9.html', icono: '📖' }
                 ],
                 juegos: [
-                    { titulo: 'Empareja las palabras', url: 'semana 9/Juegos/3. Empareja las palabras.html', icono: '🔄', nota: 'Disponible solo en computadora - Arrastra la palabra griega a su traducción' },
-                    { titulo: 'Juego de palabras', url: 'semana 9/Juegos/4.juego de palabras, solo en la computadora.html', icono: '🔠', nota: 'Disponible solo en computadora - Selecciona la respuesta correcta' },
-                    { titulo: 'Aprende los pronombres', url: 'semana 9/Juegos/Pronombres.html', icono: '⭐', nota: 'Disponible solo en computadora - Practica el conocimiento' },
-                    { titulo: 'Ejercicio de traducción', url: 'semana 9/Juegos/traducción .html', icono: '✍️', nota: 'Traduce el prólogo de Juan' },
-                    { titulo: 'Lectura de 1Juan 1.1-9', url: 'semana 9/Juegos/lectura de juan.html', icono: '✍️', nota: 'Lee el NT Griego' }
+                    { titulo: 'Empareja las palabras', url: 'semanas/semana 9/Juegos/3. Empareja las palabras.html', icono: '🔄', nota: 'Disponible solo en computadora - Arrastra la palabra griega a su traducción' },
+                    { titulo: 'Juego de palabras', url: 'semanas/semana 9/Juegos/4.juego de palabras, solo en la computadora.html', icono: '🔠', nota: 'Disponible solo en computadora - Selecciona la respuesta correcta' },
+                    { titulo: 'Aprende los pronombres', url: 'semanas/semana 9/Juegos/Pronombres.html', icono: '⭐', nota: 'Disponible solo en computadora - Practica el conocimiento' },
+                    { titulo: 'Ejercicio de traducción', url: 'semanas/semana 9/Juegos/traducción .html', icono: '✍️', nota: 'Traduce el prólogo de Juan' },
+                    { titulo: 'Lectura de 1Juan 1.1-9', url: 'semanas/semana 9/Juegos/lectura de juan.html', icono: '✍️', nota: 'Lee el NT Griego' }
                 ]
             },
             

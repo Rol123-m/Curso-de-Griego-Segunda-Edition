@@ -198,7 +198,8 @@ const ESTUDIANTES_POR_GRUPO = {
         { id: 45, nombre: "Neftalis Sosa coello", email: "neftalisosa40@gmail.com", telefono: "59727809", nacionalidad: "Cuba" },
         { id: 46, nombre: "Emanuel Tito Guerrero", email: "titoemanuel03@gmail.com", telefono: "51464558", nacionalidad: "Cuba" },
         { id: 47, nombre: "Janet Vargas Cuevas", email: "janetvargascuevas155@gmail.com", telefono: "52998335", nacionalidad: "Cuba" },
-        { id: 71, nombre: "Yaquelín Ramírez", email: "ramirezcuadradoyaqulin@gmail.com", telefono: "56511185", nacionalidad: "Cuba" }
+        { id: 71, nombre: "Yaquelín Ramírez", email: "ramirezcuadradoyaqulin@gmail.com", telefono: "56511185", nacionalidad: "Cuba" },
+        { id: 74, nombre: "Ernesto Jiménez del Risco", email: "ernestjr16499@gmail.com", telefono: "58917573", nacionalidad: "Cuba" }
     ],
     
     GAMMA: [

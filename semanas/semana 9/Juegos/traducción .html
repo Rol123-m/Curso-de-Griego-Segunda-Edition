@@ -1,445 +1,709 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio: 1 Juan 1 - Frases Principales</title>
-    <style>
-        :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --accent: #e74c3c;
-            --background: #1a1f2b;
-            --text: #ecf0f1;
-            --card-bg: #2c3e50;
-            --correct: #27ae60;
-            --incorrect: #c0392b;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio · 1 Juan 1 · Frases Principales</title>
+  <!-- Sistema de estilos unificado -->
+  <link rel="stylesheet" href="semana.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Slab:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Estilos específicos del ejercicio - mejorados */
+    :root {
+      --correct-glow: rgba(39, 174, 96, 0.15);
+      --incorrect-glow: rgba(192, 57, 43, 0.15);
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    .exercise-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+    }
 
-        body {
-            font-family: 'Segoe UI', system-ui;
-            background-color: var(--background);
-            color: var(--text);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 2rem;
-        }
+    .greek-card {
+      background: linear-gradient(135deg, rgba(74, 111, 165, 0.08) 0%, rgba(139, 95, 191, 0.08) 100%);
+      border-radius: 16px;
+      padding: 2rem;
+      margin: 2rem 0;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      text-align: center;
+    }
 
-        .exercise-container {
-            max-width: 800px;
-            width: 100%;
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            display: none;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: enter 0.5s ease forwards;
-            margin: 1rem 0;
-        }
+    .greek-phrase {
+      font-family: "New Athena Unicode", "Gentium Plus", "Cardo", "Times New Roman", serif;
+      font-size: 2rem;
+      line-height: 1.5;
+      color: var(--text-light);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      margin: 0;
+    }
 
-        @keyframes enter {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    .options-grid {
+      display: grid;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
 
-        .exercise-container.active {
-            display: block;
-        }
+    .quiz-option {
+      padding: 1.5rem;
+      background: var(--card-bg-secondary);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 2px solid transparent;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
 
-        .header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
+    .quiz-option:hover {
+      background: var(--hover-bg);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+      border-color: rgba(74, 111, 165, 0.3);
+    }
 
-        .greek-phrase {
-            font-size: 2rem;
-            text-align: center;
-            margin: 2rem 0;
-            padding: 1.5rem;
-            background: rgba(255,255,255,0.05);
-            border-radius: 12px;
-            font-family: 'New Athena Unicode', 'Gentium Plus', serif;
-        }
+    .quiz-option.selected {
+      border-color: var(--primary);
+      background: linear-gradient(135deg, rgba(74, 111, 165, 0.1) 0%, rgba(139, 95, 191, 0.1) 100%);
+    }
 
-        .options-grid {
-            display: grid;
-            gap: 1rem;
-            margin: 2rem 0;
-        }
+    .quiz-option.correct {
+      background: var(--correct-glow);
+      border-color: var(--success);
+      box-shadow: 0 0 0 1px var(--success);
+    }
 
-        .option {
-            padding: 1.5rem;
-            background: rgba(255,255,255,0.1);
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-            font-size: 1.1rem;
-        }
+    .quiz-option.incorrect {
+      background: var(--incorrect-glow);
+      border-color: var(--error);
+      box-shadow: 0 0 0 1px var(--error);
+      opacity: 0.8;
+    }
 
-        .option:hover {
-            background: rgba(255,255,255,0.15);
-            transform: translateY(-2px);
-        }
+    .quiz-option.disabled {
+      pointer-events: none;
+      opacity: 0.7;
+    }
 
-        .option.selected {
-            border-color: var(--secondary);
-            background: rgba(52, 152, 219, 0.1);
-        }
+    .option-feedback {
+      display: flex;
+      align-items: center;
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+    }
 
-        .option.correct {
-            background: rgba(39, 174, 96, 0.2);
-            border-color: var(--correct);
-        }
+    .option-feedback i {
+      margin-right: 0.5rem;
+    }
 
-        .option.incorrect {
-            background: rgba(192, 57, 43, 0.2);
-            border-color: var(--incorrect);
-        }
+    .correct .option-feedback {
+      color: var(--success);
+    }
 
-        .navigation {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 2rem;
-        }
+    .incorrect .option-feedback {
+      color: var(--error);
+    }
 
-        .progress {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
+    .navigation-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
 
-        button {
-            padding: 0.8rem 1.5rem;
-            border: none;
-            border-radius: 8px;
-            background: var(--secondary);
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
+    .progress-indicator {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1rem;
+      color: var(--text-secondary);
+    }
 
-        button:hover {
-            background: #2980b9;
-            transform: translateY(-2px);
-        }
+    .progress-bar {
+      width: 200px;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+      overflow: hidden;
+    }
 
-        button:disabled {
-            background: #7f8c8d;
-            cursor: not-allowed;
-        }
+    .progress-fill {
+      height: 100%;
+      background: var(--primary);
+      border-radius: 3px;
+      transition: width 0.3s ease;
+    }
 
-        .final-screen {
-            text-align: center;
-            padding: 3rem;
-        }
+    .score-display {
+      background: var(--primary-gradient);
+      padding: 0.5rem 1.5rem;
+      border-radius: 30px;
+      font-weight: 600;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
 
-        .final-screen h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--secondary);
-        }
+    .final-screen {
+      text-align: center;
+      padding: 4rem 2rem;
+    }
 
-        .score {
-            font-size: 1.5rem;
-            margin: 2rem 0;
-        }
+    .final-screen h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
 
-        @media (max-width: 768px) {
-            .greek-phrase {
-                font-size: 1.5rem;
-            }
-            
-            .option {
-                padding: 1rem;
-                font-size: 1rem;
-            }
-        }
-    </style>
+    .final-score-circle {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: var(--primary-gradient);
+      margin: 2rem auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .final-score-number {
+      font-size: 3rem;
+      font-weight: 700;
+      color: white;
+      line-height: 1;
+    }
+
+    .final-score-label {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin-top: 0.25rem;
+    }
+
+    .restart-btn {
+      margin-top: 2rem;
+      padding: 1rem 3rem;
+      font-size: 1.2rem;
+    }
+
+    /* Estilos para la cabecera del ejercicio */
+    .exercise-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .exercise-badge {
+      background: var(--primary-gradient);
+      padding: 0.3rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .greek-phrase {
+        font-size: 1.5rem;
+      }
+      
+      .quiz-option {
+        padding: 1.2rem;
+        font-size: 1rem;
+      }
+      
+      .navigation-controls {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .progress-bar {
+        width: 150px;
+      }
+    }
+  </style>
 </head>
 <body>
+  <header class="week-header">
+    <div class="header-logo">
+      <img src="https://i.postimg.cc/QtgrGy8X/verde.png" alt="Logo del ministerio" class="logo-main">
+    </div>
+    <div class="header-title">
+      <h1>1 Juan 1 · Frases Principales</h1>
+      <div class="subtitle">Ejercicio de traducción y comprensión</div>
+    </div>
+  </header>
+
+  <div class="week-container exercise-wrapper">
     <!-- Ejercicio 1 -->
-    <div class="exercise-container active" data-exercise="1">
-        <div class="header">
-            <h1>1 Juan 1 - Frases Principales</h1>
-            <div class="progress">Frase 1 de 9</div>
-        </div>
-        
-        <div class="greek-phrase">Ὃ ἦν ἀπʼ ἀρχῆς, ὃ ἀκηκόαμεν, ὃ ἑωράκαμεν τοῖς ὀφθαλμοῖς ἡμῶν</div>
-        
-        <div class="options-grid">
-            <div class="option">Lo que existió desde el principio, lo que hemos oído y contemplado</div>
-            <div class="option" data-correct="true">Lo que era desde el principio, lo que hemos oído, lo que hemos visto con nuestros ojos</div>
-            <div class="option">Desde el principio fue, lo escuchamos, lo vimos claramente</div>
-            <div class="option">El Verbo primigenio, que nuestros oídos oyeron y nuestros ojos vieron</div>
-        </div>
-        
-        <div class="navigation">
-            <button onclick="nextExercise()" disabled>Continuar</button>
-        </div>
+    <div class="content-card exercise-container active" data-exercise="1">
+      <div class="exercise-header">
+        <h2><i class="fas fa-language"></i> Traduce la frase</h2>
+        <span class="exercise-badge">1 / 9</span>
+      </div>
+      
+      <div class="greek-card">
+        <p class="greek-phrase">Ὃ ἦν ἀπʼ ἀρχῆς, ὃ ἀκηκόαμεν, ὃ ἑωράκαμεν τοῖς ὀφθαλμοῖς ἡμῶν</p>
+      </div>
+      
+      <div class="options-grid">
+        <div class="quiz-option" data-value="0">Lo que existió desde el principio, lo que hemos oído y contemplado</div>
+        <div class="quiz-option" data-correct="true" data-value="1">Lo que era desde el principio, lo que hemos oído, lo que hemos visto con nuestros ojos</div>
+        <div class="quiz-option" data-value="2">Desde el principio fue, lo escuchamos, lo vimos claramente</div>
+        <div class="quiz-option" data-value="3">El Verbo primigenio, que nuestros oídos oyeron y nuestros ojos vieron</div>
+      </div>
+      
+      <div class="navigation-controls">
+        <div></div>
+        <button class="week-button" onclick="nextExercise()" disabled id="next-btn-1">
+          <i class="fas fa-arrow-right"></i> Continuar
+        </button>
+      </div>
     </div>
 
     <!-- Ejercicio 2 -->
-    <div class="exercise-container" data-exercise="2">
-        <div class="header">
-            <h1>1 Juan 1 - Frases Principales</h1>
-            <div class="progress">Frase 2 de 9</div>
-        </div>
-        
-        <div class="greek-phrase">ὃ ἐθεασάμεθα καὶ αἱ χεῖρες ἡμῶν ἐψηλάφησαν περὶ τοῦ λόγου τῆς ζωῆς</div>
-        
-        <div class="options-grid">
-            <div class="option">Lo que contemplamos y palpamos, acerca del mensaje viviente</div>
-            <div class="option" data-correct="true">Lo que hemos contemplado, y palparon nuestras manos tocante al Verbo de vida</div>
-            <div class="option">Lo que vimos y nuestras manos tocaron, respecto a la palabra de vida</div>
-            <div class="option">Hemos sido testigos y lo hemos tocado, el mensaje que da vida</div>
-        </div>
-        
-        <div class="navigation">
-            <button onclick="prevExercise()">Anterior</button>
-            <button onclick="nextExercise()" disabled>Continuar</button>
-        </div>
+    <div class="content-card exercise-container" data-exercise="2">
+      <div class="exercise-header">
+        <h2><i class="fas fa-language"></i> Traduce la frase</h2>
+        <span class="exercise-badge">2 / 9</span>
+      </div>
+      
+      <div class="greek-card">
+        <p class="greek-phrase">ὃ ἐθεασάμεθα καὶ αἱ χεῖρες ἡμῶν ἐψηλάφησαν περὶ τοῦ λόγου τῆς ζωῆς</p>
+      </div>
+      
+      <div class="options-grid">
+        <div class="quiz-option" data-value="0">Lo que contemplamos y palpamos, acerca del mensaje viviente</div>
+        <div class="quiz-option" data-correct="true" data-value="1">Lo que hemos contemplado, y palparon nuestras manos tocante al Verbo de vida</div>
+        <div class="quiz-option" data-value="2">Lo que vimos y nuestras manos tocaron, respecto a la palabra de vida</div>
+        <div class="quiz-option" data-value="3">Hemos sido testigos y lo hemos tocado, el mensaje que da vida</div>
+      </div>
+      
+      <div class="navigation-controls">
+        <button class="week-button secondary" onclick="prevExercise()">
+          <i class="fas fa-arrow-left"></i> Anterior
+        </button>
+        <button class="week-button" onclick="nextExercise()" disabled id="next-btn-2">
+          <i class="fas fa-arrow-right"></i> Continuar
+        </button>
+      </div>
     </div>
 
     <!-- Ejercicio 3 -->
-    <div class="exercise-container" data-exercise="3">
-        <div class="header">
-            <h1>1 Juan 1 - Frases Principales</h1>
-            <div class="progress">Frase 3 de 9</div>
-        </div>
-        
-        <div class="greek-phrase">καὶ ἡ ζωὴ ἐφανερώθη, καὶ ἑωράκαμεν καὶ μαρτυροῦμεν καὶ ἀπαγγέλλομεν ὑμῖν</div>
-        
-        <div class="options-grid">
-            <div class="option">La vida se manifestó, la hemos visto y damos testimonio de ello</div>
-            <div class="option" data-correct="true">Y la vida fue manifestada, y la hemos visto, y testificamos, y os anunciamos</div>
-            <div class="option">La vida apareció, fuimos testigos, y ahora os lo proclamamos</div>
-            <div class="option">La vida eterna se reveló, la contemplamos y ahora os la anunciamos</div>
-        </div>
-        
-        <div class="navigation">
-            <button onclick="prevExercise()">Anterior</button>
-            <button onclick="nextExercise()" disabled>Continuar</button>
-        </div>
+    <div class="content-card exercise-container" data-exercise="3">
+      <div class="exercise-header">
+        <h2><i class="fas fa-language"></i> Traduce la frase</h2>
+        <span class="exercise-badge">3 / 9</span>
+      </div>
+      
+      <div class="greek-card">
+        <p class="greek-phrase">καὶ ἡ ζωὴ ἐφανερώθη, καὶ ἑωράκαμεν καὶ μαρτυροῦμεν καὶ ἀπαγγέλλομεν ὑμῖν</p>
+      </div>
+      
+      <div class="options-grid">
+        <div class="quiz-option" data-value="0">La vida se manifestó, la hemos visto y damos testimonio de ello</div>
+        <div class="quiz-option" data-correct="true" data-value="1">Y la vida fue manifestada, y la hemos visto, y testificamos, y os anunciamos</div>
+        <div class="quiz-option" data-value="2">La vida apareció, fuimos testigos, y ahora os lo proclamamos</div>
+        <div class="quiz-option" data-value="3">La vida eterna se reveló, la contemplamos y ahora os la anunciamos</div>
+      </div>
+      
+      <div class="navigation-controls">
+        <button class="week-button secondary" onclick="prevExercise()">
+          <i class="fas fa-arrow-left"></i> Anterior
+        </button>
+        <button class="week-button" onclick="nextExercise()" disabled id="next-btn-3">
+          <i class="fas fa-arrow-right"></i> Continuar
+        </button>
+      </div>
     </div>
 
     <!-- Ejercicio 4 -->
-    <div class="exercise-container" data-exercise="4">
-        <div class="header">
-            <h1>1 Juan 1 - Frases Principales</h1>
-            <div class="progress">Frase 4 de 9</div>
-        </div>
-        
-        <div class="greek-phrase">ὁ θεὸς φῶς ἐστιν, καὶ σκοτία ἐν αὐτῷ οὐκ ἔστιν οὐδεμία</div>
-        
-        <div class="options-grid">
-            <div class="option">Dios es luminoso, en Él no hay oscuridad</div>
-            <div class="option" data-correct="true">Dios es luz, y no hay ningunas tinieblas en él</div>
-            <div class="option">El Señor es pura luz, sin sombra alguna</div>
-            <div class="option">Dios es la luz verdadera, donde la oscuridad no existe</div>
-        </div>
-        
-        <div class="navigation">
-            <button onclick="prevExercise()">Anterior</button>
-            <button onclick="nextExercise()" disabled>Continuar</button>
-        </div>
+    <div class="content-card exercise-container" data-exercise="4">
+      <div class="exercise-header">
+        <h2><i class="fas fa-language"></i> Traduce la frase</h2>
+        <span class="exercise-badge">4 / 9</span>
+      </div>
+      
+      <div class="greek-card">
+        <p class="greek-phrase">ὁ θεὸς φῶς ἐστιν, καὶ σκοτία ἐν αὐτῷ οὐκ ἔστιν οὐδεμία</p>
+      </div>
+      
+      <div class="options-grid">
+        <div class="quiz-option" data-value="0">Dios es luminoso, en Él no hay oscuridad</div>
+        <div class="quiz-option" data-correct="true" data-value="1">Dios es luz, y no hay ningunas tinieblas en él</div>
+        <div class="quiz-option" data-value="2">El Señor es pura luz, sin sombra alguna</div>
+        <div class="quiz-option" data-value="3">Dios es la luz verdadera, donde la oscuridad no existe</div>
+      </div>
+      
+      <div class="navigation-controls">
+        <button class="week-button secondary" onclick="prevExercise()">
+          <i class="fas fa-arrow-left"></i> Anterior
+        </button>
+        <button class="week-button" onclick="nextExercise()" disabled id="next-btn-4">
+          <i class="fas fa-arrow-right"></i> Continuar
+        </button>
+      </div>
     </div>
 
     <!-- Ejercicio 5 -->
-    <div class="exercise-container" data-exercise="5">
-        <div class="header">
-            <h1>1 Juan 1 - Frases Principales</h1>
-            <div class="progress">Frase 5 de 9</div>
-        </div>
-        
-        <div class="greek-phrase">ἐὰν εἴπωμεν ὅτι κοινωνίαν ἔχομεν μετʼ αὐτοῦ καὶ ἐν τῷ σκότει περιπατῶμεν, ψευδόμεθα</div>
-        
-        <div class="options-grid">
-            <div class="option">Si decimos que tenemos comunión con Él pero caminamos en oscuridad, mentimos</div>
-            <div class="option" data-correct="true">Si decimos que tenemos comunión con él, y andamos en tinieblas, mentimos</div>
-            <div class="option">Afirmar que lo conocemos mientras vivimos en tinieblas es engañarnos</div>
-            <div class="option">Quien dice estar unido a Dios pero vive en oscuridad, no dice la verdad</div>
-        </div>
-        
-        <div class="navigation">
-            <button onclick="prevExercise()">Anterior</button>
-            <button onclick="nextExercise()" disabled>Continuar</button>
-        </div>
+    <div class="content-card exercise-container" data-exercise="5">
+      <div class="exercise-header">
+        <h2><i class="fas fa-language"></i> Traduce la frase</h2>
+        <span class="exercise-badge">5 / 9</span>
+      </div>
+      
+      <div class="greek-card">
+        <p class="greek-phrase">ἐὰν εἴπωμεν ὅτι κοινωνίαν ἔχομεν μετʼ αὐτοῦ καὶ ἐν τῷ σκότει περιπατῶμεν, ψευδόμεθα</p>
+      </div>
+      
+      <div class="options-grid">
+        <div class="quiz-option" data-value="0">Si decimos que tenemos comunión con Él pero caminamos en oscuridad, mentimos</div>
+        <div class="quiz-option" data-correct="true" data-value="1">Si decimos que tenemos comunión con él, y andamos en tinieblas, mentimos</div>
+        <div class="quiz-option" data-value="2">Afirmar que lo conocemos mientras vivimos en tinieblas es engañarnos</div>
+        <div class="quiz-option" data-value="3">Quien dice estar unido a Dios pero vive en oscuridad, no dice la verdad</div>
+      </div>
+      
+      <div class="navigation-controls">
+        <button class="week-button secondary" onclick="prevExercise()">
+          <i class="fas fa-arrow-left"></i> Anterior
+        </button>
+        <button class="week-button" onclick="nextExercise()" disabled id="next-btn-5">
+          <i class="fas fa-arrow-right"></i> Continuar
+        </button>
+      </div>
     </div>
 
     <!-- Ejercicio 6 -->
-    <div class="exercise-container" data-exercise="6">
-        <div class="header">
-            <h1>1 Juan 1 - Frases Principales</h1>
-            <div class="progress">Frase 6 de 9</div>
-        </div>
-        
-        <div class="greek-phrase">ἐὰν ὁμολογῶμεν τὰς ἁμαρτίας ἡμῶν, πιστός ἐστιν καὶ δίκαιος</div>
-        
-        <div class="options-grid">
-            <div class="option">Si reconocemos nuestros pecados, Él es fiel y recto</div>
-            <div class="option" data-correct="true">Si confesamos nuestros pecados, él es fiel y justo</div>
-            <div class="option">Al admitir nuestras faltas, encontramos su fidelidad y justicia</div>
-            <div class="option">Quien confiesa sus transgresiones, halla a Dios fiel y recto</div>
-        </div>
-        
-        <div class="navigation">
-            <button onclick="prevExercise()">Anterior</button>
-            <button onclick="nextExercise()" disabled>Continuar</button>
-        </div>
+    <div class="content-card exercise-container" data-exercise="6">
+      <div class="exercise-header">
+        <h2><i class="fas fa-language"></i> Traduce la frase</h2>
+        <span class="exercise-badge">6 / 9</span>
+      </div>
+      
+      <div class="greek-card">
+        <p class="greek-phrase">ἐὰν ὁμολογῶμεν τὰς ἁμαρτίας ἡμῶν, πιστός ἐστιν καὶ δίκαιος</p>
+      </div>
+      
+      <div class="options-grid">
+        <div class="quiz-option" data-value="0">Si reconocemos nuestros pecados, Él es fiel y recto</div>
+        <div class="quiz-option" data-correct="true" data-value="1">Si confesamos nuestros pecados, él es fiel y justo</div>
+        <div class="quiz-option" data-value="2">Al admitir nuestras faltas, encontramos su fidelidad y justicia</div>
+        <div class="quiz-option" data-value="3">Quien confiesa sus transgresiones, halla a Dios fiel y recto</div>
+      </div>
+      
+      <div class="navigation-controls">
+        <button class="week-button secondary" onclick="prevExercise()">
+          <i class="fas fa-arrow-left"></i> Anterior
+        </button>
+        <button class="week-button" onclick="nextExercise()" disabled id="next-btn-6">
+          <i class="fas fa-arrow-right"></i> Continuar
+        </button>
+      </div>
     </div>
 
     <!-- Ejercicio 7 -->
-    <div class="exercise-container" data-exercise="7">
-        <div class="header">
-            <h1>1 Juan 1 - Frases Principales</h1>
-            <div class="progress">Frase 7 de 9</div>
-        </div>
-        
-        <div class="greek-phrase">ἵνα ἀφῇ ἡμῖν τὰς ἁμαρτίας καὶ καθαρίσῃ ἡμᾶς ἀπὸ πάσης ἀδικίας</div>
-        
-        <div class="options-grid">
-            <div class="option">Para perdonar nuestras culpas y limpiarnos de toda maldad</div>
-            <div class="option" data-correct="true">Para que nos perdone nuestros pecados, y nos limpie de toda maldad</div>
-            <div class="option">Así nos perdona y nos purifica de toda injusticia</div>
-            <div class="option">Perdonando nuestras faltas y santificándonos completamente</div>
-        </div>
-        
-        <div class="navigation">
-            <button onclick="prevExercise()">Anterior</button>
-            <button onclick="nextExercise()" disabled>Continuar</button>
-        </div>
+    <div class="content-card exercise-container" data-exercise="7">
+      <div class="exercise-header">
+        <h2><i class="fas fa-language"></i> Traduce la frase</h2>
+        <span class="exercise-badge">7 / 9</span>
+      </div>
+      
+      <div class="greek-card">
+        <p class="greek-phrase">ἵνα ἀφῇ ἡμῖν τὰς ἁμαρτίας καὶ καθαρίσῃ ἡμᾶς ἀπὸ πάσης ἀδικίας</p>
+      </div>
+      
+      <div class="options-grid">
+        <div class="quiz-option" data-value="0">Para perdonar nuestras culpas y limpiarnos de toda maldad</div>
+        <div class="quiz-option" data-correct="true" data-value="1">Para que nos perdone nuestros pecados, y nos limpie de toda maldad</div>
+        <div class="quiz-option" data-value="2">Así nos perdona y nos purifica de toda injusticia</div>
+        <div class="quiz-option" data-value="3">Perdonando nuestras faltas y santificándonos completamente</div>
+      </div>
+      
+      <div class="navigation-controls">
+        <button class="week-button secondary" onclick="prevExercise()">
+          <i class="fas fa-arrow-left"></i> Anterior
+        </button>
+        <button class="week-button" onclick="nextExercise()" disabled id="next-btn-7">
+          <i class="fas fa-arrow-right"></i> Continuar
+        </button>
+      </div>
     </div>
 
     <!-- Ejercicio 8 -->
-    <div class="exercise-container" data-exercise="8">
-        <div class="header">
-            <h1>1 Juan 1 - Frases Principales</h1>
-            <div class="progress">Frase 8 de 9</div>
-        </div>
-        
-        <div class="greek-phrase">ἐὰν εἴπωμεν ὅτι ἁμαρτίαν οὐκ ἔχομεν, ἑαυτοὺς πλανῶμεν</div>
-        
-        <div class="options-grid">
-            <div class="option">Si negamos nuestro pecado, nos engañamos a nosotros mismos</div>
-            <div class="option" data-correct="true">Si decimos que no tenemos pecado, nos engañamos a nosotros mismos</div>
-            <div class="option">Afirmar que no pecamos es autoengaño</div>
-            <div class="option">Quien dice no tener faltas, vive en el error</div>
-        </div>
-        
-        <div class="navigation">
-            <button onclick="prevExercise()">Anterior</button>
-            <button onclick="nextExercise()" disabled>Continuar</button>
-        </div>
+    <div class="content-card exercise-container" data-exercise="8">
+      <div class="exercise-header">
+        <h2><i class="fas fa-language"></i> Traduce la frase</h2>
+        <span class="exercise-badge">8 / 9</span>
+      </div>
+      
+      <div class="greek-card">
+        <p class="greek-phrase">ἐὰν εἴπωμεν ὅτι ἁμαρτίαν οὐκ ἔχομεν, ἑαυτοὺς πλανῶμεν</p>
+      </div>
+      
+      <div class="options-grid">
+        <div class="quiz-option" data-value="0">Si negamos nuestro pecado, nos engañamos a nosotros mismos</div>
+        <div class="quiz-option" data-correct="true" data-value="1">Si decimos que no tenemos pecado, nos engañamos a nosotros mismos</div>
+        <div class="quiz-option" data-value="2">Afirmar que no pecamos es autoengaño</div>
+        <div class="quiz-option" data-value="3">Quien dice no tener faltas, vive en el error</div>
+      </div>
+      
+      <div class="navigation-controls">
+        <button class="week-button secondary" onclick="prevExercise()">
+          <i class="fas fa-arrow-left"></i> Anterior
+        </button>
+        <button class="week-button" onclick="nextExercise()" disabled id="next-btn-8">
+          <i class="fas fa-arrow-right"></i> Continuar
+        </button>
+      </div>
     </div>
 
     <!-- Ejercicio 9 -->
-    <div class="exercise-container" data-exercise="9">
-        <div class="header">
-            <h1>1 Juan 1 - Frases Principales</h1>
-            <div class="progress">Frase 9 de 9</div>
-        </div>
-        
-        <div class="greek-phrase">ἐὰν ὁμολογῶμεν τὰς ἁμαρτίας ἡμῶν, πιστός ἐστιν καὶ δίκαιος ἵνα ἀφῇ ἡμῖν τὰς ἁμαρτίας</div>
-        
-        <div class="options-grid">
-            <div class="option">Si reconocemos nuestros pecados, Él que es fiel y justo nos los perdonará</div>
-            <div class="option" data-correct="true">Si confesamos nuestros pecados, él es fiel y justo para que nos perdone nuestros pecados</div>
-            <div class="option">Al admitir nuestras transgresiones, su fidelidad nos asegura el perdón</div>
-            <div class="option">Confesar nuestras faltas nos garantiza el perdón divino</div>
-        </div>
-        
-        <div class="navigation">
-            <button onclick="prevExercise()">Anterior</button>
-            <button onclick="nextExercise()" disabled>Continuar</button>
-        </div>
+    <div class="content-card exercise-container" data-exercise="9">
+      <div class="exercise-header">
+        <h2><i class="fas fa-language"></i> Traduce la frase</h2>
+        <span class="exercise-badge">9 / 9</span>
+      </div>
+      
+      <div class="greek-card">
+        <p class="greek-phrase">ἐὰν ὁμολογῶμεν τὰς ἁμαρτίας ἡμῶν, πιστός ἐστιν καὶ δίκαιος ἵνα ἀφῇ ἡμῖν τὰς ἁμαρτίας</p>
+      </div>
+      
+      <div class="options-grid">
+        <div class="quiz-option" data-value="0">Si reconocemos nuestros pecados, Él que es fiel y justo nos los perdonará</div>
+        <div class="quiz-option" data-correct="true" data-value="1">Si confesamos nuestros pecados, él es fiel y justo para que nos perdone nuestros pecados</div>
+        <div class="quiz-option" data-value="2">Al admitir nuestras transgresiones, su fidelidad nos asegura el perdón</div>
+        <div class="quiz-option" data-value="3">Confesar nuestras faltas nos garantiza el perdón divino</div>
+      </div>
+      
+      <div class="navigation-controls">
+        <button class="week-button secondary" onclick="prevExercise()">
+          <i class="fas fa-arrow-left"></i> Anterior
+        </button>
+        <button class="week-button" onclick="nextExercise()" disabled id="next-btn-9">
+          <i class="fas fa-arrow-right"></i> Finalizar
+        </button>
+      </div>
     </div>
 
     <!-- Pantalla Final -->
-    <div class="exercise-container final-screen" id="final-screen">
-        <h2>¡Ejercicio Completo! 🎉</h2>
-        <p>Has completado las frases principales de 1 Juan 1:1-9</p>
-        <div class="score" id="final-score"></div>
-        <button onclick="location.reload()">Reiniciar Ejercicio</button>
+    <div class="content-card exercise-container final-screen" id="final-screen">
+      <h2><i class="fas fa-trophy"></i> ¡Ejercicio Completado!</h2>
+      <p style="font-size: 1.2rem; margin: 1rem 0;">Has finalizado el análisis de las frases principales de 1 Juan 1:1-9</p>
+      
+      <div class="final-score-circle">
+        <span class="final-score-number" id="final-score-number">0</span>
+        <span class="final-score-label">de 9</span>
+      </div>
+      
+      <p id="final-message" style="margin: 1.5rem 0;"></p>
+      
+      <button class="week-button success restart-btn" onclick="resetExercise()">
+        <i class="fas fa-redo-alt"></i> Reiniciar Ejercicio
+      </button>
     </div>
+  </div>
 
-    <script>
-        let currentExercise = 1;
-        let totalExercises = 9;
-        let score = 0;
+  <footer class="week-footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="Logos adicionales">
+      </div>
+      <div class="footer-info">
+        <p>Sección educativa del ministerio</p>
+        <p class="copyright">"Vivos para Servir"</p>
+        <p>© Copyright 2026 - Todos los derechos reservados</p>
+      </div>
+    </div>
+  </footer>
 
-        function updateProgress() {
-            document.querySelectorAll('.progress').forEach(progress => {
-                progress.textContent = `Frase ${currentExercise} de ${totalExercises}`;
-            });
+  <script>
+    let currentExercise = 1;
+    const totalExercises = 9;
+    let score = 0;
+    let answers = new Array(totalExercises + 1).fill(null); // Guarda si fue correcta (true/false)
+    let selectedOptions = new Array(totalExercises + 1).fill(null); // Guarda el índice seleccionado
+
+    // Inicializar event listeners para las opciones
+    function initExerciseListeners() {
+      document.querySelectorAll('.exercise-container .quiz-option').forEach(option => {
+        option.addEventListener('click', handleOptionClick);
+      });
+    }
+
+    function handleOptionClick(event) {
+      const option = event.currentTarget;
+      const exerciseDiv = option.closest('.exercise-container');
+      const exerciseId = parseInt(exerciseDiv.dataset.exercise);
+      const options = exerciseDiv.querySelectorAll('.quiz-option');
+      
+      // Si ya se respondió este ejercicio
+      if (answers[exerciseId] !== null) return;
+      
+      const isCorrect = option.dataset.correct === 'true';
+      const selectedValue = option.dataset.value;
+      
+      // Remover selección previa
+      options.forEach(opt => opt.classList.remove('selected'));
+      option.classList.add('selected');
+      
+      // Marcar todas las opciones
+      options.forEach(opt => {
+        opt.classList.add('disabled');
+        if (opt.dataset.correct === 'true') {
+          opt.classList.add('correct');
+          // Añadir feedback visual
+          if (!opt.querySelector('.option-feedback')) {
+            const feedback = document.createElement('div');
+            feedback.className = 'option-feedback';
+            feedback.innerHTML = '<i class="fas fa-check-circle"></i> Respuesta correcta';
+            opt.appendChild(feedback);
+          }
+        } else if (opt === option && !isCorrect) {
+          opt.classList.add('incorrect');
+          const feedback = document.createElement('div');
+          feedback.className = 'option-feedback';
+          feedback.innerHTML = '<i class="fas fa-times-circle"></i> Tu respuesta';
+          opt.appendChild(feedback);
         }
+      });
+      
+      // Registrar respuesta
+      answers[exerciseId] = isCorrect;
+      selectedOptions[exerciseId] = selectedValue;
+      if (isCorrect) score++;
+      
+      // Habilitar botón continuar
+      const nextBtn = document.getElementById(`next-btn-${exerciseId}`);
+      if (nextBtn) nextBtn.disabled = false;
+      
+      // Actualizar puntuación en la UI
+      updateScoreDisplay();
+    }
 
-        function checkAnswer(option) {
-            const exercise = option.closest('.exercise-container');
-            const options = exercise.querySelectorAll('.option');
-            const correct = option.dataset.correct === "true";
-            
-            options.forEach(opt => {
-                opt.style.pointerEvents = 'none';
-                if(opt.dataset.correct === "true") {
-                    opt.classList.add('correct');
-                }
-            });
+    function updateScoreDisplay() {
+      // Actualizar cualquier indicador de puntuación si existiera
+      const scoreElements = document.querySelectorAll('.current-score');
+      scoreElements.forEach(el => el.textContent = `${score}/${totalExercises}`);
+    }
 
-            option.classList.add(correct ? 'correct' : 'incorrect');
-            if(correct) score++;
-
-            exercise.querySelector('button[onclick="nextExercise()"]').disabled = false;
-        }
-
-        function nextExercise() {
-            document.querySelector(`[data-exercise="${currentExercise}"]`).classList.remove('active');
-            currentExercise++;
-            
-            if(currentExercise > totalExercises) {
-                document.getElementById('final-screen').classList.add('active');
-                document.getElementById('final-score').textContent = `Puntuación: ${score}/${totalExercises}`;
-            } else {
-                document.querySelector(`[data-exercise="${currentExercise}"]`).classList.add('active');
-                updateProgress();
-            }
-        }
-
-        function prevExercise() {
-            document.querySelector(`[data-exercise="${currentExercise}"]`).classList.remove('active');
-            currentExercise--;
-            document.querySelector(`[data-exercise="${currentExercise}"]`).classList.add('active');
-            updateProgress();
-        }
-
-        // Event Listeners
-        document.querySelectorAll('.option').forEach(option => {
-            option.addEventListener('click', function() {
-                if(this.classList.contains('selected')) return;
-                
-                this.closest('.options-grid').querySelectorAll('.option').forEach(opt => {
-                    opt.classList.remove('selected');
-                });
-                
-                this.classList.add('selected');
-                checkAnswer(this);
-            });
-        });
-
-        // Inicializar primer ejercicio
+    function nextExercise() {
+      const currentDiv = document.querySelector(`[data-exercise="${currentExercise}"]`);
+      currentDiv.classList.remove('active');
+      
+      if (currentExercise === totalExercises) {
+        // Mostrar pantalla final
+        showFinalScreen();
+      } else {
+        currentExercise++;
+        const nextDiv = document.querySelector(`[data-exercise="${currentExercise}"]`);
+        nextDiv.classList.add('active');
         updateProgress();
-    </script>
+      }
+      
+      // Scroll suave al inicio
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function prevExercise() {
+      if (currentExercise > 1) {
+        const currentDiv = document.querySelector(`[data-exercise="${currentExercise}"]`);
+        currentDiv.classList.remove('active');
+        currentExercise--;
+        const prevDiv = document.querySelector(`[data-exercise="${currentExercise}"]`);
+        prevDiv.classList.add('active');
+        updateProgress();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    function updateProgress() {
+      // Actualizar cualquier elemento de progreso
+      const progressFill = document.querySelector('.progress-fill');
+      if (progressFill) {
+        progressFill.style.width = `${(currentExercise / totalExercises) * 100}%`;
+      }
+    }
+
+    function showFinalScreen() {
+      document.getElementById('final-screen').classList.add('active');
+      document.getElementById('final-score-number').textContent = score;
+      
+      const messageEl = document.getElementById('final-message');
+      const percentage = (score / totalExercises) * 100;
+      
+      if (percentage === 100) {
+        messageEl.innerHTML = '<i class="fas fa-star"></i> ¡Excelente! Dominas perfectamente 1 Juan 1.';
+        messageEl.style.color = 'var(--success)';
+      } else if (percentage >= 70) {
+        messageEl.innerHTML = '<i class="fas fa-check"></i> ¡Muy bien! Tienes un buen entendimiento del texto.';
+        messageEl.style.color = 'var(--primary)';
+      } else {
+        messageEl.innerHTML = '<i class="fas fa-book"></i> Sigue practicando. Cada repaso te acerca más al texto original.';
+        messageEl.style.color = 'var(--text-secondary)';
+      }
+    }
+
+    function resetExercise() {
+      // Resetear variables
+      currentExercise = 1;
+      score = 0;
+      answers = new Array(totalExercises + 1).fill(null);
+      selectedOptions = new Array(totalExercises + 1).fill(null);
+      
+      // Ocultar pantalla final
+      document.getElementById('final-screen').classList.remove('active');
+      
+      // Mostrar primer ejercicio
+      document.querySelectorAll('.exercise-container').forEach(container => {
+        container.classList.remove('active');
+      });
+      document.querySelector('[data-exercise="1"]').classList.add('active');
+      
+      // Resetear todas las opciones
+      document.querySelectorAll('.exercise-container .quiz-option').forEach(option => {
+        option.classList.remove('selected', 'correct', 'incorrect', 'disabled');
+        const feedback = option.querySelector('.option-feedback');
+        if (feedback) feedback.remove();
+      });
+      
+      // Deshabilitar todos los botones continuar
+      for (let i = 1; i <= totalExercises; i++) {
+        const btn = document.getElementById(`next-btn-${i}`);
+        if (btn) btn.disabled = true;
+      }
+      
+      updateProgress();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Hacer funciones globales
+    window.nextExercise = nextExercise;
+    window.prevExercise = prevExercise;
+    window.resetExercise = resetExercise;
+
+    // Inicializar al cargar
+    document.addEventListener('DOMContentLoaded', () => {
+      initExerciseListeners();
+      
+      // Deshabilitar botones continuar inicialmente
+      for (let i = 1; i <= totalExercises; i++) {
+        const btn = document.getElementById(`next-btn-${i}`);
+        if (btn) btn.disabled = true;
+      }
+    });
+  </script>
 </body>
 </html>
