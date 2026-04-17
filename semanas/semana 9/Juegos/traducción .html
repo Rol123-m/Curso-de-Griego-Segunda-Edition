@@ -4,224 +4,193 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ejercicio · 1 Juan 1 · Frases Principales</title>
-  <!-- Sistema de estilos unificado -->
   <link rel="stylesheet" href="semana.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Slab:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    /* Estilos específicos del ejercicio - mejorados */
-    :root {
-      --correct-glow: rgba(39, 174, 96, 0.15);
-      --incorrect-glow: rgba(192, 57, 43, 0.15);
+    /* Estilos específicos del ejercicio - CORREGIDOS */
+    .exercise-container {
+      display: none;
     }
-
-    .exercise-wrapper {
-      max-width: 900px;
-      margin: 0 auto;
+    
+    .exercise-container.active {
+      display: block;
     }
-
+    
     .greek-card {
-      background: linear-gradient(135deg, rgba(74, 111, 165, 0.08) 0%, rgba(139, 95, 191, 0.08) 100%);
+      background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
       border-radius: 16px;
       padding: 2rem;
       margin: 2rem 0;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(74, 111, 165, 0.15);
       text-align: center;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
     }
-
+    
     .greek-phrase {
       font-family: "New Athena Unicode", "Gentium Plus", "Cardo", "Times New Roman", serif;
-      font-size: 2rem;
+      font-size: 1.8rem;
       line-height: 1.5;
-      color: var(--text-light);
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      color: #2c3e50;
       margin: 0;
+      font-weight: 500;
     }
-
+    
     .options-grid {
       display: grid;
       gap: 1rem;
       margin: 2rem 0;
     }
-
+    
     .quiz-option {
-      padding: 1.5rem;
-      background: var(--card-bg-secondary);
+      padding: 1.25rem 1.5rem;
+      background: #f8f9fa;
       border-radius: 12px;
       cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      border: 2px solid transparent;
-      font-size: 1.1rem;
+      transition: all 0.2s ease;
+      border: 2px solid #e9ecef;
+      font-size: 1.05rem;
       line-height: 1.5;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      color: #2c3e50;
       position: relative;
-      overflow: hidden;
     }
-
+    
     .quiz-option:hover {
-      background: var(--hover-bg);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
-      border-color: rgba(74, 111, 165, 0.3);
+      background: #e9ecef;
+      border-color: #4a6fa5;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
     }
-
+    
     .quiz-option.selected {
-      border-color: var(--primary);
-      background: linear-gradient(135deg, rgba(74, 111, 165, 0.1) 0%, rgba(139, 95, 191, 0.1) 100%);
+      border-color: #4a6fa5;
+      background: #e8f0fe;
     }
-
+    
     .quiz-option.correct {
-      background: var(--correct-glow);
-      border-color: var(--success);
-      box-shadow: 0 0 0 1px var(--success);
+      background: #d4edda;
+      border-color: #27ae60;
+      color: #155724;
     }
-
+    
     .quiz-option.incorrect {
-      background: var(--incorrect-glow);
-      border-color: var(--error);
-      box-shadow: 0 0 0 1px var(--error);
-      opacity: 0.8;
+      background: #f8d7da;
+      border-color: #c0392b;
+      color: #721c24;
+      opacity: 0.9;
     }
-
+    
     .quiz-option.disabled {
       pointer-events: none;
-      opacity: 0.7;
+      opacity: 0.8;
     }
-
+    
     .option-feedback {
       display: flex;
       align-items: center;
       margin-top: 0.5rem;
-      font-size: 0.95rem;
-      color: var(--text-secondary);
+      font-size: 0.9rem;
     }
-
+    
     .option-feedback i {
       margin-right: 0.5rem;
     }
-
+    
     .correct .option-feedback {
-      color: var(--success);
+      color: #155724;
     }
-
+    
     .incorrect .option-feedback {
-      color: var(--error);
+      color: #721c24;
     }
-
+    
     .navigation-controls {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 2.5rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .progress-indicator {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 1rem;
-      color: var(--text-secondary);
-    }
-
-    .progress-bar {
-      width: 200px;
-      height: 6px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 3px;
-      overflow: hidden;
-    }
-
-    .progress-fill {
-      height: 100%;
-      background: var(--primary);
-      border-radius: 3px;
-      transition: width 0.3s ease;
-    }
-
-    .score-display {
-      background: var(--primary-gradient);
-      padding: 0.5rem 1.5rem;
-      border-radius: 30px;
-      font-weight: 600;
-      color: white;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .final-screen {
-      text-align: center;
-      padding: 4rem 2rem;
-    }
-
-    .final-screen h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      background: var(--primary-gradient);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .final-score-circle {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      background: var(--primary-gradient);
-      margin: 2rem auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    }
-
-    .final-score-number {
-      font-size: 3rem;
-      font-weight: 700;
-      color: white;
-      line-height: 1;
-    }
-
-    .final-score-label {
-      font-size: 1rem;
-      color: rgba(255, 255, 255, 0.8);
-      margin-top: 0.25rem;
-    }
-
-    .restart-btn {
       margin-top: 2rem;
-      padding: 1rem 3rem;
-      font-size: 1.2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e9ecef;
     }
-
-    /* Estilos para la cabecera del ejercicio */
+    
     .exercise-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 1rem;
     }
-
+    
+    .exercise-header h2 {
+      margin: 0;
+      font-size: 1.4rem;
+    }
+    
     .exercise-badge {
-      background: var(--primary-gradient);
-      padding: 0.3rem 1.2rem;
+      background: linear-gradient(135deg, #4a6fa5 0%, #8b5fbf 100%);
+      padding: 0.4rem 1.2rem;
       border-radius: 30px;
       font-size: 0.9rem;
       font-weight: 500;
       color: white;
     }
-
+    
+    .final-screen {
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+    
+    .final-screen h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      color: #2c3e50;
+    }
+    
+    .final-screen h2 i {
+      color: #f1c40f;
+      margin-right: 0.5rem;
+    }
+    
+    .final-score-circle {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #4a6fa5 0%, #8b5fbf 100%);
+      margin: 2rem auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+    
+    .final-score-number {
+      font-size: 3rem;
+      font-weight: 700;
+      color: white;
+      line-height: 1;
+    }
+    
+    .final-score-label {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-top: 0.25rem;
+    }
+    
+    #final-message {
+      font-size: 1.1rem;
+      margin: 1.5rem 0;
+      padding: 1rem;
+      border-radius: 8px;
+      background: #f8f9fa;
+    }
+    
     @media (max-width: 768px) {
       .greek-phrase {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
       }
       
       .quiz-option {
-        padding: 1.2rem;
+        padding: 1rem;
         font-size: 1rem;
       }
       
@@ -230,8 +199,8 @@
         gap: 1rem;
       }
       
-      .progress-bar {
-        width: 150px;
+      .navigation-controls button {
+        width: 100%;
       }
     }
   </style>
@@ -247,11 +216,11 @@
     </div>
   </header>
 
-  <div class="week-container exercise-wrapper">
+  <div class="week-container">
     <!-- Ejercicio 1 -->
     <div class="content-card exercise-container active" data-exercise="1">
       <div class="exercise-header">
-        <h2><i class="fas fa-language"></i> Traduce la frase</h2>
+        <h2><i class="fas fa-language" style="color: #4a6fa5;"></i> Traduce la frase</h2>
         <span class="exercise-badge">1 / 9</span>
       </div>
       
@@ -269,7 +238,7 @@
       <div class="navigation-controls">
         <div></div>
         <button class="week-button" onclick="nextExercise()" disabled id="next-btn-1">
-          <i class="fas fa-arrow-right"></i> Continuar
+          Continuar <i class="fas fa-arrow-right"></i>
         </button>
       </div>
     </div>
@@ -277,7 +246,7 @@
     <!-- Ejercicio 2 -->
     <div class="content-card exercise-container" data-exercise="2">
       <div class="exercise-header">
-        <h2><i class="fas fa-language"></i> Traduce la frase</h2>
+        <h2><i class="fas fa-language" style="color: #4a6fa5;"></i> Traduce la frase</h2>
         <span class="exercise-badge">2 / 9</span>
       </div>
       
@@ -297,7 +266,7 @@
           <i class="fas fa-arrow-left"></i> Anterior
         </button>
         <button class="week-button" onclick="nextExercise()" disabled id="next-btn-2">
-          <i class="fas fa-arrow-right"></i> Continuar
+          Continuar <i class="fas fa-arrow-right"></i>
         </button>
       </div>
     </div>
@@ -305,7 +274,7 @@
     <!-- Ejercicio 3 -->
     <div class="content-card exercise-container" data-exercise="3">
       <div class="exercise-header">
-        <h2><i class="fas fa-language"></i> Traduce la frase</h2>
+        <h2><i class="fas fa-language" style="color: #4a6fa5;"></i> Traduce la frase</h2>
         <span class="exercise-badge">3 / 9</span>
       </div>
       
@@ -325,7 +294,7 @@
           <i class="fas fa-arrow-left"></i> Anterior
         </button>
         <button class="week-button" onclick="nextExercise()" disabled id="next-btn-3">
-          <i class="fas fa-arrow-right"></i> Continuar
+          Continuar <i class="fas fa-arrow-right"></i>
         </button>
       </div>
     </div>
@@ -333,7 +302,7 @@
     <!-- Ejercicio 4 -->
     <div class="content-card exercise-container" data-exercise="4">
       <div class="exercise-header">
-        <h2><i class="fas fa-language"></i> Traduce la frase</h2>
+        <h2><i class="fas fa-language" style="color: #4a6fa5;"></i> Traduce la frase</h2>
         <span class="exercise-badge">4 / 9</span>
       </div>
       
@@ -353,7 +322,7 @@
           <i class="fas fa-arrow-left"></i> Anterior
         </button>
         <button class="week-button" onclick="nextExercise()" disabled id="next-btn-4">
-          <i class="fas fa-arrow-right"></i> Continuar
+          Continuar <i class="fas fa-arrow-right"></i>
         </button>
       </div>
     </div>
@@ -361,7 +330,7 @@
     <!-- Ejercicio 5 -->
     <div class="content-card exercise-container" data-exercise="5">
       <div class="exercise-header">
-        <h2><i class="fas fa-language"></i> Traduce la frase</h2>
+        <h2><i class="fas fa-language" style="color: #4a6fa5;"></i> Traduce la frase</h2>
         <span class="exercise-badge">5 / 9</span>
       </div>
       
@@ -381,7 +350,7 @@
           <i class="fas fa-arrow-left"></i> Anterior
         </button>
         <button class="week-button" onclick="nextExercise()" disabled id="next-btn-5">
-          <i class="fas fa-arrow-right"></i> Continuar
+          Continuar <i class="fas fa-arrow-right"></i>
         </button>
       </div>
     </div>
@@ -389,7 +358,7 @@
     <!-- Ejercicio 6 -->
     <div class="content-card exercise-container" data-exercise="6">
       <div class="exercise-header">
-        <h2><i class="fas fa-language"></i> Traduce la frase</h2>
+        <h2><i class="fas fa-language" style="color: #4a6fa5;"></i> Traduce la frase</h2>
         <span class="exercise-badge">6 / 9</span>
       </div>
       
@@ -409,7 +378,7 @@
           <i class="fas fa-arrow-left"></i> Anterior
         </button>
         <button class="week-button" onclick="nextExercise()" disabled id="next-btn-6">
-          <i class="fas fa-arrow-right"></i> Continuar
+          Continuar <i class="fas fa-arrow-right"></i>
         </button>
       </div>
     </div>
@@ -417,7 +386,7 @@
     <!-- Ejercicio 7 -->
     <div class="content-card exercise-container" data-exercise="7">
       <div class="exercise-header">
-        <h2><i class="fas fa-language"></i> Traduce la frase</h2>
+        <h2><i class="fas fa-language" style="color: #4a6fa5;"></i> Traduce la frase</h2>
         <span class="exercise-badge">7 / 9</span>
       </div>
       
@@ -437,7 +406,7 @@
           <i class="fas fa-arrow-left"></i> Anterior
         </button>
         <button class="week-button" onclick="nextExercise()" disabled id="next-btn-7">
-          <i class="fas fa-arrow-right"></i> Continuar
+          Continuar <i class="fas fa-arrow-right"></i>
         </button>
       </div>
     </div>
@@ -445,7 +414,7 @@
     <!-- Ejercicio 8 -->
     <div class="content-card exercise-container" data-exercise="8">
       <div class="exercise-header">
-        <h2><i class="fas fa-language"></i> Traduce la frase</h2>
+        <h2><i class="fas fa-language" style="color: #4a6fa5;"></i> Traduce la frase</h2>
         <span class="exercise-badge">8 / 9</span>
       </div>
       
@@ -465,7 +434,7 @@
           <i class="fas fa-arrow-left"></i> Anterior
         </button>
         <button class="week-button" onclick="nextExercise()" disabled id="next-btn-8">
-          <i class="fas fa-arrow-right"></i> Continuar
+          Continuar <i class="fas fa-arrow-right"></i>
         </button>
       </div>
     </div>
@@ -473,7 +442,7 @@
     <!-- Ejercicio 9 -->
     <div class="content-card exercise-container" data-exercise="9">
       <div class="exercise-header">
-        <h2><i class="fas fa-language"></i> Traduce la frase</h2>
+        <h2><i class="fas fa-language" style="color: #4a6fa5;"></i> Traduce la frase</h2>
         <span class="exercise-badge">9 / 9</span>
       </div>
       
@@ -493,7 +462,7 @@
           <i class="fas fa-arrow-left"></i> Anterior
         </button>
         <button class="week-button" onclick="nextExercise()" disabled id="next-btn-9">
-          <i class="fas fa-arrow-right"></i> Finalizar
+          Finalizar <i class="fas fa-check"></i>
         </button>
       </div>
     </div>
@@ -501,16 +470,16 @@
     <!-- Pantalla Final -->
     <div class="content-card exercise-container final-screen" id="final-screen">
       <h2><i class="fas fa-trophy"></i> ¡Ejercicio Completado!</h2>
-      <p style="font-size: 1.2rem; margin: 1rem 0;">Has finalizado el análisis de las frases principales de 1 Juan 1:1-9</p>
+      <p style="font-size: 1.1rem; margin: 1rem 0; color: #555;">Has finalizado el análisis de las frases principales de 1 Juan 1:1-9</p>
       
       <div class="final-score-circle">
         <span class="final-score-number" id="final-score-number">0</span>
         <span class="final-score-label">de 9</span>
       </div>
       
-      <p id="final-message" style="margin: 1.5rem 0;"></p>
+      <p id="final-message"></p>
       
-      <button class="week-button success restart-btn" onclick="resetExercise()">
+      <button class="week-button success" onclick="resetExercise()" style="padding: 0.8rem 2.5rem;">
         <i class="fas fa-redo-alt"></i> Reiniciar Ejercicio
       </button>
     </div>
@@ -533,12 +502,12 @@
     let currentExercise = 1;
     const totalExercises = 9;
     let score = 0;
-    let answers = new Array(totalExercises + 1).fill(null); // Guarda si fue correcta (true/false)
-    let selectedOptions = new Array(totalExercises + 1).fill(null); // Guarda el índice seleccionado
+    let answers = new Array(totalExercises + 1).fill(null);
+    let selectedOptions = new Array(totalExercises + 1).fill(null);
 
-    // Inicializar event listeners para las opciones
     function initExerciseListeners() {
       document.querySelectorAll('.exercise-container .quiz-option').forEach(option => {
+        option.removeEventListener('click', handleOptionClick);
         option.addEventListener('click', handleOptionClick);
       });
     }
@@ -549,22 +518,18 @@
       const exerciseId = parseInt(exerciseDiv.dataset.exercise);
       const options = exerciseDiv.querySelectorAll('.quiz-option');
       
-      // Si ya se respondió este ejercicio
       if (answers[exerciseId] !== null) return;
       
       const isCorrect = option.dataset.correct === 'true';
       const selectedValue = option.dataset.value;
       
-      // Remover selección previa
       options.forEach(opt => opt.classList.remove('selected'));
       option.classList.add('selected');
       
-      // Marcar todas las opciones
       options.forEach(opt => {
         opt.classList.add('disabled');
         if (opt.dataset.correct === 'true') {
           opt.classList.add('correct');
-          // Añadir feedback visual
           if (!opt.querySelector('.option-feedback')) {
             const feedback = document.createElement('div');
             feedback.className = 'option-feedback';
@@ -580,129 +545,109 @@
         }
       });
       
-      // Registrar respuesta
       answers[exerciseId] = isCorrect;
       selectedOptions[exerciseId] = selectedValue;
       if (isCorrect) score++;
       
-      // Habilitar botón continuar
       const nextBtn = document.getElementById(`next-btn-${exerciseId}`);
       if (nextBtn) nextBtn.disabled = false;
-      
-      // Actualizar puntuación en la UI
-      updateScoreDisplay();
-    }
-
-    function updateScoreDisplay() {
-      // Actualizar cualquier indicador de puntuación si existiera
-      const scoreElements = document.querySelectorAll('.current-score');
-      scoreElements.forEach(el => el.textContent = `${score}/${totalExercises}`);
     }
 
     function nextExercise() {
       const currentDiv = document.querySelector(`[data-exercise="${currentExercise}"]`);
+      if (!currentDiv) return;
+      
       currentDiv.classList.remove('active');
       
       if (currentExercise === totalExercises) {
-        // Mostrar pantalla final
         showFinalScreen();
       } else {
         currentExercise++;
         const nextDiv = document.querySelector(`[data-exercise="${currentExercise}"]`);
-        nextDiv.classList.add('active');
-        updateProgress();
+        if (nextDiv) nextDiv.classList.add('active');
       }
       
-      // Scroll suave al inicio
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function prevExercise() {
       if (currentExercise > 1) {
         const currentDiv = document.querySelector(`[data-exercise="${currentExercise}"]`);
-        currentDiv.classList.remove('active');
+        if (currentDiv) currentDiv.classList.remove('active');
         currentExercise--;
         const prevDiv = document.querySelector(`[data-exercise="${currentExercise}"]`);
-        prevDiv.classList.add('active');
-        updateProgress();
+        if (prevDiv) prevDiv.classList.add('active');
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     }
 
-    function updateProgress() {
-      // Actualizar cualquier elemento de progreso
-      const progressFill = document.querySelector('.progress-fill');
-      if (progressFill) {
-        progressFill.style.width = `${(currentExercise / totalExercises) * 100}%`;
-      }
-    }
-
     function showFinalScreen() {
-      document.getElementById('final-screen').classList.add('active');
-      document.getElementById('final-score-number').textContent = score;
-      
-      const messageEl = document.getElementById('final-message');
-      const percentage = (score / totalExercises) * 100;
-      
-      if (percentage === 100) {
-        messageEl.innerHTML = '<i class="fas fa-star"></i> ¡Excelente! Dominas perfectamente 1 Juan 1.';
-        messageEl.style.color = 'var(--success)';
-      } else if (percentage >= 70) {
-        messageEl.innerHTML = '<i class="fas fa-check"></i> ¡Muy bien! Tienes un buen entendimiento del texto.';
-        messageEl.style.color = 'var(--primary)';
-      } else {
-        messageEl.innerHTML = '<i class="fas fa-book"></i> Sigue practicando. Cada repaso te acerca más al texto original.';
-        messageEl.style.color = 'var(--text-secondary)';
+      const finalScreen = document.getElementById('final-screen');
+      if (finalScreen) {
+        finalScreen.classList.add('active');
+        document.getElementById('final-score-number').textContent = score;
+        
+        const messageEl = document.getElementById('final-message');
+        const percentage = (score / totalExercises) * 100;
+        
+        if (percentage === 100) {
+          messageEl.innerHTML = '<i class="fas fa-star" style="color: #f1c40f;"></i> ¡Excelente! Dominas perfectamente 1 Juan 1.';
+          messageEl.style.color = '#27ae60';
+        } else if (percentage >= 70) {
+          messageEl.innerHTML = '<i class="fas fa-check-circle" style="color: #27ae60;"></i> ¡Muy bien! Tienes un buen entendimiento del texto.';
+          messageEl.style.color = '#4a6fa5';
+        } else {
+          messageEl.innerHTML = '<i class="fas fa-book" style="color: #4a6fa5;"></i> Sigue practicando. Cada repaso te acerca más al texto original.';
+          messageEl.style.color = '#e67e22';
+        }
       }
     }
 
     function resetExercise() {
-      // Resetear variables
       currentExercise = 1;
       score = 0;
       answers = new Array(totalExercises + 1).fill(null);
       selectedOptions = new Array(totalExercises + 1).fill(null);
       
-      // Ocultar pantalla final
-      document.getElementById('final-screen').classList.remove('active');
-      
-      // Mostrar primer ejercicio
       document.querySelectorAll('.exercise-container').forEach(container => {
         container.classList.remove('active');
       });
+      
+      const finalScreen = document.getElementById('final-screen');
+      if (finalScreen) finalScreen.classList.remove('active');
+      
       document.querySelector('[data-exercise="1"]').classList.add('active');
       
-      // Resetear todas las opciones
       document.querySelectorAll('.exercise-container .quiz-option').forEach(option => {
         option.classList.remove('selected', 'correct', 'incorrect', 'disabled');
         const feedback = option.querySelector('.option-feedback');
         if (feedback) feedback.remove();
       });
       
-      // Deshabilitar todos los botones continuar
       for (let i = 1; i <= totalExercises; i++) {
         const btn = document.getElementById(`next-btn-${i}`);
         if (btn) btn.disabled = true;
       }
       
-      updateProgress();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Hacer funciones globales
     window.nextExercise = nextExercise;
     window.prevExercise = prevExercise;
     window.resetExercise = resetExercise;
 
-    // Inicializar al cargar
     document.addEventListener('DOMContentLoaded', () => {
       initExerciseListeners();
       
-      // Deshabilitar botones continuar inicialmente
       for (let i = 1; i <= totalExercises; i++) {
         const btn = document.getElementById(`next-btn-${i}`);
         if (btn) btn.disabled = true;
       }
+      
+      document.querySelectorAll('.exercise-container').forEach(container => {
+        container.classList.remove('active');
+      });
+      document.querySelector('[data-exercise="1"]').classList.add('active');
     });
   </script>
 </body>
