@@ -1,10 +1,11 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Práctica de Presente Activo Indicativo - Griego Koiné</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Práctica de Verbos · Griego Koiné</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #6c5ce7;
@@ -17,7 +18,8 @@
             --correct: #00b894;
             --incorrect: #d63031;
             --highlight: #ffeaa7;
-            --shadow: 0 10px 20px rgba(0,0,0,0.1);
+            --shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --shadow-hover: 0 15px 35px rgba(108, 92, 231, 0.15);
             --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
@@ -29,50 +31,125 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--background);
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
             color: var(--text);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 2rem;
+            padding: 1.5rem;
             line-height: 1.6;
         }
 
-        header {
-            text-align: center;
-            margin-bottom: 2rem;
+        /* Pantalla de selección de nivel */
+        .level-selector {
+            max-width: 900px;
             width: 100%;
-            animation: fadeIn 0.8s ease-out;
+            display: block;
         }
 
-        h1 {
+        .level-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .level-header h1 {
             color: var(--primary);
-            margin-bottom: 0.5rem;
             font-size: 2.5rem;
-            font-weight: 600;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
         }
 
-        .subtitle {
+        .level-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .level-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .level-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            transform: translateX(-100%);
+            transition: transform 0.4s ease;
+        }
+
+        .level-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(108, 92, 231, 0.2);
+        }
+
+        .level-card:hover::before {
+            transform: translateX(0);
+        }
+
+        .level-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .level-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
             color: var(--text);
-            opacity: 0.8;
-            font-weight: 400;
         }
 
+        .level-card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .level-badge {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-top: 1rem;
+        }
+
+        /* Contenedor del juego */
         .game-container {
             max-width: 800px;
             width: 100%;
             background: var(--card-bg);
-            border-radius: 20px;
-            padding: 2.5rem;
+            border-radius: 24px;
+            padding: 2rem;
             box-shadow: var(--shadow);
             transition: var(--transition);
-            animation: slideUp 0.6s ease-out;
             position: relative;
             overflow: hidden;
+            display: none;
+        }
+
+        .game-container.active {
+            display: block;
+            animation: slideUp 0.5s ease-out;
         }
 
         .game-container::before {
@@ -82,7 +159,42 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
+            background: linear-gradient(to right, var(--primary), var(--secondary), var(--accent));
+        }
+
+        .game-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .back-btn {
+            background: none;
+            border: 2px solid #e0e0e0;
+            color: var(--text);
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: rgba(108, 92, 231, 0.05);
+        }
+
+        .level-title {
+            font-weight: 600;
+            color: var(--primary);
         }
 
         .progress-container {
@@ -90,208 +202,212 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 2rem;
-            position: relative;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .progress-bar-wrapper {
+            flex: 1;
+            min-width: 200px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
         .progress-bar {
-            height: 12px;
-            background-color: #dfe6e9;
+            height: 10px;
+            background-color: #e9ecef;
             border-radius: 10px;
             flex-grow: 1;
-            margin: 0 1.5rem;
             overflow: hidden;
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
         }
 
         .progress-fill {
             height: 100%;
             background: linear-gradient(to right, var(--primary), var(--secondary));
             width: 0%;
-            transition: width 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+            transition: width 0.5s ease;
             border-radius: 10px;
         }
 
         .score-display {
             font-weight: 600;
-            color: var(--primary);
-            background: rgba(108, 92, 231, 0.1);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
+            color: white;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
             min-width: 100px;
             text-align: center;
+            box-shadow: 0 4px 10px rgba(108, 92, 231, 0.2);
         }
 
         .question-count {
             font-weight: 600;
             color: var(--text);
-            opacity: 0.8;
+            background: #f1f3f5;
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
         }
 
         .question-container {
             margin-bottom: 2rem;
             text-align: center;
-            animation: fadeIn 0.5s ease-out;
+        }
+
+        .verb-badge {
+            display: inline-block;
+            padding: 0.4rem 1.2rem;
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.1), rgba(0, 206, 201, 0.1));
+            color: var(--primary-dark);
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(108, 92, 231, 0.2);
         }
 
         .prompt {
             font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            padding: 1.5rem;
-            background-color: rgba(108, 92, 231, 0.05);
-            border-radius: 12px;
-            border-left: 4px solid var(--primary);
+            margin-bottom: 2rem;
+            padding: 1.8rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 16px;
+            border-left: 5px solid var(--primary);
             transition: var(--transition);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
         }
 
         .greek {
-            font-family: "New Athena Unicode", "Galatia SIL", "Gentium Plus", serif;
-            font-size: 1.8rem;
+            font-family: "New Athena Unicode", "Galatia SIL", "Gentium Plus", "Times New Roman", serif;
+            font-size: 2rem;
             color: var(--primary-dark);
-            font-weight: bold;
+            font-weight: 600;
         }
 
         .options-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
+            gap: 1.2rem;
             margin-bottom: 2rem;
         }
 
         .option {
-            padding: 1.5rem;
+            padding: 1.2rem;
             background-color: white;
-            border: 2px solid #e0e0e0;
-            border-radius: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 16px;
             cursor: pointer;
             transition: var(--transition);
             text-align: center;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            font-size: 1.1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
             position: relative;
             overflow: hidden;
         }
 
-        .option:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        .option:hover:not(.disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(108, 92, 231, 0.1);
             border-color: var(--primary);
-        }
-
-        .option::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(108, 92, 231, 0.1), rgba(0, 206, 201, 0.1));
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .option:hover::after {
-            opacity: 1;
         }
 
         .option.selected {
             border-color: var(--primary);
-            background-color: rgba(108, 92, 231, 0.1);
-            transform: translateY(-2px);
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.05), rgba(0, 206, 201, 0.05));
         }
 
         .option.correct {
-            background-color: rgba(0, 184, 148, 0.1);
+            background: linear-gradient(135deg, rgba(0, 184, 148, 0.1), rgba(0, 184, 148, 0.05));
             border-color: var(--correct);
             color: var(--correct);
-            animation: pulse 0.5s;
         }
 
         .option.incorrect {
-            background-color: rgba(214, 48, 49, 0.05);
+            background: linear-gradient(135deg, rgba(214, 48, 49, 0.05), rgba(214, 48, 49, 0.02));
             border-color: var(--incorrect);
             color: var(--incorrect);
+        }
+
+        .option.disabled {
+            pointer-events: none;
+            opacity: 0.8;
         }
 
         .feedback {
             margin-top: 1.5rem;
             padding: 1.2rem;
-            border-radius: 12px;
+            border-radius: 16px;
             text-align: center;
             font-weight: 500;
             display: none;
-            animation: fadeIn 0.5s ease-out;
+            animation: fadeIn 0.4s ease-out;
         }
 
         .feedback.correct {
-            background-color: rgba(0, 184, 148, 0.1);
+            background: linear-gradient(135deg, rgba(0, 184, 148, 0.1), rgba(0, 184, 148, 0.05));
             color: var(--correct);
             display: block;
         }
 
         .feedback.incorrect {
-            background-color: rgba(214, 48, 49, 0.1);
+            background: linear-gradient(135deg, rgba(214, 48, 49, 0.1), rgba(214, 48, 49, 0.05));
             color: var(--incorrect);
             display: block;
         }
 
-        .next-btn {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .next-btn, .restart-btn, .level-btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
             border: none;
-            padding: 1rem 2rem;
+            padding: 1rem 2.5rem;
             border-radius: 50px;
             cursor: pointer;
             font-size: 1rem;
-            font-weight: 500;
-            margin-top: 1.5rem;
+            font-weight: 600;
             transition: var(--transition);
-            display: none;
             box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
-            position: relative;
-            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .next-btn:hover {
+        .next-btn {
+            display: none;
+        }
+
+        .next-btn:hover, .restart-btn:hover, .level-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(108, 92, 231, 0.4);
-        }
-
-        .next-btn:active {
-            transform: translateY(0);
-        }
-
-        .next-btn::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to right, rgba(255,255,255,0.3), rgba(255,255,255,0));
-            transform: translateX(-100%);
-            transition: transform 0.6s ease;
-        }
-
-        .next-btn:hover::after {
-            transform: translateX(100%);
         }
 
         .results-screen {
             text-align: center;
             display: none;
-            animation: fadeIn 0.8s ease-out;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .results-screen.active {
+            display: block;
         }
 
         .results-screen h2 {
             color: var(--primary);
             margin-bottom: 1rem;
-            font-size: 2rem;
+            font-size: 2.2rem;
         }
 
         .final-score {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 700;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin: 1.5rem 0;
@@ -299,70 +415,21 @@
 
         .result-message {
             font-size: 1.1rem;
-            max-width: 600px;
+            max-width: 500px;
             margin: 0 auto 2rem;
             line-height: 1.8;
         }
 
-        .restart-btn {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 500;
-            margin-top: 1.5rem;
-            transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
-        }
-
-        .restart-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(108, 92, 231, 0.4);
-        }
-
-        .person-indicator {
-            display: inline-block;
-            padding: 0.5rem 1.2rem;
-            background-color: var(--highlight);
-            color: #2d3436;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            box-shadow: 0 3px 10px rgba(253, 121, 168, 0.2);
-        }
-
-        .number-indicator {
-            display: inline-block;
-            margin-left: 0.5rem;
-            padding: 0.3rem 0.8rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            background-color: rgba(0, 184, 148, 0.1);
-            color: var(--correct);
-        }
-
-        .verb-indicator {
-            display: inline-block;
-            margin-left: 0.5rem;
-            padding: 0.3rem 0.8rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            background-color: rgba(108, 92, 231, 0.1);
-            color: var(--primary);
+        .result-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
 
         .celebration {
             font-size: 4rem;
             margin-bottom: 1rem;
-            animation: bounce 1s infinite alternate;
         }
 
         @keyframes fadeIn {
@@ -371,232 +438,223 @@
         }
 
         @keyframes slideUp {
-            from { 
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to { 
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        @keyframes bounce {
-            from { transform: translateY(0); }
-            to { transform: translateY(-10px); }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @media (max-width: 768px) {
+            body {
+                padding: 0.8rem;
+            }
+
             .options-grid {
                 grid-template-columns: 1fr;
             }
             
             .game-container {
-                padding: 1.5rem;
+                padding: 1.2rem;
             }
 
-            h1 {
+            .level-header h1 {
                 font-size: 2rem;
             }
 
             .prompt {
                 font-size: 1.1rem;
-                padding: 1rem;
+                padding: 1.2rem;
             }
 
             .greek {
                 font-size: 1.5rem;
             }
+
+            .progress-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .game-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .result-actions {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .level-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .option {
+                padding: 1rem;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Práctica de Presente Activo Indicativo</h1>
-        <p class="subtitle">Griego Koiné - Conjugación de verbos en presente activo indicativo</p>
-    </header>
+    <!-- Selector de Niveles -->
+    <div class="level-selector" id="level-selector">
+        <div class="level-header">
+            <h1><i class="fas fa-language"></i> Verbos Griegos</h1>
+            <p class="subtitle">Practica el Presente Activo Indicativo por niveles</p>
+        </div>
+        <div class="level-grid" id="level-grid">
+            <!-- Los niveles se generarán dinámicamente -->
+        </div>
+    </div>
 
-    <div class="game-container">
+    <!-- Contenedor del Juego -->
+    <div class="game-container" id="game-container">
+        <div class="game-header">
+            <button class="back-btn" id="back-btn">
+                <i class="fas fa-arrow-left"></i> Niveles
+            </button>
+            <span class="level-title" id="current-level-title">Nivel 1</span>
+        </div>
+
         <div class="progress-container">
-            <div class="score-display">Puntuación: <span id="score">0</span></div>
-            <div class="progress-bar">
-                <div class="progress-fill" id="progress"></div>
+            <div class="progress-bar-wrapper">
+                <i class="fas fa-chart-line" style="color: var(--primary);"></i>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress"></div>
+                </div>
             </div>
-            <div class="question-count"><span id="current-q">1</span>/<span id="total-qs">20</span></div>
+            <div class="score-display">
+                <i class="fas fa-star"></i> <span id="score">0</span>
+            </div>
+            <div class="question-count">
+                <span id="current-q">1</span>/<span id="total-qs">5</span>
+            </div>
         </div>
 
         <div class="question-container" id="question-container">
-            <div>
-                <span class="person-indicator" id="person-indicator">1ª persona</span>
-                <span class="number-indicator" id="number-indicator">singular</span>
-                <span class="verb-indicator" id="verb-indicator">λύω</span>
+            <div class="verb-badge" id="verb-badge">
+                <i class="fas fa-book"></i> <span id="verb-info">λύω - desatar</span>
             </div>
-            <div class="prompt" id="prompt">Conjuga: <strong>yo desato (presente activo indicativo)</strong></div>
+            <div class="prompt" id="prompt">Conjuga: <strong>yo desato</strong></div>
             
-            <div class="options-grid" id="options-grid">
-                <!-- Las opciones se generarán dinámicamente -->
-            </div>
+            <div class="options-grid" id="options-grid"></div>
             
             <div class="feedback" id="feedback"></div>
-            <button class="next-btn" id="next-btn">Siguiente</button>
+            <div class="action-buttons">
+                <button class="next-btn" id="next-btn">
+                    Siguiente <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
         </div>
 
         <div class="results-screen" id="results-screen">
-            <div class="celebration">🎉</div>
-            <h2>¡Práctica completada!</h2>
-            <p>Has terminado el ejercicio de presente activo indicativo</p>
-            <div class="final-score" id="final-score">18/20</div>
-            <p class="result-message" id="result-message">¡Excelente trabajo! Dominas el presente activo indicativo.</p>
-            <button class="restart-btn" id="restart-btn">Volver a Practicar</button>
+            <div class="celebration">🏆</div>
+            <h2>¡Nivel Completado!</h2>
+            <p>Has terminado todas las preguntas de este nivel</p>
+            <div class="final-score" id="final-score">5/5</div>
+            <p class="result-message" id="result-message">¡Excelente! Dominas este nivel.</p>
+            <div class="result-actions">
+                <button class="restart-btn" id="restart-level-btn">
+                    <i class="fas fa-redo-alt"></i> Repetir Nivel
+                </button>
+                <button class="level-btn" id="back-to-levels-btn">
+                    <i class="fas fa-th-large"></i> Más Niveles
+                </button>
+            </div>
         </div>
     </div>
 
     <script>
-        // Verbos comunes en griego koiné y sus traducciones
-        const verbs = {
-            "λύω": {
-                meaning: "desatar, soltar",
-                present: {
-                    active: {
-                        indicative: {
-                            singular: {
-                                first: "λύω",
-                                second: "λύεις",
-                                third: "λύει"
-                            },
-                            plural: {
-                                first: "λύομεν",
-                                second: "λύετε",
-                                third: "λύουσιν"
-                            }
+        // Datos de niveles con verbos (estructura levelData)
+        const levelData = {
+            1: {
+                title: "Nivel 1: Verbos Básicos",
+                icon: "🌱",
+                verbs: {
+                    "λύω": {
+                        meaning: "desatar, soltar",
+                        present: {
+                            singular: { first: "λύω", second: "λύεις", third: "λύει" },
+                            plural: { first: "λύομεν", second: "λύετε", third: "λύουσιν" }
+                        }
+                    },
+                    "γράφω": {
+                        meaning: "escribir",
+                        present: {
+                            singular: { first: "γράφω", second: "γράφεις", third: "γράφει" },
+                            plural: { first: "γράφομεν", second: "γράφετε", third: "γράφουσιν" }
+                        }
+                    },
+                    "λέγω": {
+                        meaning: "decir, hablar",
+                        present: {
+                            singular: { first: "λέγω", second: "λέγεις", third: "λέγει" },
+                            plural: { first: "λέγομεν", second: "λέγετε", third: "λέγουσιν" }
                         }
                     }
                 }
             },
-            "γράφω": {
-                meaning: "escribir",
-                present: {
-                    active: {
-                        indicative: {
-                            singular: {
-                                first: "γράφω",
-                                second: "γράφεις",
-                                third: "γράφει"
-                            },
-                            plural: {
-                                first: "γράφομεν",
-                                second: "γράφετε",
-                                third: "γράφουσιν"
-                            }
+            2: {
+                title: "Nivel 2: Verbos Frecuentes",
+                icon: "📚",
+                verbs: {
+                    "ἔχω": {
+                        meaning: "tener",
+                        present: {
+                            singular: { first: "ἔχω", second: "ἔχεις", third: "ἔχει" },
+                            plural: { first: "ἔχομεν", second: "ἔχετε", third: "ἔχουσιν" }
+                        }
+                    },
+                    "βλέπω": {
+                        meaning: "ver",
+                        present: {
+                            singular: { first: "βλέπω", second: "βλέπεις", third: "βλέπει" },
+                            plural: { first: "βλέπομεν", second: "βλέπετε", third: "βλέπουσιν" }
+                        }
+                    },
+                    "ἀκούω": {
+                        meaning: "oír, escuchar",
+                        present: {
+                            singular: { first: "ἀκούω", second: "ἀκούεις", third: "ἀκούει" },
+                            plural: { first: "ἀκούομεν", second: "ἀκούετε", third: "ἀκούουσιν" }
                         }
                     }
                 }
             },
-            "λέγω": {
-                meaning: "decir, hablar",
-                present: {
-                    active: {
-                        indicative: {
-                            singular: {
-                                first: "λέγω",
-                                second: "λέγεις",
-                                third: "λέγει"
-                            },
-                            plural: {
-                                first: "λέγομεν",
-                                second: "λέγετε",
-                                third: "λέγουσιν"
-                            }
-                        }
-                    }
-                }
-            },
-            "ἔχω": {
-                meaning: "tener",
-                present: {
-                    active: {
-                        indicative: {
-                            singular: {
-                                first: "ἔχω",
-                                second: "ἔχεις",
-                                third: "ἔχει"
-                            },
-                            plural: {
-                                first: "ἔχομεν",
-                                second: "ἔχετε",
-                                third: "ἔχουσιν"
-                            }
-                        }
-                    }
-                }
-            },
-            "βλέπω": {
-                meaning: "ver",
-                present: {
-                    active: {
-                        indicative: {
-                            singular: {
-                                first: "βλέπω",
-                                second: "βλέπεις",
-                                third: "βλέπει"
-                            },
-                            plural: {
-                                first: "βλέπομεν",
-                                second: "βλέπετε",
-                                third: "βλέπουσιν"
-                            }
-                        }
-                    }
+            3: {
+                title: "Nivel 3: Todos los Verbos",
+                icon: "🎯",
+                verbs: {
+                    "λύω": { meaning: "desatar", present: { singular: { first: "λύω", second: "λύεις", third: "λύει" }, plural: { first: "λύομεν", second: "λύετε", third: "λύουσιν" } } },
+                    "γράφω": { meaning: "escribir", present: { singular: { first: "γράφω", second: "γράφεις", third: "γράφει" }, plural: { first: "γράφομεν", second: "γράφετε", third: "γράφουσιν" } } },
+                    "λέγω": { meaning: "decir", present: { singular: { first: "λέγω", second: "λέγεις", third: "λέγει" }, plural: { first: "λέγομεν", second: "λέγετε", third: "λέγουσιν" } } },
+                    "ἔχω": { meaning: "tener", present: { singular: { first: "ἔχω", second: "ἔχεις", third: "ἔχει" }, plural: { first: "ἔχομεν", second: "ἔχετε", third: "ἔχουσιν" } } },
+                    "βλέπω": { meaning: "ver", present: { singular: { first: "βλέπω", second: "βλέπεις", third: "βλέπει" }, plural: { first: "βλέπομεν", second: "βλέπετε", third: "βλέπουσιν" } } },
+                    "ἀκούω": { meaning: "oír", present: { singular: { first: "ἀκούω", second: "ἀκούεις", third: "ἀκούει" }, plural: { first: "ἀκούομεν", second: "ἀκούετε", third: "ἀκούουσιν" } } }
                 }
             }
         };
 
-        // Traducciones de personas y números
         const personTranslations = {
-            first: {
-                singular: "yo",
-                plural: "nosotros"
-            },
-            second: {
-                singular: "tú",
-                plural: "vosotros"
-            },
-            third: {
-                singular: "él/ella",
-                plural: "ellos/ellas"
-            }
+            first: { singular: "yo", plural: "nosotros" },
+            second: { singular: "tú", plural: "vosotros" },
+            third: { singular: "él/ella", plural: "ellos/ellas" }
         };
 
-        const personNames = {
-            first: "1ª persona",
-            second: "2ª persona",
-            third: "3ª persona"
-        };
-
-        const numberNames = {
-            singular: "singular",
-            plural: "plural"
-        };
-
-        // Variables del juego
+        // Estado del juego
+        let currentLevel = 1;
         let currentQuestion = 0;
         let score = 0;
         let questions = [];
-        const totalQuestions = 20;
+        let gameActive = false;
 
-        // Elementos del DOM
-        const questionContainer = document.getElementById('question-container');
-        const resultsScreen = document.getElementById('results-screen');
+        // Elementos DOM
+        const levelSelector = document.getElementById('level-selector');
+        const gameContainer = document.getElementById('game-container');
+        const levelGrid = document.getElementById('level-grid');
+        const currentLevelTitle = document.getElementById('current-level-title');
         const promptElement = document.getElementById('prompt');
-        const personIndicator = document.getElementById('person-indicator');
-        const numberIndicator = document.getElementById('number-indicator');
-        const verbIndicator = document.getElementById('verb-indicator');
+        const verbInfo = document.getElementById('verb-info');
         const optionsGrid = document.getElementById('options-grid');
         const feedbackElement = document.getElementById('feedback');
         const nextButton = document.getElementById('next-btn');
@@ -604,205 +662,209 @@
         const progressFill = document.getElementById('progress');
         const currentQElement = document.getElementById('current-q');
         const totalQsElement = document.getElementById('total-qs');
+        const resultsScreen = document.getElementById('results-screen');
         const finalScoreElement = document.getElementById('final-score');
         const resultMessageElement = document.getElementById('result-message');
-        const restartButton = document.getElementById('restart-btn');
+        const questionContainer = document.getElementById('question-container');
 
-        // Inicializar el juego
-        function initGame() {
-            currentQuestion = 0;
-            score = 0;
-            scoreElement.textContent = score;
-            totalQsElement.textContent = totalQuestions;
-            progressFill.style.width = '0%';
-            
-            // Generar preguntas aleatorias
-            questions = generateQuestions(totalQuestions);
-            
-            // Mostrar la primera pregunta
-            showQuestion();
-            
-            // Mostrar contenedor de pregunta y ocultar resultados
-            questionContainer.style.display = 'block';
-            resultsScreen.style.display = 'none';
+        // Renderizar niveles
+        function renderLevels() {
+            levelGrid.innerHTML = '';
+            Object.entries(levelData).forEach(([level, data]) => {
+                const verbCount = Object.keys(data.verbs).length;
+                const card = document.createElement('div');
+                card.className = 'level-card';
+                card.innerHTML = `
+                    <div class="level-icon">${data.icon}</div>
+                    <h3>${data.title}</h3>
+                    <p>${verbCount} verbos para practicar</p>
+                    <span class="level-badge">5 preguntas</span>
+                `;
+                card.addEventListener('click', () => startLevel(parseInt(level)));
+                levelGrid.appendChild(card);
+            });
         }
 
-        // Generar preguntas aleatorias
-        function generateQuestions(count) {
-            const generatedQuestions = [];
-            const verbList = Object.keys(verbs);
+        // Iniciar nivel
+        function startLevel(level) {
+            currentLevel = level;
+            currentQuestion = 0;
+            score = 0;
+            
+            const levelInfo = levelData[level];
+            currentLevelTitle.textContent = levelInfo.title;
+            
+            // Generar preguntas
+            questions = generateQuestions(levelInfo.verbs, 5);
+            
+            // Resetear UI
+            scoreElement.textContent = '0';
+            progressFill.style.width = '0%';
+            totalQsElement.textContent = questions.length;
+            
+            // Mostrar contenedor de juego
+            levelSelector.style.display = 'none';
+            gameContainer.classList.add('active');
+            questionContainer.style.display = 'block';
+            resultsScreen.classList.remove('active');
+            
+            showQuestion();
+        }
+
+        // Generar preguntas
+        function generateQuestions(verbs, count) {
+            const generated = [];
+            const verbList = Object.entries(verbs);
             const persons = ['first', 'second', 'third'];
             const numbers = ['singular', 'plural'];
             
             for (let i = 0; i < count; i++) {
-                // Elegir aleatoriamente verbo, persona y número
-                const randomVerb = verbList[Math.floor(Math.random() * verbList.length)];
+                const [verbName, verbData] = verbList[Math.floor(Math.random() * verbList.length)];
                 const person = persons[Math.floor(Math.random() * persons.length)];
                 const number = numbers[Math.floor(Math.random() * numbers.length)];
                 
-                // Obtener la forma correcta
-                const correctForm = verbs[randomVerb].present.active.indicative[number][person];
-                
-                // Crear pregunta
-                const question = {
-                    verb: randomVerb,
-                    verbMeaning: verbs[randomVerb].meaning,
+                generated.push({
+                    verb: verbName,
+                    verbMeaning: verbData.meaning,
                     person,
                     number,
-                    correctAnswer: correctForm,
-                    prompt: `Conjuga: <strong>${personTranslations[person][number]} ${verbs[randomVerb].meaning}</strong> (presente activo indicativo)`
-                };
-                
-                generatedQuestions.push(question);
+                    correctAnswer: verbData.present[number][person],
+                    prompt: `Conjuga: <strong>${personTranslations[person][number]} ${verbData.meaning}</strong>`
+                });
             }
-            
-            return generatedQuestions;
+            return generated;
         }
 
-        // Mostrar la pregunta actual
+        // Mostrar pregunta
         function showQuestion() {
-            const question = questions[currentQuestion];
+            if (currentQuestion >= questions.length) {
+                showResults();
+                return;
+            }
             
-            // Actualizar elementos de la interfaz
-            promptElement.innerHTML = question.prompt;
-            personIndicator.textContent = personNames[question.person];
-            numberIndicator.textContent = question.number;
-            verbIndicator.textContent = question.verb;
+            const q = questions[currentQuestion];
             
+            promptElement.innerHTML = q.prompt;
+            verbInfo.innerHTML = `<i class="fas fa-book"></i> ${q.verb} - ${q.verbMeaning}`;
             currentQElement.textContent = currentQuestion + 1;
             
-            // Generar opciones de respuesta
-            generateOptions(question);
+            generateOptions(q);
             
-            // Reiniciar estado de la interfaz
             feedbackElement.style.display = 'none';
             feedbackElement.className = 'feedback';
             nextButton.style.display = 'none';
         }
 
-        // Generar opciones de respuesta
+        // Generar opciones
         function generateOptions(question) {
             optionsGrid.innerHTML = '';
-            
-            // Obtener la respuesta correcta
             const correctAnswer = question.correctAnswer;
             
-            // Crear un array con posibles respuestas incorrectas
+            // Obtener opciones incorrectas
             let incorrectOptions = [];
-            
-            // Obtener formas de todos los verbos, personas y números para opciones incorrectas
-            Object.keys(verbs).forEach(verb => {
-                const persons = ['first', 'second', 'third'];
-                const numbers = ['singular', 'plural'];
-                
-                persons.forEach(person => {
-                    numbers.forEach(number => {
-                        const option = verbs[verb].present.active.indicative[number][person];
-                        if (option !== correctAnswer && !incorrectOptions.includes(option)) {
-                            incorrectOptions.push(option);
+            Object.entries(levelData[currentLevel].verbs).forEach(([verbName, verbData]) => {
+                ['singular', 'plural'].forEach(number => {
+                    ['first', 'second', 'third'].forEach(person => {
+                        const form = verbData.present[number][person];
+                        if (form !== correctAnswer && !incorrectOptions.includes(form)) {
+                            incorrectOptions.push(form);
                         }
                     });
                 });
             });
             
-            // Mezclar las opciones incorrectas y tomar 3
             incorrectOptions = shuffleArray(incorrectOptions).slice(0, 3);
-            
-            // Añadir la respuesta correcta y mezclar
             const allOptions = shuffleArray([...incorrectOptions, correctAnswer]);
             
-            // Crear botones para cada opción
             allOptions.forEach(option => {
-                const optionElement = document.createElement('div');
-                optionElement.className = 'option';
-                optionElement.innerHTML = `<span class="greek">${option}</span>`;
-                optionElement.addEventListener('click', () => selectAnswer(option, correctAnswer));
-                optionsGrid.appendChild(optionElement);
+                const optEl = document.createElement('div');
+                optEl.className = 'option';
+                optEl.innerHTML = `<span class="greek">${option}</span>`;
+                optEl.addEventListener('click', () => selectAnswer(option, correctAnswer));
+                optionsGrid.appendChild(optEl);
             });
         }
 
         // Seleccionar respuesta
-        function selectAnswer(selectedOption, correctAnswer) {
-            // Deshabilitar todos los botones de opción
+        function selectAnswer(selected, correct) {
             const allOptions = document.querySelectorAll('.option');
-            allOptions.forEach(option => {
-                option.style.pointerEvents = 'none';
-                if (option.textContent.trim() === correctAnswer) {
-                    option.classList.add('correct');
+            let isCorrect = selected === correct;
+            
+            allOptions.forEach(opt => {
+                opt.classList.add('disabled');
+                const optText = opt.querySelector('.greek').textContent;
+                if (optText === correct) {
+                    opt.classList.add('correct');
+                } else if (optText === selected && !isCorrect) {
+                    opt.classList.add('incorrect');
                 }
             });
             
-            // Marcar la opción seleccionada
-            const selectedElement = Array.from(allOptions).find(
-                opt => opt.textContent.trim() === selectedOption
-            );
-            selectedElement.classList.add('selected');
-            
-            // Verificar si la respuesta es correcta
-            const isCorrect = selectedOption === correctAnswer;
-            
-            // Actualizar puntuación
             if (isCorrect) {
                 score++;
                 scoreElement.textContent = score;
-                selectedElement.classList.add('correct');
-            } else {
-                selectedElement.classList.add('incorrect');
             }
             
-            // Mostrar retroalimentación
             feedbackElement.innerHTML = isCorrect 
-                ? '¡Correcto! 🎉' 
-                : `Incorrecto. La respuesta correcta es: <span class="greek">${correctAnswer}</span>`;
+                ? '<i class="fas fa-check-circle"></i> ¡Correcto! Muy bien.'
+                : `<i class="fas fa-times-circle"></i> Incorrecto. La respuesta es: <span class="greek">${correct}</span>`;
             feedbackElement.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
-            feedbackElement.style.display = 'block';
             
-            // Mostrar botón de siguiente
-            nextButton.style.display = 'block';
+            nextButton.style.display = 'inline-flex';
         }
 
         // Siguiente pregunta
         function nextQuestion() {
             currentQuestion++;
+            progressFill.style.width = `${(currentQuestion / questions.length) * 100}%`;
             
-            // Actualizar barra de progreso
-            progressFill.style.width = `${(currentQuestion / totalQuestions) * 100}%`;
-            
-            // Verificar si hemos terminado
-            if (currentQuestion >= totalQuestions) {
+            if (currentQuestion >= questions.length) {
                 showResults();
             } else {
                 showQuestion();
             }
         }
 
-        // Mostrar resultados finales
+        // Mostrar resultados
         function showResults() {
             questionContainer.style.display = 'none';
-            resultsScreen.style.display = 'block';
+            resultsScreen.classList.add('active');
             
-            // Calcular porcentaje
-            const percentage = (score / totalQuestions) * 100;
+            const percentage = (score / questions.length) * 100;
+            finalScoreElement.textContent = `${score}/${questions.length}`;
             
-            // Mostrar puntuación
-            finalScoreElement.textContent = `${score}/${totalQuestions}`;
-            
-            // Mostrar mensaje según el resultado
             let message;
-            if (percentage >= 90) {
-                message = "¡Excelente trabajo! Dominas el presente activo indicativo en griego koiné.";
-            } else if (percentage >= 70) {
-                message = "¡Buen trabajo! Vas por buen camino con el presente activo indicativo.";
-            } else if (percentage >= 50) {
-                message = "No está mal, pero necesitas más práctica con el presente activo indicativo.";
-            } else {
-                message = "Sigue practicando. Revisa las conjugaciones y vuelve a intentarlo.";
-            }
+            if (percentage >= 90) message = "¡Excelente! Dominas perfectamente este nivel.";
+            else if (percentage >= 70) message = "¡Muy bien! Vas por buen camino.";
+            else if (percentage >= 50) message = "Buen intento. Un poco más de práctica y lo dominarás.";
+            else message = "Sigue practicando. ¡Cada intento cuenta!";
             
             resultMessageElement.textContent = message;
         }
 
-        // Función para mezclar array (Fisher-Yates)
+        // Volver al selector de niveles
+        function backToLevels() {
+            gameContainer.classList.remove('active');
+            levelSelector.style.display = 'block';
+            gameActive = false;
+        }
+
+        // Reiniciar nivel
+        function restartLevel() {
+            currentQuestion = 0;
+            score = 0;
+            scoreElement.textContent = '0';
+            progressFill.style.width = '0%';
+            
+            questions = generateQuestions(levelData[currentLevel].verbs, 5);
+            totalQsElement.textContent = questions.length;
+            
+            questionContainer.style.display = 'block';
+            resultsScreen.classList.remove('active');
+            showQuestion();
+        }
+
+        // Utilidad para mezclar array
         function shuffleArray(array) {
             const newArray = [...array];
             for (let i = newArray.length - 1; i > 0; i--) {
@@ -813,11 +875,13 @@
         }
 
         // Event listeners
+        document.getElementById('back-btn').addEventListener('click', backToLevels);
+        document.getElementById('back-to-levels-btn').addEventListener('click', backToLevels);
+        document.getElementById('restart-level-btn').addEventListener('click', restartLevel);
         nextButton.addEventListener('click', nextQuestion);
-        restartButton.addEventListener('click', initGame);
 
-        // Iniciar el juego al cargar la página
-        window.addEventListener('load', initGame);
+        // Inicializar
+        renderLevels();
     </script>
 </body>
 </html>

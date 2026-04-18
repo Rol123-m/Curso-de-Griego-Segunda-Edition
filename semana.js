@@ -284,18 +284,19 @@ class SemanaManager {
                 tema: "Presente Activo Indicativo",
                 recursos: [
                     { tipo: 'pdf', titulo: 'PDF Contenido de la semana 9', url: 'contenido_privado.html', icono: '📄' },
-                    { tipo: 'html', titulo: 'Introducción al verbo español', url: 'semana 10/HTML/1. Introducción al verbo desde el español.html', icono: '1️⃣' },
-                    { tipo: 'html', titulo: 'Introducción a los verbos griegos', url: 'semana 10/HTML/2. Verbos en griego,breve resumen.html', icono: '2️⃣' },
-                    { tipo: 'html', titulo: 'Componentes básicos del verbo griego', url: 'semana 10/HTML/3. Componentes básicos del verbo griego.html', icono: '3️⃣' },
-                    { tipo: 'html', titulo: 'Presente Activo Indicativo', url: 'semana 10/HTML/4. Presente Activo Indicativo.html', icono: '4️⃣' },
-                    { tipo: 'html', titulo: 'Más sobre los verbos', url: 'semana 10/HTML/5.Más sobre verbos.html', icono: '5️⃣' },
-                    { tipo: 'html', titulo: 'Verbos y pronombres personales. Tabla maestra', url: 'semana 10/HTML/6. verbos y pronombres personales.html', icono: '5️⃣' },
-                    { tipo: 'html', titulo: 'Vocabulario semana 10', url: 'semana 10/HTML/7. Vocabulario10.html', icono: '📖' }
+                    { tipo: 'html', titulo: 'Introducción al verbo español', url: 'semanas/semana 10/HTML/1. Introducción al verbo desde el español.html', icono: '1️⃣' },
+                    { tipo: 'html', titulo: 'Introducción a los verbos griegos', url: 'semanas/semana 10/HTML/2. Verbos en griego,breve resumen.html', icono: '2️⃣' },
+                    { tipo: 'html', titulo: 'Componentes básicos del verbo griego', url: 'semanas/semana 10/HTML/3. Componentes básicos del verbo griego.html', icono: '3️⃣' },
+                    { tipo: 'html', titulo: 'Presente Activo Indicativo', url: 'semanas/semana 10/HTML/4. Presente Activo Indicativo.html', icono: '4️⃣' },
+                    { tipo: 'html', titulo: 'Más sobre los verbos', url: 'semanas/semana 10/HTML/5.Más sobre verbos.html', icono: '5️⃣' },
+                    { tipo: 'html', titulo: 'Verbos y pronombres personales. Tabla maestra', url: 'semanas/semana 10/HTML/6. verbos y pronombres personales.html', icono: '5️⃣' },
+                    { tipo: 'html', titulo: 'Vocabulario semana 10', url: 'semanas/semana 10/HTML/7. Vocabulario10.html', icono: '📖' }
                 ],
                 juegos: [
-                    { titulo: 'Empareja las palabras', url: 'semana 10/Juegos/3. Empareja las palabras.html', icono: '🔄', nota: 'Arrastra la palabra griega a su traducción' },
-                    { titulo: 'Juego de palabras', url: 'semana 10/Juegos/4.juego de palabras, solo en la computadora.html', icono: '🔠', nota: 'Selecciona la respuesta correcta' },
-                    { titulo: 'Aprende el paradigma del verbo griego', url: 'semana 10/Juegos/Presente Activo Indicativo.html', icono: '⭐', nota: 'Practica el conocimiento' }
+                    { titulo: 'Empareja las palabras', url: 'semanas/semana 10/Juegos/3. Empareja las palabras.html', icono: '🔄', nota: 'Arrastra la palabra griega a su traducción' },
+                    { titulo: 'Juego de palabras', url: 'semanas/semana 10/Juegos/4.juego de palabras, solo en la computadora.html', icono: '🔠', nota: 'Selecciona la respuesta correcta' },
+                    { titulo: 'Aprende el paradigma del verbo griego', url: 'semanas/semana 10/Juegos/Presente Activo Indicativo.html', icono: '⭐', nota: 'Practica el conocimiento' },
+                    { titulo: 'Aprende el paradigma del verbo griego', url: 'semanas/semana 10/Juegos/juego.html', icono: '⭐', nota: 'Practica el conocimiento' }
                 ]
             },
             
